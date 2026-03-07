@@ -23,11 +23,14 @@ export default function CafePage() {
           </p>
         </header>
 
-        <figure className="mb-16 overflow-hidden rounded-xl">
+        <figure className="mb-16 overflow-hidden rounded-xl mx-auto max-w-3xl">
           <img
-            src="/cafe/hero.png"
+            src="/cafe/hero.jpg"
             alt="CAFÉ calendar app interface showing color-coded events and branding"
-            className="w-full h-auto object-cover"
+            width={1024}
+            height={868}
+            className="w-full h-auto"
+            style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
             loading="eager"
             fetchPriority="high"
           />

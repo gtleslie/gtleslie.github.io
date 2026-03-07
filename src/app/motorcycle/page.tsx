@@ -23,11 +23,14 @@ export default function MotorcyclePage() {
           </p>
         </header>
 
-        <figure className="mb-16 overflow-hidden rounded-xl">
+        <figure className="mb-16 overflow-hidden rounded-xl mx-auto max-w-3xl">
           <img
-            src="/motorcycle/hero.png"
+            src="/motorcycle/hero.jpg"
             alt="Foam-core motorcycle with Art Nouveau design and helmet"
-            className="w-full h-auto object-cover"
+            width={1024}
+            height={768}
+            className="w-full h-auto"
+            style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
             loading="eager"
             fetchPriority="high"
           />

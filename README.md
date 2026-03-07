@@ -58,6 +58,7 @@ src/
 - **Add a project**: Edit `src/data/projects.ts` and create a new page in `src/app/[slug]/`
 - **Change styling**: All Tailwind classes are in components; tweak colors, spacing, fonts in `globals.css` and component files
 - **Add images**: Put files in `public/` and reference as `/filename.jpg`
+- **Image quality**: Images pasted into chat get compressed. For crisp quality matching Framer, copy your original files directly into `public/` (e.g. export from Framer or drag from Finder). Use at least 1536px width for sharp display on Retina screens.
 
 ## Tech Stack
 

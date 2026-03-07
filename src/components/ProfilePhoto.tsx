@@ -23,7 +23,7 @@ export function ProfilePhoto({
   if (hasPhoto) {
     return (
       <img
-        src="/photo.png"
+        src="/photo.jpg"
         alt="Grant Leslie"
         className={`object-cover ${sizeClasses[size]} ${roundedClasses[rounded]}`}
       />

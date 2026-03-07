@@ -23,11 +23,14 @@ export default function PetriPage() {
           </p>
         </header>
 
-        <figure className="mb-16 overflow-hidden rounded-xl">
+        <figure className="mb-16 overflow-hidden rounded-xl mx-auto max-w-3xl">
           <img
-            src="/petri/hero.png"
+            src="/petri/hero.jpg"
             alt="Petri music platform - Now Playing and Search screens"
-            className="w-full h-auto object-cover"
+            width={1024}
+            height={768}
+            className="w-full h-auto"
+            style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
             loading="eager"
             fetchPriority="high"
           />

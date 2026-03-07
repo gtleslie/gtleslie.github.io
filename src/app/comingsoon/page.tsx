@@ -23,11 +23,14 @@ export default function ComingSoonPage() {
           </p>
         </header>
 
-        <figure className="mb-16 overflow-hidden rounded-xl">
+        <figure className="mb-16 overflow-hidden rounded-xl mx-auto max-w-3xl">
           <img
-            src="/hmi/hero.png"
+            src="/hmi/hero.jpg"
             alt="HMI System Redesign - assistance, navigation, and media interfaces"
-            className="w-full h-auto object-cover"
+            width={1024}
+            height={769}
+            className="w-full h-auto"
+            style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
             loading="eager"
             fetchPriority="high"
           />
