@@ -1,0 +1,318 @@
+import Link from "next/link";
+
+export default function MeeaPage() {
+  return (
+    <main className="pt-24 pb-20">
+      <div className="mx-auto max-w-3xl px-6">
+        <Link
+          href="/"
+          className="mb-8 inline-block text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
+        >
+          ← Back
+        </Link>
+
+        <header className="mb-12">
+          <span className="text-sm font-medium text-zinc-500">
+            Product Prototype, Design · 2025
+          </span>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+            MEEA - Menu Concept
+          </h1>
+          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+            UX Designer · UI Designer · 3 Members · 10 weeks
+          </p>
+        </header>
+
+        <figure className="mb-16 overflow-hidden rounded-xl">
+          <img
+            src="/meea/hero.png"
+            alt="MEEA digital menu integrated into physical menu cover"
+            className="w-full h-auto object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
+        </figure>
+
+        {/* Problem */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Problem
+          </h2>
+          <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
+            Restaurant guests leave feeling unsatisfied when their dining needs
+            aren&apos;t met.
+          </p>
+          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+            Many restaurant customers leave feeling unsatisfied because their
+            needs—ordering, communicating, and general knowledge about their
+            food—aren&apos;t properly met, leading to a disappointing dining
+            experience.
+          </p>
+        </section>
+
+        {/* Solution */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Solution
+          </h2>
+          <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
+            Give guests more control, clarity, and confidence while dining
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+            <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                Menu Browsing / Discovery
+              </h3>
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Explore the menu with clarity and confidence, without
+                interrupting the moment.
+              </p>
+            </div>
+            <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                Accessibility & Display Settings
+              </h3>
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Adjust the menu to match your comfort, from lighting and language
+                to motion and visibility, directly at the table.
+              </p>
+            </div>
+            <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                Payment & Checkout
+              </h3>
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Complete the check with clarity and ease, without disrupting the
+                flow of the meal.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Exploration and Direction */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Exploration and Direction
+          </h2>
+          <p className="font-medium text-zinc-900 dark:text-zinc-100">
+            Exploring how technology could improve the restaurant experience
+          </p>
+          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+            We began by broadly exploring the restaurant industry and asking
+            ourselves &quot;how might technology improve the dining experience
+            while maintaining familiar patterns of interaction&quot;?
+          </p>
+          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+            Our early concepts focused on mobile-based solutions, including
+            QR-code payments and phone-driven bill splitting. These ideas aimed
+            to reduce friction around payment and make group dining more
+            seamless.
+          </p>
+        </section>
+
+        {/* User Interviews + Insight Switch */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            User Interviews + Insight Switch
+          </h2>
+          <p className="font-medium text-zinc-900 dark:text-zinc-100">
+            Research revealed tension between convenience and presence
+          </p>
+          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+            Through interviews and additional research methods, we uncovered a
+            recurring theme: many guests felt uncomfortable using their phones
+            during meals.
+          </p>
+          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+            While digital tools were often introduced to make dining more
+            convenient, many guests described moments where these interactions
+            pulled attention away from the table. Rather than supporting
+            conversation, phone-based interactions frequently disrupted it.
+          </p>
+          <p className="mt-4 font-medium text-zinc-900 dark:text-zinc-100">
+            Guests consistently expressed that phones often:
+          </p>
+          <ul className="mt-2 list-disc space-y-1 pl-6 text-zinc-700 dark:text-zinc-300">
+            <li>Distract from conversation</li>
+            <li>Feel socially inappropriate at the table</li>
+            <li>Interrupt the natural flow of dining together</li>
+          </ul>
+        </section>
+
+        {/* Design Response */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Design Response
+          </h2>
+          <p className="font-medium text-zinc-900 dark:text-zinc-100">
+            Embedding a digital device inside a physical binding
+          </p>
+          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+            In response, our team shifted toward designing a dedicated physical
+            and digital product. Creating a menu that lives on the table itself.
+          </p>
+        </section>
+
+        {/* Competitive Landscape + Opportunity */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Competitive Landscape + Opportunity
+          </h2>
+          <p className="font-medium text-zinc-900 dark:text-zinc-100">
+            Industry norms help explain why this tension persists
+          </p>
+          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+            Our analysis showed that many existing solutions are designed to
+            optimize efficiency, speed, or transactions. While effective in
+            operational contexts, these systems frequently depend on guests
+            using personal devices during meals—reinforcing the same
+            distractions surfaced during our research.
+          </p>
+          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+            Recognizing this pattern clarified an opportunity: to design a
+            solution that meets modern dining needs while reducing reliance on
+            behaviors guests already find disruptive.
+          </p>
+        </section>
+
+        {/* User Persona - Mike */}
+        <section className="mb-16 rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            User Persona
+          </h2>
+          <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+            Mike
+          </h3>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <div>
+              <h4 className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                Personality Traits
+              </h4>
+              <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+                <li>✨ Charismatic with high expectations</li>
+                <li>📱 Business-focused, detail-oriented, efficiency is key</li>
+                <li>
+                  🎨 In another life, he wishes he went to interior design
+                  school — strong respect for the art of the restaurant
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                Goals and Motivations
+              </h4>
+              <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+                <li>
+                  ✅ Impress his family, friends, and clients with the hottest
+                  dining on his dollar
+                </li>
+                <li>
+                  ✅ Be able to cater to the needs (allergies, preferences) of
+                  multiple people at the table at once
+                </li>
+                <li>✅ Have good timing and interactions with servers</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                Frustrations & Pain Points
+              </h4>
+              <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+                <li>
+                  ❌ Not being able to reach the server when he needs to ask a
+                  question
+                </li>
+                <li>❌ Lack of menu accessibility for his different guests</li>
+                <li>
+                  ❌ Feeling out of control, being misinformed or uninformed
+                  about mishaps
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Features + Testing */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Features + Testing
+          </h2>
+          <p className="mb-8 font-medium text-zinc-900 dark:text-zinc-100">
+            Designing features that support clarity, comfort, and accessibility
+          </p>
+          <p className="mb-6 text-zinc-700 dark:text-zinc-300">
+            The following features were intentionally designed to support a wide
+            range of guests and dining scenarios.
+          </p>
+          <div className="grid gap-6 sm:grid-cols-3">
+            <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                Feature 1
+              </span>
+              <h3 className="mt-2 font-semibold text-zinc-900 dark:text-zinc-100">
+                Accessibility & Display Settings
+              </h3>
+              <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+                <li>• Light mode and dark mode</li>
+                <li>• Adjustable screen brightness</li>
+                <li>• Language selection</li>
+                <li>• Optional visual effects selection</li>
+              </ul>
+            </div>
+            <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                Feature 2
+              </span>
+              <h3 className="mt-2 font-semibold text-zinc-900 dark:text-zinc-100">
+                Dish Preview & Transparency
+              </h3>
+              <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+                <li>• Visual preview of dishes</li>
+                <li>• Clear descriptions and ingredient context</li>
+                <li>• Reduced reliance on server clarification</li>
+              </ul>
+            </div>
+            <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+                Feature 3
+              </span>
+              <h3 className="mt-2 font-semibold text-zinc-900 dark:text-zinc-100">
+                Interactive Kids Menu
+              </h3>
+              <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+                <li>• Simple games and playful interactions</li>
+                <li>• Visual aids to help with decisions</li>
+                <li>• A dedicated experience for children</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Low-fidelity Exploration */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Low-fidelity Exploration
+          </h2>
+          <p className="text-zinc-700 dark:text-zinc-300">
+            Exploring structure and flow through early wireframes — These
+            low-fidelity wireframes were used to explore layout, hierarchy, and
+            core interaction flows.
+          </p>
+        </section>
+
+        <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
+          Add project images: The Final Designs, Style Guide
+        </p>
+
+        <a
+          href="https://www.linkedin.com/in/grantleslie"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+        >
+          LinkedIn
+        </a>
+      </div>
+    </main>
+  );
+}
