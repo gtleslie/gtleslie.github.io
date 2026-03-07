@@ -25,10 +25,10 @@ export default function CafePage() {
 
         <figure className="mb-16 overflow-hidden rounded-xl mx-auto max-w-3xl">
           <img
-            src="/cafe/hero.jpg"
+            src="/cafe/cafecard.png"
             alt="CAFÉ calendar app interface showing color-coded events and branding"
-            width={1024}
-            height={868}
+            width={1680}
+            height={1263}
             className="w-full h-auto"
             style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
             loading="eager"

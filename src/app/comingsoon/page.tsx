@@ -25,10 +25,10 @@ export default function ComingSoonPage() {
 
         <figure className="mb-16 overflow-hidden rounded-xl mx-auto max-w-3xl">
           <img
-            src="/hmi/hero.jpg"
+            src="/hmi/HMICard.png"
             alt="HMI System Redesign - assistance, navigation, and media interfaces"
-            width={1024}
-            height={769}
+            width={1680}
+            height={1263}
             className="w-full h-auto"
             style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
             loading="eager"

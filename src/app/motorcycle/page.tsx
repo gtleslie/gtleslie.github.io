@@ -25,10 +25,10 @@ export default function MotorcyclePage() {
 
         <figure className="mb-16 overflow-hidden rounded-xl mx-auto max-w-3xl">
           <img
-            src="/motorcycle/hero.jpg"
+            src="/motorcycle/IMG_7310.png"
             alt="Foam-core motorcycle with Art Nouveau design and helmet"
-            width={1024}
-            height={768}
+            width={4032}
+            height={3024}
             className="w-full h-auto"
             style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
             loading="eager"

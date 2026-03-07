@@ -25,10 +25,10 @@ export default function MeeaPage() {
 
         <figure className="mb-16 overflow-hidden rounded-xl mx-auto max-w-3xl">
           <img
-            src="/meea/hero.jpg"
+            src="/meea/Meea-creative.png"
             alt="MEEA digital menu integrated into physical menu cover"
-            width={1024}
-            height={1024}
+            width={3261}
+            height={3261}
             className="w-full h-auto"
             style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
             loading="eager"
