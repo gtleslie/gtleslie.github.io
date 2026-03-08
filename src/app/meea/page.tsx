@@ -36,6 +36,54 @@ export default function MeeaPage() {
           />
         </figure>
 
+        {/* MEEA gallery - screens and concepts */}
+        <div className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+          {[
+            "DFM6mFATaZjMUM9QZaahQfHh0G0.png",
+            "MxeUyJpOHH1ElhFpYyhXA26t7E.png",
+            "lijWxVrmwDYgM7AONlQjTcyRPbU.png",
+            "2lNS7ofzybOsJvX932VJUDVkc.png",
+            "Gy2fmXhKGOqP9bZnFhWQHKAOYH4.png",
+            "A45Y6HZ6uGds2aKaVJUGhviadQ0.png",
+            "RGQFIgrgqgfX0wQ3W7g80tWhp60.png",
+            "sKORR6u83jweD49ZyrZwzFow4.png",
+            "h2bRsBkCb7dkWtQz2YmsrY1WCE.png",
+            "R4bqKCjNLjCn0y8MY3s7opPDy8k.png",
+            "hQ2FiCttfLCdHFvC5BXMgcoN8JM.png",
+            "jG1YJLS0seJ38PXBb8LLtAs5twE.png",
+            "x4PrGz92nxd9Bif7VJf7Iovo.png",
+            "XUJFrSUyUfLFroGnLvg3rgndyA.png",
+            "fFGN7m67TIs7S99bzRaOIXRnZoU.png",
+            "BLGnbhuhIcriDVlP8JEqKMkVw.png",
+            "FitTcNeoPQWmqzuSFl2HEz2oyvE.png",
+            "byL6nn4OzgEPXWCENc1YV7k4IY.png",
+            "BPA3Pfma5YQEM5t1u3TnSTXzwE.png",
+            "ylbj3G5nwQIR1bD20h95mAicpeU.png",
+            "vj8P99Nz1qXuspZdBe3QElkfoY.png",
+            "a1LaeVD9W9VRJa6TKLaIIWo0Erk.png",
+            "QcE74IJ99RGYAJsTkcmILsiaEU.png",
+            "yuWxoYaBVNNk20jyI13cSeDpOhM.png",
+            "UNB0FAptf7Ym3xnueVUaw2Rhhcs.png",
+            "to60BtebXvaAQnPOv8JpX4dWOPk.png",
+            "MFIJE5BWl5H679vIRuB2KThQm0.png",
+            "YMJInG1dOEDJsMqIjPPycTjqUU.png",
+            "9JrzTJ6D3BLcYMzsVRmUGW33Bqw.png",
+          ].map((src) => (
+            <figure key={src} className="overflow-hidden rounded-xl">
+              <img
+                src={`/meea/${src}`}
+                alt="MEEA menu concept"
+                className="w-full h-auto"
+                style={
+                  {
+                    imageRendering: "-webkit-optimize-contrast",
+                  } as React.CSSProperties
+                }
+              />
+            </figure>
+          ))}
+        </div>
+
         {/* Problem */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">

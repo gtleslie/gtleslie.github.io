@@ -25,7 +25,7 @@ export default function MotorcyclePage() {
 
         <figure className="mb-16 overflow-hidden rounded-xl mx-auto max-w-3xl">
           <img
-            src="/motorcycle/IMG_7310.png"
+            src="/motorcycle/IMG_7310 2.png"
             alt="Foam-core motorcycle with Art Nouveau design and helmet"
             width={4032}
             height={3024}
@@ -35,6 +35,47 @@ export default function MotorcyclePage() {
             fetchPriority="high"
           />
         </figure>
+
+        {/* Motorcycle gallery - build process, testing, final */}
+        <div className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+          {[
+            "DHAS0HGLNjDrkX2JqA6eFtWcGs.png",
+            "2VCf4zJpvHNy9NTDpDZYn7BQ0A 2.png",
+            "NNzTvLLtSKrTwAfhAHV4vRWrH2M.png",
+            "VuOfBWtkdWGcmigl5YYNir9H5SY.png",
+            "U16RHSoiaQD22OZl8BqSltI.png",
+            "Hwo1i5MuFr08nyvNLDN8wF9RRQE.png",
+            "ZsUZoP3CDE5Foh5ZbE2QQ3Hlu4.png",
+            "5fE0LLnrWsch0j4nJ051DPl5I.png",
+            "UJWeXdDVlCr4NGvzEbrC07XGU.png",
+            "1qvD2JcNbx3hLHvajjTYVBTrpHQ.png",
+            "ZVz8HeT2tQLXOv4EUjoJYXhH7w.png",
+            "iMmLwXXqtI6ZsVf6vlrOgVn65Pg.png",
+            "lXrBE21Hy1qtX0ASS1rpDd8fL0.png",
+            "0DE5YbzBkQDnSODf4rM6BG3MqZg.png",
+            "js80Z5NkL5wpJ6nf2cYKmjQv4Z8.png",
+            "Oajw8dTaQFtXZ9WktS568ruhPE.png",
+            "HzUXnfvQ0Qsin82dxvNetoIInk.png",
+            "WDTIb62ZFMQKCMBMb5Dy1zEK8.png",
+            "CpRBgrNHmQZvwahUmGrbsYeJwFc.png",
+            "9Lw2aqujRKJEAmJorLOOenZ32k.png",
+            "CQ6w638op6o4dAGaWM14M3KUQQ.png",
+            "XauOteV4fYZAsLPcN9eQQ3VT74.png",
+          ].map((src) => (
+            <figure key={src} className="overflow-hidden rounded-xl">
+              <img
+                src={`/motorcycle/${src}`}
+                alt="Foam-core motorcycle project"
+                className="w-full h-auto"
+                style={
+                  {
+                    imageRendering: "-webkit-optimize-contrast",
+                  } as React.CSSProperties
+                }
+              />
+            </figure>
+          ))}
+        </div>
 
         {/* Intro */}
         <section className="mb-16">

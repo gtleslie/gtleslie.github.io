@@ -58,7 +58,26 @@ src/
 - **Add a project**: Edit `src/data/projects.ts` and create a new page in `src/app/[slug]/`
 - **Change styling**: All Tailwind classes are in components; tweak colors, spacing, fonts in `globals.css` and component files
 - **Add images**: Put files in `public/` and reference as `/filename.jpg`
-- **Image quality**: Images pasted into chat get compressed. For crisp quality matching Framer, copy your original files directly into `public/` (e.g. export from Framer or drag from Finder). Use at least 1536px width for sharp display on Retina screens.
+- **Image quality**: Images pasted into chat get compressed. For crisp quality, export from Figma (see below) and drag files directly into `public/`.
+
+### Importing images from Figma (no quality loss)
+
+**Fastest method – batch export from Figma:**
+
+1. In Figma, select all the frames/screens you need (Shift+click or Cmd+A in a section).
+2. In the right panel, open the **Export** section.
+3. Add an export setting: **PNG** or **JPG**, set to **2x** (or 3x for Retina).
+4. Click **Export [X] frames** – Figma exports all selected frames to a folder.
+5. Drag that folder into `grant-portoflio/public/` in Cursor (or copy via Finder).
+
+This keeps full quality because files go straight to disk instead of through chat paste.
+
+**Alternative – from your live Framer site:**
+
+1. Open your Framer site in the browser.
+2. Right‑click an image → **Open image in new tab**.
+3. Save from the URL (often a CDN link) – these are usually full resolution.
+4. Repeat for each image, or use a bulk image downloader extension.
 
 ## Tech Stack
 

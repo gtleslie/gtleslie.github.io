@@ -36,41 +36,158 @@ export default function CafePage() {
           />
         </figure>
 
-        {/* Core Features */}
-        <section className="mb-16 grid gap-6 sm:grid-cols-2">
-          <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-            <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+        <p className="mb-12 text-lg font-medium text-zinc-900 dark:text-zinc-100">
+          Personal Project
+        </p>
+        <p className="mb-16 text-zinc-600 dark:text-zinc-400">
+          UI/UX Design
+        </p>
+
+        {/* Discover Calendars - text + image */}
+        <section className="mb-16 flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-12">
+          <div className="min-w-0 flex-1">
+            <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
               Discover Calendars
             </h3>
-            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-              Explore and subscribe to public or shared calendars for events
-              near you.
+            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+              Explore and subscribe to public or shared calendars for events near
+              you.
             </p>
           </div>
-          <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-            <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
-              Add or Import Events
-            </h3>
-            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-              Sync or import events from friends and family
-            </p>
-          </div>
-          <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-            <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+          <figure className="flex-shrink-0 overflow-hidden rounded-xl sm:w-72">
+            <img
+              src="/cafe/wr93jCkEPYXU0MVwvTcSuPIAMvA.png"
+              alt="CAFÉ Discover Calendars screen"
+              width={1551}
+              height={2048}
+              className="w-full h-auto"
+              style={
+                { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
+              }
+            />
+          </figure>
+        </section>
+
+        {/* Two screens */}
+        <div className="mb-16 grid grid-cols-2 gap-4">
+          <figure className="overflow-hidden rounded-xl">
+            <img
+              src="/cafe/lTvdOL8KHIp5TKz9O4Yzobhs.png"
+              alt="CAFÉ app screen"
+              width={1015}
+              height={2048}
+              className="w-full h-auto"
+              style={
+                { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
+              }
+            />
+          </figure>
+          <figure className="overflow-hidden rounded-xl">
+            <img
+              src="/cafe/FB6acVEXrSYflNLRaBubJEadDE.png"
+              alt="CAFÉ app screen"
+              width={1015}
+              height={2048}
+              className="w-full h-auto"
+              style={
+                { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
+              }
+            />
+          </figure>
+        </div>
+
+        {/* Add or Import Events - text only */}
+        <section className="mb-16">
+          <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+            Add or Import Events
+          </h3>
+          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+            Sync or import events from friends and family
+          </p>
+        </section>
+
+        {/* Personalize Your Calendar - text + two images */}
+        <section className="mb-16 flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-12">
+          <div className="min-w-0 flex-1">
+            <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
               Personalize Your Calendar
             </h3>
-            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
               Personalize events with categories, icons, and colors that fit your
               schedule.
             </p>
           </div>
-          <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-            <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+          <div className="grid flex-shrink-0 grid-cols-2 gap-4 sm:w-80">
+            <figure className="overflow-hidden rounded-xl">
+              <img
+                src="/cafe/pVMsZXMvkXcHM5onuankXNrCQns.png"
+                alt="CAFÉ Personalize screen"
+                width={1015}
+                height={2048}
+                className="w-full h-auto"
+                style={
+                  {
+                    imageRendering: "-webkit-optimize-contrast",
+                  } as React.CSSProperties
+                }
+              />
+            </figure>
+            <figure className="overflow-hidden rounded-xl">
+              <img
+                src="/cafe/mVXkLASqNKOZyiAOGEKPpvk8.png"
+                alt="CAFÉ Personalize screen"
+                width={1015}
+                height={2048}
+                className="w-full h-auto"
+                style={
+                  {
+                    imageRendering: "-webkit-optimize-contrast",
+                  } as React.CSSProperties
+                }
+              />
+            </figure>
+          </div>
+        </section>
+
+        {/* Edit Events - text + two images */}
+        <section className="mb-16 flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-12">
+          <div className="min-w-0 flex-1">
+            <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
               Edit Events
             </h3>
-            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
               Quickly add and manage events
             </p>
+          </div>
+          <div className="grid flex-shrink-0 grid-cols-2 gap-4 sm:w-80">
+            <figure className="overflow-hidden rounded-xl">
+              <img
+                src="/cafe/BqiVnlo0a1Ncu9UXFDRrkFS00.png"
+                alt="CAFÉ Edit Events screen"
+                width={1015}
+                height={2048}
+                className="w-full h-auto"
+                style={
+                  {
+                    imageRendering: "-webkit-optimize-contrast",
+                  } as React.CSSProperties
+                }
+              />
+            </figure>
+            <figure className="overflow-hidden rounded-xl">
+              <img
+                src="/cafe/9OxqXSEKTlhVIdVh1lOCuKOXQ.png"
+                alt="CAFÉ Edit Events screen"
+                width={1015}
+                height={2048}
+                className="w-full h-auto"
+                style={
+                  {
+                    imageRendering: "-webkit-optimize-contrast",
+                  } as React.CSSProperties
+                }
+              />
+            </figure>
           </div>
         </section>
 
@@ -245,7 +362,7 @@ export default function CafePage() {
           </p>
         </section>
 
-        {/* Solution */}
+        {/* Solution - with 5 screens */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Solution
@@ -263,6 +380,33 @@ export default function CafePage() {
             making more advanced calendar behaviors feel natural and easy to
             use.
           </p>
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
+            {[
+              "S2Oq6f2Y8FZJraL6NUYkiCFFgCI.png",
+              "rkUl5iemGOWWglwLHKELJ9TJZY.png",
+              "moFHXYuIhtw1p23UOlaHDrNi47o.png",
+              "P5fWcFCJ8OGjkWBMklQcaHyiR4.png",
+              "o3uCS7XxjrBWCdGX12feYY2unbc.png",
+            ].map((src) => (
+              <figure
+                key={src}
+                className="overflow-hidden rounded-xl"
+              >
+                <img
+                  src={`/cafe/${src}`}
+                  alt="CAFÉ app screen"
+                  width={1015}
+                  height={2048}
+                  className="w-full h-auto"
+                  style={
+                    {
+                      imageRendering: "-webkit-optimize-contrast",
+                    } as React.CSSProperties
+                  }
+                />
+              </figure>
+            ))}
+          </div>
         </section>
 
         {/* Current State */}
