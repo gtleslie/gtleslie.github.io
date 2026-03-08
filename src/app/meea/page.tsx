@@ -12,6 +12,12 @@ export default function MeeaPage() {
         </Link>
 
         <header className="mb-12">
+          <div className="mb-6 grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-zinc-500 dark:text-zinc-400">
+            <span>Year : 2025</span>
+            <span>Industry : UX Design</span>
+            <span>Team Size : 3 Members</span>
+            <span>Project Duration : 10 weeks</span>
+          </div>
           <span className="text-sm font-medium text-zinc-500">
             Product Prototype, Design · 2025
           </span>
@@ -19,7 +25,7 @@ export default function MeeaPage() {
             MEEA - Menu Concept
           </h1>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            UX Designer · UI Designer · 3 Members · 10 weeks
+            UX Designer · UI Designer
           </p>
         </header>
 
@@ -71,8 +77,7 @@ export default function MeeaPage() {
             Problem
           </h2>
           <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-            Restaurant guests leave feeling unsatisfied when their dining needs
-            aren&apos;t met.
+            Restaurant Guests leave feeling unsatisfied when their dining needs aren&apos;t met.
           </p>
           <p className="mt-4 text-zinc-700 dark:text-zinc-300">
             Many restaurant customers leave feeling unsatisfied because their
@@ -82,38 +87,43 @@ export default function MeeaPage() {
           </p>
         </section>
 
-        {/* SOLUTION – 6 images */}
+        {/* SOLUTION – 3 cards (matches grantleslie.com) */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Solution
           </h2>
           <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-            Give guests more control, clarity, and confidence while dining
+            Give Guests More Control, Clarity, and Confidence While Dining
           </p>
-          <div className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-3">
-            {[
-              "BLGnbhuhIcriDVlP8JEqKMkVw.png",
-              "FitTcNeoPQWmqzuSFl2HEz2oyvE.png",
-              "byL6nn4OzgEPXWCENc1YV7k4IY.png",
-              "BPA3Pfma5YQEM5t1u3TnSTXzwE.png",
-              "ylbj3G5nwQIR1bD20h95mAicpeU.png",
-              "vj8P99Nz1qXuspZdBe3QElkfoY.png",
-            ].map((src) => (
-              <figure key={src} className="overflow-hidden rounded-xl">
-                <img
-                  src={`/meea/${src}`}
-                  alt="MEEA solution"
-                  className="w-full h-auto"
-                  style={
-                    { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
-                  }
-                />
-              </figure>
-            ))}
+          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+            <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                Menu Browsing / Disovery
+              </h3>
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Explore the menu with clarity and confidence, without interrupting the moment.
+              </p>
+            </div>
+            <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                Accessibility & Display Settings
+              </h3>
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Adjust the menu to match your comfort, from lighting and language to motion and visibility, directly at the table.
+              </p>
+            </div>
+            <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                Payment & Checkout
+              </h3>
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Complete the check with clarity and ease, without disrupting the flow of the meal.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Exploration and Direction */}
+        {/* EXPLORATION AND DIRECTION */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Exploration and Direction
@@ -134,18 +144,19 @@ export default function MeeaPage() {
           </p>
         </section>
 
-        {/* User Interviews + Insight Switch */}
+        {/* USER INTERVIEWS + INSIGHT SWITCH */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             User Interviews + Insight Switch
           </h2>
           <p className="font-medium text-zinc-900 dark:text-zinc-100">
-            Research revealed tension between convenience and presence
+            Research reveled tension between convenience and presence
           </p>
           <p className="mt-4 text-zinc-700 dark:text-zinc-300">
-            Through interviews and additional research methods, we uncovered a
-            recurring theme: many guests felt uncomfortable using their phones
-            during meals.
+            Through interviews and additional research methods, we uncovered a recurring theme:
+          </p>
+          <p className="mt-2 text-zinc-700 dark:text-zinc-300">
+            many guests felt uncomfortable using their phones during meals.
           </p>
           <p className="mt-4 text-zinc-700 dark:text-zinc-300">
             While digital tools were often introduced to make dining more
@@ -352,7 +363,7 @@ export default function MeeaPage() {
           </div>
         </section>
 
-        {/* Low-fidelity Exploration */}
+        {/* LOW-FIDELITY EXPLORATION */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Low-fidelity Exploration
@@ -363,10 +374,6 @@ export default function MeeaPage() {
             core interaction flows.
           </p>
         </section>
-
-        <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
-          Add project images: The Final Designs, Style Guide
-        </p>
 
         <a
           href="https://www.linkedin.com/in/grantleslie"

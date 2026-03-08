@@ -12,15 +12,18 @@ export default function MotorcyclePage() {
         </Link>
 
         <header className="mb-12">
-          <span className="text-sm font-medium text-zinc-500">
-            Industrial Design / UX Design · 2025
-          </span>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-            Foam-core Motorcycle Contest
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            Foam-core motorcycle contest
           </h1>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            6 Members · 2 weeks
+          <p className="mt-6 text-lg text-zinc-700 dark:text-zinc-300">
+            In this two-week studio project, our team was challenged to design and construct a full-scale motorcycle inspired by the Art Nouveau movement using only lightweight materials such as foam, cardboard, and tape. I contributed across multiple stages from concept generation and physical prototyping to hands-on construction and user testing, ensuring the design not only reflected our theme but could also function and be demonstrated effectively.
           </p>
+          <div className="mt-6 grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-zinc-500 dark:text-zinc-400">
+            <span>Year : 2025</span>
+            <span>Industry : Industrial Design / UX Design</span>
+            <span>Team Size : 6 Members</span>
+            <span>Project Duration : 2 weeks</span>
+          </div>
         </header>
 
         {/* Hero + 22 images in Framer DOM order */}
@@ -74,23 +77,10 @@ export default function MotorcyclePage() {
           ))}
         </div>
 
-        {/* Intro */}
-        <section className="mb-16">
-          <p className="text-lg text-zinc-700 dark:text-zinc-300">
-            In this two-week studio project, our team was challenged to design
-            and construct a full-scale motorcycle inspired by the Art Nouveau
-            movement using only lightweight materials such as foam, cardboard,
-            and tape. I contributed across multiple stages from concept
-            generation and physical prototyping to hands-on construction and
-            user testing, ensuring the design not only reflected our theme but
-            could also function and be demonstrated effectively.
-          </p>
-        </section>
-
         {/* The Challenge */}
         <section className="mb-16">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            The Challenge
+          <h2 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+            The Challenge :
           </h2>
           <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
             How might we express the organic curves and elegance of Art Nouveau
@@ -126,10 +116,10 @@ export default function MotorcyclePage() {
           </p>
         </section>
 
-        {/* Construction & Build Process */}
+        {/* Construction & Build process */}
         <section className="mb-16">
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-            Construction & Build Process
+            Construction & Build process
           </h2>
           <p className="text-zinc-700 dark:text-zinc-300">
             Working together, we built the motorcycle at full scale using foam,
@@ -225,10 +215,6 @@ export default function MotorcyclePage() {
             practical design thinking.
           </p>
         </section>
-
-        <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
-          Add project images throughout the case study
-        </p>
 
         <a
           href="https://www.linkedin.com/in/grantleslie"
