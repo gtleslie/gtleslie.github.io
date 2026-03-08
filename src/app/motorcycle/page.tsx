@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function MotorcyclePage() {
   return (
     <main className="pt-24 pb-20">
-      <div className="mx-auto max-w-3xl px-6">
+      <div className="mx-auto max-w-6xl px-6">
         <Link
           href="/"
           className="mb-8 inline-block text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
@@ -24,7 +24,7 @@ export default function MotorcyclePage() {
         </header>
 
         {/* Hero + 22 images in Framer DOM order */}
-        <figure className="mb-16 overflow-hidden rounded-xl">
+        <figure className="mb-12 -mx-6 sm:-mx-8 lg:-mx-12 overflow-hidden">
           <img
             src="/motorcycle/IMG_7310 2.png"
             alt="Foam-core motorcycle hero"
@@ -34,7 +34,7 @@ export default function MotorcyclePage() {
             fetchPriority="high"
           />
         </figure>
-        <div className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+        <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
           {[
             "DHAS0HGLNjDrkX2JqA6eFtWcGs.png",
             "2VCf4zJpvHNy9NTDpDZYn7BQ0A 2.png",

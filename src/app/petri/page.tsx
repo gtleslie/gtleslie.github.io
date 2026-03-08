@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function PetriPage() {
   return (
     <main className="pt-24 pb-20">
-      <div className="mx-auto max-w-3xl px-6">
+      <div className="mx-auto max-w-6xl px-6">
         <Link
           href="/"
           className="mb-8 inline-block text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
@@ -24,7 +24,7 @@ export default function PetriPage() {
         </header>
 
         {/* Hero – 1 image (Framer order) */}
-        <figure className="mb-16 overflow-hidden rounded-xl">
+        <figure className="mb-12 -mx-6 sm:-mx-8 lg:-mx-12 overflow-hidden">
           <img
             src="/petri/Petri1.png"
             alt="Petri music platform - Now Playing and Search screens"
@@ -65,7 +65,7 @@ export default function PetriPage() {
           <p className="mb-8 text-zinc-700 dark:text-zinc-300">
             Giving artists visibility beyond streams and metrics.
           </p>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
             {[
               "xagP7Ql0b0ZaZNR3xrAadZ8xqw.png",
               "BDBHbHPUo70pJIvtxQzFdMWSIAo.png",
@@ -102,6 +102,30 @@ export default function PetriPage() {
               </figure>
             ))}
           </div>
+        </section>
+
+        {/* USER PERSONA – after ARTIST SUPPORT (matches live site) */}
+        <section className="mb-16 rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            User Persona
+          </h2>
+          <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+            Marshall
+          </h3>
+          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+            Music Enthusiast · Music Streamer · Small Musician · Community
+            Supporter
+          </p>
+          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+            Age: 24 · Location: Asheville, North Carolina · Occupation: Small
+            Musician and Waiter
+          </p>
+          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+            Marshall lives in Asheville, NC, a hub for local art and music. He
+            enjoys discovering and supporting small artists, playing live shows,
+            and releasing his own music, but feels major platforms don&apos;t
+            adequately represent independent creators.
+          </p>
         </section>
 
         {/* OUTCOME */}
@@ -245,30 +269,6 @@ export default function PetriPage() {
           </div>
         </section>
 
-        {/* USER PERSONA */}
-        <section className="mb-16 rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            User Persona
-          </h2>
-          <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-            Marshall
-          </h3>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-            Music Enthusiast · Music Streamer · Small Musician · Community
-            Supporter
-          </p>
-          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
-            Age: 24 · Location: Asheville, North Carolina · Occupation: Small
-            Musician and Waiter
-          </p>
-          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
-            Marshall lives in Asheville, NC, a hub for local art and music. He
-            enjoys discovering and supporting small artists, playing live shows,
-            and releasing his own music, but feels major platforms don&apos;t
-            adequately represent independent creators.
-          </p>
-        </section>
-
         {/* FINAL */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
@@ -297,7 +297,7 @@ export default function PetriPage() {
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Design Solution
           </h2>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {[
               "waIfHMCU49KTfKBqsWakRi3wqWk.png",
               "IqFAxNGK7mm6ULKiBIJ3OUAbuw.png",

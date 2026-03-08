@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function MeeaPage() {
   return (
     <main className="pt-24 pb-20">
-      <div className="mx-auto max-w-3xl px-6">
+      <div className="mx-auto max-w-6xl px-6">
         <Link
           href="/"
           className="mb-8 inline-block text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
@@ -23,10 +23,19 @@ export default function MeeaPage() {
           </p>
         </header>
 
-        {/* Hero – 16 images (Framer order) */}
-        <div className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {/* Hero – full-width lead + 15 grid (Framer order) */}
+        <figure className="mb-12 -mx-6 sm:-mx-8 lg:-mx-12 overflow-hidden">
+          <img
+            src="/meea/Meea-creative.png"
+            alt="MEEA digital menu - hero"
+            className="w-full h-auto"
+            style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
+            loading="eager"
+            fetchPriority="high"
+          />
+        </figure>
+        <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
           {[
-            "Meea-creative.png",
             "DFM6mFATaZjMUM9QZaahQfHh0G0.png",
             "MxeUyJpOHH1ElhFpYyhXA26t7E.png",
             "lijWxVrmwDYgM7AONlQjTcyRPbU.png",
@@ -81,7 +90,7 @@ export default function MeeaPage() {
           <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
             Give guests more control, clarity, and confidence while dining
           </p>
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <div className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-3">
             {[
               "BLGnbhuhIcriDVlP8JEqKMkVw.png",
               "FitTcNeoPQWmqzuSFl2HEz2oyvE.png",
@@ -166,7 +175,7 @@ export default function MeeaPage() {
             In response, our team shifted toward designing a dedicated physical
             and digital product. Creating a menu that lives on the table itself.
           </p>
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {[
               "a1LaeVD9W9VRJa6TKLaIIWo0Erk.png",
               "QcE74IJ99RGYAJsTkcmILsiaEU.png",
@@ -213,7 +222,7 @@ export default function MeeaPage() {
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             User Persona
           </h2>
-          <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <div className="mb-8 grid grid-cols-2 gap-6 sm:grid-cols-3">
             {[
               "UNB0FAptf7Ym3xnueVUaw2Rhhcs.png",
               "to60BtebXvaAQnPOv8JpX4dWOPk.png",
