@@ -22,10 +22,19 @@ export default function CafePage() {
           </p>
         </header>
 
-        {/* Hero – 8 images (grantleslie.com order) */}
-        <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-4">
+        {/* Hero – full-bleed lead image (like MEEA / Motorcycle) */}
+        <figure className="mb-12 -mx-6 sm:-mx-8 lg:-mx-12 overflow-hidden">
+          <img
+            src="/cafe/cafecard.png"
+            alt="CAFÉ app - hero"
+            className="w-full h-auto"
+            style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
+            loading="eager"
+            fetchPriority="high"
+          />
+        </figure>
+        <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
           {[
-            "cafecard.png",
             "wr93jCkEPYXU0MVwvTcSuPIAMvA.png",
             "lTvdOL8KHIp5TKz9O4Yzobhs.png",
             "FB6acVEXrSYflNLRaBubJEadDE.png",
