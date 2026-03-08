@@ -23,22 +23,10 @@ export default function MeeaPage() {
           </p>
         </header>
 
-        <figure className="mb-16 overflow-hidden rounded-xl mx-auto max-w-3xl">
-          <img
-            src="/meea/Meea-creative.png"
-            alt="MEEA digital menu integrated into physical menu cover"
-            width={3261}
-            height={3261}
-            className="w-full h-auto"
-            style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
-            loading="eager"
-            fetchPriority="high"
-          />
-        </figure>
-
-        {/* MEEA gallery - screens and concepts */}
-        <div className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+        {/* Hero – 16 images (Framer order) */}
+        <div className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
           {[
+            "Meea-creative.png",
             "DFM6mFATaZjMUM9QZaahQfHh0G0.png",
             "MxeUyJpOHH1ElhFpYyhXA26t7E.png",
             "lijWxVrmwDYgM7AONlQjTcyRPbU.png",
@@ -54,20 +42,6 @@ export default function MeeaPage() {
             "x4PrGz92nxd9Bif7VJf7Iovo.png",
             "XUJFrSUyUfLFroGnLvg3rgndyA.png",
             "fFGN7m67TIs7S99bzRaOIXRnZoU.png",
-            "BLGnbhuhIcriDVlP8JEqKMkVw.png",
-            "FitTcNeoPQWmqzuSFl2HEz2oyvE.png",
-            "byL6nn4OzgEPXWCENc1YV7k4IY.png",
-            "BPA3Pfma5YQEM5t1u3TnSTXzwE.png",
-            "ylbj3G5nwQIR1bD20h95mAicpeU.png",
-            "vj8P99Nz1qXuspZdBe3QElkfoY.png",
-            "a1LaeVD9W9VRJa6TKLaIIWo0Erk.png",
-            "QcE74IJ99RGYAJsTkcmILsiaEU.png",
-            "yuWxoYaBVNNk20jyI13cSeDpOhM.png",
-            "UNB0FAptf7Ym3xnueVUaw2Rhhcs.png",
-            "to60BtebXvaAQnPOv8JpX4dWOPk.png",
-            "MFIJE5BWl5H679vIRuB2KThQm0.png",
-            "YMJInG1dOEDJsMqIjPPycTjqUU.png",
-            "9JrzTJ6D3BLcYMzsVRmUGW33Bqw.png",
           ].map((src) => (
             <figure key={src} className="overflow-hidden rounded-xl">
               <img
@@ -75,16 +49,14 @@ export default function MeeaPage() {
                 alt="MEEA menu concept"
                 className="w-full h-auto"
                 style={
-                  {
-                    imageRendering: "-webkit-optimize-contrast",
-                  } as React.CSSProperties
+                  { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
                 }
               />
             </figure>
           ))}
         </div>
 
-        {/* Problem */}
+        {/* PROBLEM */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Problem
@@ -101,7 +73,7 @@ export default function MeeaPage() {
           </p>
         </section>
 
-        {/* Solution */}
+        {/* SOLUTION – 6 images */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Solution
@@ -109,34 +81,26 @@ export default function MeeaPage() {
           <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
             Give guests more control, clarity, and confidence while dining
           </p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-3">
-            <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
-                Menu Browsing / Discovery
-              </h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                Explore the menu with clarity and confidence, without
-                interrupting the moment.
-              </p>
-            </div>
-            <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
-                Accessibility & Display Settings
-              </h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                Adjust the menu to match your comfort, from lighting and language
-                to motion and visibility, directly at the table.
-              </p>
-            </div>
-            <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
-                Payment & Checkout
-              </h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                Complete the check with clarity and ease, without disrupting the
-                flow of the meal.
-              </p>
-            </div>
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+            {[
+              "BLGnbhuhIcriDVlP8JEqKMkVw.png",
+              "FitTcNeoPQWmqzuSFl2HEz2oyvE.png",
+              "byL6nn4OzgEPXWCENc1YV7k4IY.png",
+              "BPA3Pfma5YQEM5t1u3TnSTXzwE.png",
+              "ylbj3G5nwQIR1bD20h95mAicpeU.png",
+              "vj8P99Nz1qXuspZdBe3QElkfoY.png",
+            ].map((src) => (
+              <figure key={src} className="overflow-hidden rounded-xl">
+                <img
+                  src={`/meea/${src}`}
+                  alt="MEEA solution"
+                  className="w-full h-auto"
+                  style={
+                    { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
+                  }
+                />
+              </figure>
+            ))}
           </div>
         </section>
 
@@ -190,7 +154,7 @@ export default function MeeaPage() {
           </ul>
         </section>
 
-        {/* Design Response */}
+        {/* DESIGN RESPONSE – 3 images */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Design Response
@@ -202,6 +166,24 @@ export default function MeeaPage() {
             In response, our team shifted toward designing a dedicated physical
             and digital product. Creating a menu that lives on the table itself.
           </p>
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+            {[
+              "a1LaeVD9W9VRJa6TKLaIIWo0Erk.png",
+              "QcE74IJ99RGYAJsTkcmILsiaEU.png",
+              "yuWxoYaBVNNk20jyI13cSeDpOhM.png",
+            ].map((src) => (
+              <figure key={src} className="overflow-hidden rounded-xl">
+                <img
+                  src={`/meea/${src}`}
+                  alt="MEEA design response"
+                  className="w-full h-auto"
+                  style={
+                    { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
+                  }
+                />
+              </figure>
+            ))}
+          </div>
         </section>
 
         {/* Competitive Landscape + Opportunity */}
@@ -226,11 +208,32 @@ export default function MeeaPage() {
           </p>
         </section>
 
-        {/* User Persona - Mike */}
-        <section className="mb-16 rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+        {/* USER PERSONA – 6 images */}
+        <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             User Persona
           </h2>
+          <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+            {[
+              "UNB0FAptf7Ym3xnueVUaw2Rhhcs.png",
+              "to60BtebXvaAQnPOv8JpX4dWOPk.png",
+              "MFIJE5BWl5H679vIRuB2KThQm0.png",
+              "YMJInG1dOEDJsMqIjPPycTjqUU.png",
+              "9JrzTJ6D3BLcYMzsVRmUGW33Bqw.png",
+            ].map((src) => (
+              <figure key={src} className="overflow-hidden rounded-xl">
+                <img
+                  src={`/meea/${src}`}
+                  alt="MEEA user persona"
+                  className="w-full h-auto"
+                  style={
+                    { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
+                  }
+                />
+              </figure>
+            ))}
+          </div>
+          <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
           <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Mike
           </h3>
@@ -280,6 +283,7 @@ export default function MeeaPage() {
                 </li>
               </ul>
             </div>
+          </div>
           </div>
         </section>
 

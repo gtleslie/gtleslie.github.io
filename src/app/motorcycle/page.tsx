@@ -23,20 +23,17 @@ export default function MotorcyclePage() {
           </p>
         </header>
 
-        <figure className="mb-16 overflow-hidden rounded-xl mx-auto max-w-3xl">
+        {/* Hero + 22 images in Framer DOM order */}
+        <figure className="mb-16 overflow-hidden rounded-xl">
           <img
             src="/motorcycle/IMG_7310 2.png"
-            alt="Foam-core motorcycle with Art Nouveau design and helmet"
-            width={4032}
-            height={3024}
+            alt="Foam-core motorcycle hero"
             className="w-full h-auto"
             style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
             loading="eager"
             fetchPriority="high"
           />
         </figure>
-
-        {/* Motorcycle gallery - build process, testing, final */}
         <div className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {[
             "DHAS0HGLNjDrkX2JqA6eFtWcGs.png",

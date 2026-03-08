@@ -23,12 +23,11 @@ export default function PetriPage() {
           </p>
         </header>
 
-        <figure className="mb-16 overflow-hidden rounded-xl mx-auto max-w-3xl">
+        {/* Hero – 1 image (Framer order) */}
+        <figure className="mb-16 overflow-hidden rounded-xl">
           <img
             src="/petri/Petri1.png"
             alt="Petri music platform - Now Playing and Search screens"
-            width={1680}
-            height={1260}
             className="w-full h-auto"
             style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
             loading="eager"
@@ -36,114 +35,99 @@ export default function PetriPage() {
           />
         </figure>
 
-        {/* Project info */}
-        <section className="mb-16 space-y-8 text-zinc-700 dark:text-zinc-300">
-          <div>
-            <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              Project info
-            </h2>
-            <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              Problem
-            </h3>
-            <p className="mt-2">
-              Mainstream music platforms prioritize popular artists, making it
-              difficult for local and emerging musicians to gain visibility.
-              Listeners who want to discover local music often rely on
-              fragmented tools like social media, flyers, or word of mouth,
-              leading to disconnected experiences for both artists and fans.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              Process
-            </h3>
-            <p className="mt-2">
-              We conducted surveys and interviews to understand how people
-              discover new music and how local artists promote their work. Our
-              research focused on listening habits, discovery methods, and the
-              importance of social features in music platforms.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              Solution
-            </h3>
-            <p className="mt-2">
-              Petri is a music streaming and community platform designed to
-              highlight local artists and foster meaningful connections between
-              musicians and listeners. The platform combines genre-based
-              discovery, community discussion, and artist support tools into a
-              single experience.
-            </p>
-          </div>
-        </section>
-
-        {/* Key Pillars */}
-        <section className="mb-16 grid gap-6 sm:grid-cols-3">
-          <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-              Discovery
-            </h3>
-            <p className="mt-2 text-zinc-700 dark:text-zinc-300">
-              Helping users explore music beyond mainstream recommendations
-            </p>
-          </div>
-          <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-              Community
-            </h3>
-            <p className="mt-2 text-zinc-700 dark:text-zinc-300">
-              Creating shared spaces for listeners and artists to connect
-            </p>
-          </div>
-          <div className="rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-              Artist Support
-            </h3>
-            <p className="mt-2 text-zinc-700 dark:text-zinc-300">
-              Giving artists visibility beyond streams and metrics
-            </p>
-          </div>
-        </section>
-
-        {/* User Persona - Marshall */}
-        <section className="mb-16 rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            User Persona
-          </h2>
-          <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-            Marshall
-          </h3>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-            Music Enthusiast · Music Streamer · Small Musician · Community
-            Supporter
-          </p>
-          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
-            Age: 24 · Location: Asheville, North Carolina · Occupation: Small
-            Musician and Waiter
-          </p>
-          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
-            Marshall lives in Asheville, NC, a hub for local art and music. He
-            enjoys discovering and supporting small artists, playing live shows,
-            and releasing his own music, but feels major platforms don&apos;t
-            adequately represent independent creators. Music enjoyer and player.
-          </p>
-        </section>
-
-        {/* Research & Discovery */}
+        {/* DISCOVERY */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            Research & Discovery
+            Discovery
+          </h2>
+          <p className="text-zinc-700 dark:text-zinc-300">
+            Helping users explore music beyond mainstream recommendations.
+            Mainstream music platforms prioritize popular artists, making it
+            difficult for local and emerging musicians to gain visibility.
+          </p>
+        </section>
+
+        {/* COMMUNITY */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Community
+          </h2>
+          <p className="text-zinc-700 dark:text-zinc-300">
+            Creating shared spaces for listeners and artists to connect.
+          </p>
+        </section>
+
+        {/* ARTIST SUPPORT – 22 images (Framer order) */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Artist Support
+          </h2>
+          <p className="mb-8 text-zinc-700 dark:text-zinc-300">
+            Giving artists visibility beyond streams and metrics.
+          </p>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+            {[
+              "xagP7Ql0b0ZaZNR3xrAadZ8xqw.png",
+              "BDBHbHPUo70pJIvtxQzFdMWSIAo.png",
+              "jGfiz9BQq7J5KrIiyTwrio84.png",
+              "UPVrLlTehI6Tuo2JYI0mn67egE.png",
+              "oyUyFesQgWZH0CR2rxivQOmadIo.png",
+              "g0bN9xjhyTbL0NVik4TTvEChk.png",
+              "TvtCdLbQGqjSG49mlbvzYXdv0LU.png",
+              "N7gErznLpiEIuyXfRhf6vI6X6ug.png",
+              "Zk9wTbJ63DG8gFHoQs06z0m698.png",
+              "CZJZrJSqPHzbYf9LwevPnXBzfeU.png",
+              "W5xajqnkdmDOnVcENokPZBm8Zs.png",
+              "shqLcNoN0B7LXfoNo74p5eropw.png",
+              "QZx2uRpj4Jkz5kOitxEkRWdaRx8.png",
+              "L86swNdJQRrmkfXARbE6pmDXUrM.png",
+              "HlvuwBbSRQZOAPrl2cf730fVbc.png",
+              "OT47ygxwlYA0k1tbPmDFLNx6eU.png",
+              "LbV8r8ckiqpTgyHatsl2i35Mnc8.png",
+              "gGlDar2dfTymNShQV0yM4HyAHu4.png",
+              "YVAOhVXWOj7zrIlAk65ahBXrVs.png",
+              "xFtxaOItgus5T2Kecz58ufCTG8.png",
+              "dqKHG0e5fKAHyOwNumCK4yt6Lg.png",
+              "yPQHE96X8P4TIruCkfH11tZCyJY.png",
+            ].map((src) => (
+              <figure key={src} className="overflow-hidden rounded-xl">
+                <img
+                  src={`/petri/${src}`}
+                  alt="Petri artist support"
+                  className="w-full h-auto"
+                  style={
+                    { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
+                  }
+                />
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        {/* OUTCOME */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Outcome
+          </h2>
+          <p className="text-zinc-700 dark:text-zinc-300">
+            Research revealed that users rely heavily on social and word-of-mouth
+            discovery, while small artists struggle to gain meaningful
+            visibility and engagement on major platforms.
+          </p>
+        </section>
+
+        {/* KEY INSIGHTS */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Key Insights
           </h2>
           <p className="font-medium text-zinc-900 dark:text-zinc-100">
-            Understanding how people discover music and how artists reach
-            listeners
+            Music discovery is social, but existing platforms don&apos;t support
+            connection
           </p>
           <p className="mt-4 text-zinc-700 dark:text-zinc-300">
-            We conducted surveys and interviews to explore how users currently
-            discover new music and how local artists promote their work. Research
+            We conducted surveys and interviews to explore how users discover
+            new music and how local artists promote their work. Research
             focused on listening habits, discovery methods, and the importance
             of social features in music platforms.
           </p>
@@ -151,35 +135,9 @@ export default function PetriPage() {
             &quot;..most of the time I find new music through friends or social
             media.&quot;
           </blockquote>
-          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
-            Designing systems that support both creators and listeners — This
-            project reinforced the importance of research synthesis and
-            designing community-focused systems that create value for both
-            artists and audiences.
-          </p>
         </section>
 
-        {/* Outcome - Key Insights */}
-        <section className="mb-16">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            Outcome
-          </h2>
-          <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-            Key Insights
-          </h3>
-          <p className="mt-2 font-medium text-zinc-900 dark:text-zinc-100">
-            Music discovery is social, but existing platforms don&apos;t support
-            connection
-          </p>
-          <p className="mt-2 text-zinc-700 dark:text-zinc-300">
-            Research revealed that users rely heavily on social and word-of-mouth
-            discovery, while small artists struggle to gain meaningful
-            visibility and engagement on major platforms. Streaming alone does
-            not create community or lasting connection.
-          </p>
-        </section>
-
-        {/* Design Direction */}
+        {/* DESIGN DIRECTION */}
         <section className="mb-16">
           <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
             Design Direction
@@ -238,7 +196,7 @@ export default function PetriPage() {
           </p>
         </section>
 
-        {/* Process sections */}
+        {/* RESEARCH EVIDENCE */}
         <section className="mb-16 space-y-8">
           <div>
             <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
@@ -287,10 +245,78 @@ export default function PetriPage() {
           </div>
         </section>
 
-        <p className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
-          Add project images: User Persona, Petri Music Screens, Design
-          Decisions, Design Solution
-        </p>
+        {/* USER PERSONA */}
+        <section className="mb-16 rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            User Persona
+          </h2>
+          <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+            Marshall
+          </h3>
+          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+            Music Enthusiast · Music Streamer · Small Musician · Community
+            Supporter
+          </p>
+          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+            Age: 24 · Location: Asheville, North Carolina · Occupation: Small
+            Musician and Waiter
+          </p>
+          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+            Marshall lives in Asheville, NC, a hub for local art and music. He
+            enjoys discovering and supporting small artists, playing live shows,
+            and releasing his own music, but feels major platforms don&apos;t
+            adequately represent independent creators.
+          </p>
+        </section>
+
+        {/* FINAL */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Final
+          </h2>
+          <p className="text-zinc-700 dark:text-zinc-300">
+            Petri is a music streaming and community platform designed to
+            highlight local artists and foster meaningful connections between
+            musicians and listeners.
+          </p>
+        </section>
+
+        {/* DESIGN DECISIONS */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Design Decisions
+          </h2>
+          <p className="text-zinc-700 dark:text-zinc-300">
+            Based on early feedback and internal critique, we refined the
+            strongest concepts and removed unnecessary complexity.
+          </p>
+        </section>
+
+        {/* DESIGN SOLUTION – 4 images (Framer order) */}
+        <section className="mb-16">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            Design Solution
+          </h2>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+            {[
+              "waIfHMCU49KTfKBqsWakRi3wqWk.png",
+              "IqFAxNGK7mm6ULKiBIJ3OUAbuw.png",
+              "UXKWIwWgtZ0p8vQvsiPascXLBI.png",
+              "q5NEyCXmT2fnmpnx1h6AsJCPZ74.png",
+            ].map((src) => (
+              <figure key={src} className="overflow-hidden rounded-xl">
+                <img
+                  src={`/petri/${src}`}
+                  alt="Petri design solution"
+                  className="w-full h-auto"
+                  style={
+                    { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
+                  }
+                />
+              </figure>
+            ))}
+          </div>
+        </section>
 
         <a
           href="https://www.linkedin.com/in/grantleslie"

@@ -23,222 +23,32 @@ export default function CafePage() {
           </p>
         </header>
 
-        <figure className="mb-16 overflow-hidden rounded-xl mx-auto max-w-3xl">
-          <img
-            src="/cafe/cafecard.png"
-            alt="CAFÉ calendar app interface showing color-coded events and branding"
-            width={1680}
-            height={1263}
-            className="w-full h-auto"
-            style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
-            loading="eager"
-            fetchPriority="high"
-          />
-        </figure>
-
-        <p className="mb-12 text-lg font-medium text-zinc-900 dark:text-zinc-100">
-          Personal Project
-        </p>
-        <p className="mb-16 text-zinc-600 dark:text-zinc-400">
-          UI/UX Design
-        </p>
-
-        {/* Discover Calendars - text + image */}
-        <section className="mb-16 flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-12">
-          <div className="min-w-0 flex-1">
-            <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              Discover Calendars
-            </h3>
-            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-              Explore and subscribe to public or shared calendars for events near
-              you.
-            </p>
-          </div>
-          <figure className="flex-shrink-0 overflow-hidden rounded-xl sm:w-72">
-            <img
-              src="/cafe/wr93jCkEPYXU0MVwvTcSuPIAMvA.png"
-              alt="CAFÉ Discover Calendars screen"
-              width={1551}
-              height={2048}
-              className="w-full h-auto"
-              style={
-                { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
-              }
-            />
-          </figure>
-        </section>
-
-        {/* Two screens */}
-        <div className="mb-16 grid grid-cols-2 gap-4">
-          <figure className="overflow-hidden rounded-xl">
-            <img
-              src="/cafe/lTvdOL8KHIp5TKz9O4Yzobhs.png"
-              alt="CAFÉ app screen"
-              width={1015}
-              height={2048}
-              className="w-full h-auto"
-              style={
-                { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
-              }
-            />
-          </figure>
-          <figure className="overflow-hidden rounded-xl">
-            <img
-              src="/cafe/FB6acVEXrSYflNLRaBubJEadDE.png"
-              alt="CAFÉ app screen"
-              width={1015}
-              height={2048}
-              className="w-full h-auto"
-              style={
-                { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
-              }
-            />
-          </figure>
+        {/* Hero – 8 images (Framer order) */}
+        <div className="mb-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {[
+            "cafecard.png",
+            "wr93jCkEPYXU0MVwvTcSuPIAMvA.png",
+            "lTvdOL8KHIp5TKz9O4Yzobhs.png",
+            "FB6acVEXrSYflNLRaBubJEadDE.png",
+            "pVMsZXMvkXcHM5onuankXNrCQns.png",
+            "mVXkLASqNKOZyiAOGEKPpvk8.png",
+            "BqiVnlo0a1Ncu9UXFDRrkFS00.png",
+            "9OxqXSEKTlhVIdVh1lOCuKOXQ.png",
+          ].map((src) => (
+            <figure key={src} className="overflow-hidden rounded-xl">
+              <img
+                src={`/cafe/${src}`}
+                alt="CAFÉ app"
+                className="w-full h-auto"
+                style={
+                  { imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties
+                }
+              />
+            </figure>
+          ))}
         </div>
 
-        {/* Add or Import Events - text only */}
-        <section className="mb-16">
-          <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-            Add or Import Events
-          </h3>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            Sync or import events from friends and family
-          </p>
-        </section>
-
-        {/* Personalize Your Calendar - text + two images */}
-        <section className="mb-16 flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-12">
-          <div className="min-w-0 flex-1">
-            <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              Personalize Your Calendar
-            </h3>
-            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-              Personalize events with categories, icons, and colors that fit your
-              schedule.
-            </p>
-          </div>
-          <div className="grid flex-shrink-0 grid-cols-2 gap-4 sm:w-80">
-            <figure className="overflow-hidden rounded-xl">
-              <img
-                src="/cafe/pVMsZXMvkXcHM5onuankXNrCQns.png"
-                alt="CAFÉ Personalize screen"
-                width={1015}
-                height={2048}
-                className="w-full h-auto"
-                style={
-                  {
-                    imageRendering: "-webkit-optimize-contrast",
-                  } as React.CSSProperties
-                }
-              />
-            </figure>
-            <figure className="overflow-hidden rounded-xl">
-              <img
-                src="/cafe/mVXkLASqNKOZyiAOGEKPpvk8.png"
-                alt="CAFÉ Personalize screen"
-                width={1015}
-                height={2048}
-                className="w-full h-auto"
-                style={
-                  {
-                    imageRendering: "-webkit-optimize-contrast",
-                  } as React.CSSProperties
-                }
-              />
-            </figure>
-          </div>
-        </section>
-
-        {/* Edit Events - text + two images */}
-        <section className="mb-16 flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-12">
-          <div className="min-w-0 flex-1">
-            <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              Edit Events
-            </h3>
-            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-              Quickly add and manage events
-            </p>
-          </div>
-          <div className="grid flex-shrink-0 grid-cols-2 gap-4 sm:w-80">
-            <figure className="overflow-hidden rounded-xl">
-              <img
-                src="/cafe/BqiVnlo0a1Ncu9UXFDRrkFS00.png"
-                alt="CAFÉ Edit Events screen"
-                width={1015}
-                height={2048}
-                className="w-full h-auto"
-                style={
-                  {
-                    imageRendering: "-webkit-optimize-contrast",
-                  } as React.CSSProperties
-                }
-              />
-            </figure>
-            <figure className="overflow-hidden rounded-xl">
-              <img
-                src="/cafe/9OxqXSEKTlhVIdVh1lOCuKOXQ.png"
-                alt="CAFÉ Edit Events screen"
-                width={1015}
-                height={2048}
-                className="w-full h-auto"
-                style={
-                  {
-                    imageRendering: "-webkit-optimize-contrast",
-                  } as React.CSSProperties
-                }
-              />
-            </figure>
-          </div>
-        </section>
-
-        {/* Project info */}
-        <section className="mb-16 space-y-8 text-zinc-700 dark:text-zinc-300">
-          <div>
-            <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              Project info
-            </h2>
-            <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              Scope
-            </h3>
-            <p className="mt-2">
-              The goal of this project was to design a dead-simple calendar
-              experience that prioritizes usability over feature overload. Rather
-              than competing with enterprise calendar platforms, the focus was
-              on creating an interface that makes viewing, sharing, and
-              understanding schedules effortless especially for families, small
-              groups, and public-facing use cases.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              Process
-            </h3>
-            <p className="mt-2">
-              I reviewed existing calendar tools to understand where complexity
-              and confusion occur, then focused on simplifying the experience
-              through clear hierarchy and minimal interface elements. The design
-              was refined through iterative layout and visual decisions to
-              ensure the calendar could be understood and used without
-              explanation.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              Solution
-            </h3>
-            <p className="mt-2">
-              The final solution is a minimal, modern calendar interface that
-              makes it easy to see what matters at a glance. Events are visually
-              organized, color-coded for clarity, and designed to scale across
-              different contexts from personal schedules to shared or public
-              calendars.
-            </p>
-          </div>
-        </section>
-
-        {/* Problem */}
+        {/* PROBLEM */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Problem
@@ -288,23 +98,6 @@ export default function CafePage() {
             filtering visibility, and sharing events. The goal isn&apos;t to
             compete on simplicity alone, but to make powerful calendar behaviors
             feel obvious and approachable.
-          </p>
-        </section>
-
-        {/* Research & Discovery */}
-        <section className="mb-16">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            Research & Discovery
-          </h2>
-          <p className="font-medium text-zinc-900 dark:text-zinc-100">
-            Understanding how people discover, reuse, and manage schedules
-          </p>
-          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
-            I reviewed existing calendar tools and observed how users currently
-            find events, share schedules, and manage multiple calendars at once.
-            Research showed that people often rely on external links, messages,
-            or screenshots to coordinate plans, rather than using the calendar
-            itself as a shared space.
           </p>
         </section>
 
