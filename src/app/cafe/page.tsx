@@ -10,7 +10,6 @@ export default function CafePage() {
         >
           ← Back
         </Link>
-
         <header className={sectionSpacing}>
           <span className="text-sm font-medium text-zinc-500">
             Web & App Design · 2025
@@ -264,7 +263,6 @@ export default function CafePage() {
         >
           LinkedIn
         </a>
-      </div>
-    </main>
+    </CaseStudyLayout>
   );
 }

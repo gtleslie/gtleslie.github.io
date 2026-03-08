@@ -1,9 +1,9 @@
 import Link from "next/link";
+import { CaseStudyLayout, sectionSpacing } from "@/components/CaseStudyLayout";
 
 export default function PetriPage() {
   return (
-    <main className="pt-24 pb-20">
-      <div className="mx-auto max-w-6xl px-6">
+    <CaseStudyLayout>
         <Link
           href="/"
           className="mb-8 inline-block text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
@@ -30,7 +30,7 @@ export default function PetriPage() {
         </header>
 
         {/* Project info – matches grantleslie.com order */}
-        <section className="mb-16 space-y-8">
+        <section className={`${sectionSpacing} space-y-8`}>
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Project info
           </h2>
@@ -61,7 +61,7 @@ export default function PetriPage() {
         </section>
 
         {/* Hero – 1 image (Framer order) */}
-        <figure className="mb-12 -mx-6 sm:-mx-8 lg:-mx-12 overflow-hidden">
+        <figure className={`${sectionSpacing} overflow-hidden rounded-xl`}>
           <img
             src="/petri/Petri1.png"
             alt="Petri music platform - Now Playing and Search screens"
@@ -73,7 +73,7 @@ export default function PetriPage() {
         </figure>
 
         {/* DISCOVERY */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Discovery
           </h2>
@@ -83,7 +83,7 @@ export default function PetriPage() {
         </section>
 
         {/* COMMUNITY */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Community
           </h2>
@@ -93,14 +93,14 @@ export default function PetriPage() {
         </section>
 
         {/* ARTIST SUPPORT – 22 images (Framer order) */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Artist Support
           </h2>
           <p className="mb-8 text-zinc-700 dark:text-zinc-300">
             Giving artists visibility beyond streams and metrics.
           </p>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
             {[
               "xagP7Ql0b0ZaZNR3xrAadZ8xqw.png",
               "BDBHbHPUo70pJIvtxQzFdMWSIAo.png",
@@ -140,7 +140,7 @@ export default function PetriPage() {
         </section>
 
         {/* USER PERSONA – Marshal (matches grantleslie.com spelling) */}
-        <section className="mb-16 rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+        <section className={`${sectionSpacing} rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             User Persona
           </h2>
@@ -168,7 +168,7 @@ export default function PetriPage() {
         </section>
 
         {/* RESEARCH & DISCOVERY */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Research & Discovery
           </h2>
@@ -190,7 +190,7 @@ export default function PetriPage() {
         </section>
 
         {/* OUTCOME */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Outcome
           </h2>
@@ -206,7 +206,7 @@ export default function PetriPage() {
         </section>
 
         {/* DESIGN DIRECTION */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Design Direction
           </h2>
@@ -228,7 +228,7 @@ export default function PetriPage() {
         </section>
 
         {/* COMPETITION */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Competition
           </h2>
@@ -244,7 +244,7 @@ export default function PetriPage() {
         </section>
 
         {/* VISUAL DIRECTION */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Visual Direction
           </h2>
@@ -265,7 +265,7 @@ export default function PetriPage() {
         </section>
 
         {/* RESEARCH EVIDENCE */}
-        <section className="mb-16 space-y-8">
+        <section className={`${sectionSpacing} space-y-8`}>
           <div>
             <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
               Research Evidence
@@ -314,7 +314,7 @@ export default function PetriPage() {
         </section>
 
         {/* FINAL */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Final
           </h2>
@@ -326,7 +326,7 @@ export default function PetriPage() {
         </section>
 
         {/* DESIGN DECISIONS */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Design Decisions
           </h2>
@@ -337,11 +337,11 @@ export default function PetriPage() {
         </section>
 
         {/* DESIGN SOLUTION – 4 images (Framer order) */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Design Solution
           </h2>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {[
               "waIfHMCU49KTfKBqsWakRi3wqWk.png",
               "IqFAxNGK7mm6ULKiBIJ3OUAbuw.png",
@@ -370,7 +370,6 @@ export default function PetriPage() {
         >
           LinkedIn
         </a>
-      </div>
-    </main>
+    </CaseStudyLayout>
   );
 }

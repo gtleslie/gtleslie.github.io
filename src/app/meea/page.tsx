@@ -1,9 +1,9 @@
 import Link from "next/link";
+import { CaseStudyLayout, sectionSpacing } from "@/components/CaseStudyLayout";
 
 export default function MeeaPage() {
   return (
-    <main className="pt-24 pb-20">
-      <div className="mx-auto max-w-6xl px-6">
+    <CaseStudyLayout>
         <Link
           href="/"
           className="mb-8 inline-block text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
@@ -29,8 +29,8 @@ export default function MeeaPage() {
           </p>
         </header>
 
-        {/* Hero – full-width lead + 15 grid (Framer order) */}
-        <figure className="mb-12 -mx-6 sm:-mx-8 lg:-mx-12 overflow-hidden">
+        {/* Hero – lead + 15 grid (Framer order) */}
+        <figure className={`${sectionSpacing} overflow-hidden rounded-xl`}>
           <img
             src="/meea/Meea-creative.png"
             alt="MEEA digital menu - hero"
@@ -40,7 +40,7 @@ export default function MeeaPage() {
             fetchPriority="high"
           />
         </figure>
-        <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+        <div className={`${sectionSpacing} grid grid-cols-2 gap-4 sm:grid-cols-3`}>
           {[
             "DFM6mFATaZjMUM9QZaahQfHh0G0.png",
             "MxeUyJpOHH1ElhFpYyhXA26t7E.png",
@@ -72,7 +72,7 @@ export default function MeeaPage() {
         </div>
 
         {/* PROBLEM */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Problem
           </h2>
@@ -88,7 +88,7 @@ export default function MeeaPage() {
         </section>
 
         {/* SOLUTION – 3 cards (matches grantleslie.com) */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Solution
           </h2>
@@ -124,7 +124,7 @@ export default function MeeaPage() {
         </section>
 
         {/* EXPLORATION AND DIRECTION */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Exploration and Direction
           </h2>
@@ -145,7 +145,7 @@ export default function MeeaPage() {
         </section>
 
         {/* USER INTERVIEWS + INSIGHT SWITCH */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             User Interviews + Insight Switch
           </h2>
@@ -175,7 +175,7 @@ export default function MeeaPage() {
         </section>
 
         {/* DESIGN RESPONSE – 3 images */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Design Response
           </h2>
@@ -186,7 +186,7 @@ export default function MeeaPage() {
             In response, our team shifted toward designing a dedicated physical
             and digital product. Creating a menu that lives on the table itself.
           </p>
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
             {[
               "a1LaeVD9W9VRJa6TKLaIIWo0Erk.png",
               "QcE74IJ99RGYAJsTkcmILsiaEU.png",
@@ -207,7 +207,7 @@ export default function MeeaPage() {
         </section>
 
         {/* Competitive Landscape + Opportunity */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Competitive Landscape + Opportunity
           </h2>
@@ -229,7 +229,7 @@ export default function MeeaPage() {
         </section>
 
         {/* USER PERSONA – 6 images */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             User Persona
           </h2>
@@ -308,7 +308,7 @@ export default function MeeaPage() {
         </section>
 
         {/* Features + Testing */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Features + Testing
           </h2>
@@ -364,7 +364,7 @@ export default function MeeaPage() {
         </section>
 
         {/* LOW-FIDELITY EXPLORATION */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Low-fidelity Exploration
           </h2>
@@ -383,7 +383,6 @@ export default function MeeaPage() {
         >
           LinkedIn
         </a>
-      </div>
-    </main>
+    </CaseStudyLayout>
   );
 }
