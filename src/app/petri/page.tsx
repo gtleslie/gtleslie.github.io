@@ -139,34 +139,6 @@ export default function PetriPage() {
           </div>
         </section>
 
-        {/* USER PERSONA – Marshal (matches grantleslie.com spelling) */}
-        <section className="mb-16 rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            User Persona
-          </h2>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
-            Age: 24
-          </p>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
-            Location: Asheville, North Carolina
-          </p>
-          <p className="mt-2 text-zinc-700 dark:text-zinc-300">
-            Bio: Marshal lives in Asheville, NC, a hub for local art and music. He enjoys discovering and supporting small artists, playing live shows, and releasing his own music, but feels major platforms don&apos;t adequately represent independent creators.
-          </p>
-          <h3 className="mt-6 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-            Marshal
-          </h3>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-            Music Enthusiast · Music Streamer · Small Musician · Community Supporter
-          </p>
-          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
-            Occupation: Small Musician and Waiter
-          </p>
-          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
-            Music enjoyer and player
-          </p>
-        </section>
-
         {/* RESEARCH & DISCOVERY */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
@@ -311,6 +283,34 @@ export default function PetriPage() {
               design.
             </p>
           </div>
+        </section>
+
+        {/* USER PERSONA – Marshal (grantleslie.com: after RESEARCH EVIDENCE) */}
+        <section className="mb-16 rounded-xl border border-zinc-200/80 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            User Persona
+          </h2>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+            Age: 24
+          </p>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+            Location: Asheville, North Carolina
+          </p>
+          <p className="mt-2 text-zinc-700 dark:text-zinc-300">
+            Bio: Marshal lives in Asheville, NC, a hub for local art and music. He enjoys discovering and supporting small artists, playing live shows, and releasing his own music, but feels major platforms don&apos;t adequately represent independent creators.
+          </p>
+          <h3 className="mt-6 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+            Marshal
+          </h3>
+          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
+            Music Enthusiast · Music Streamer · Small Musician · Community Supporter
+          </p>
+          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+            Occupation: Small Musician and Waiter
+          </p>
+          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+            Music enjoyer and player
+          </p>
         </section>
 
         {/* FINAL */}

@@ -121,6 +121,26 @@ export default function MeeaPage() {
               </p>
             </div>
           </div>
+          {/* SOLUTION images (grantleslie.com: 6 images under SOLUTION) */}
+          <div className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-3">
+            {[
+              "BLGnbhuhIcriDVlP8JEqKMkVw.png",
+              "FitTcNeoPQWmqzuSFl2HEz2oyvE.png",
+              "byL6nn4OzgEPXWCENc1YV7k4IY.png",
+              "BPA3Pfma5YQEM5t1u3TnSTXzwE.png",
+              "ylbj3G5nwQIR1bD20h95mAicpeU.png",
+              "vj8P99Nz1qXuspZdBe3QElkfoY.png",
+            ].map((src) => (
+              <figure key={src} className="overflow-hidden rounded-xl">
+                <img
+                  src={`/meea/${src}`}
+                  alt="MEEA solution"
+                  className="w-full h-auto"
+                  style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
+                />
+              </figure>
+            ))}
+          </div>
         </section>
 
         {/* EXPLORATION AND DIRECTION */}
@@ -228,7 +248,7 @@ export default function MeeaPage() {
           </p>
         </section>
 
-        {/* USER PERSONA – 6 images */}
+        {/* USER PERSONA – 6 images (grantleslie.com: under USER PERSONA) */}
         <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             User Persona
