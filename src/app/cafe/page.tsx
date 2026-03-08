@@ -1,9 +1,9 @@
 import Link from "next/link";
+import { CaseStudyLayout, sectionSpacing } from "@/components/CaseStudyLayout";
 
 export default function CafePage() {
   return (
-    <main className="pt-24 pb-20">
-      <div className="mx-auto max-w-6xl px-6">
+    <CaseStudyLayout>
         <Link
           href="/"
           className="mb-8 inline-block text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
@@ -11,7 +11,7 @@ export default function CafePage() {
           ← Back
         </Link>
 
-        <header className="mb-12">
+        <header className={sectionSpacing}>
           <span className="text-sm font-medium text-zinc-500">
             Web & App Design · 2025
           </span>
@@ -24,7 +24,7 @@ export default function CafePage() {
         </header>
 
         {/* Hero – 8 images */}
-        <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-4">
+        <div className={`${sectionSpacing} grid grid-cols-2 gap-4 sm:grid-cols-4`}>
           {[
             "cafecard.png",
             "wr93jCkEPYXU0MVwvTcSuPIAMvA.png",
@@ -49,7 +49,7 @@ export default function CafePage() {
         </div>
 
         {/* Discover Calendars */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Discover Calendars
           </h2>
@@ -59,7 +59,7 @@ export default function CafePage() {
         </section>
 
         {/* Add or Import Events */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Add or Import Events
           </h2>
@@ -69,7 +69,7 @@ export default function CafePage() {
         </section>
 
         {/* Personalize Your Calendar */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Personalize Your Calendar
           </h2>
@@ -79,7 +79,7 @@ export default function CafePage() {
         </section>
 
         {/* Edit Events */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Edit Events
           </h2>
@@ -89,7 +89,7 @@ export default function CafePage() {
         </section>
 
         {/* Project info */}
-        <section className="mb-16 space-y-8">
+        <section className={`${sectionSpacing} space-y-8`}>
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Project info
           </h2>
@@ -120,7 +120,7 @@ export default function CafePage() {
         </section>
 
         {/* PROBLEM */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Problem
           </h2>
@@ -133,7 +133,7 @@ export default function CafePage() {
         </section>
 
         {/* OPPORTUNITY */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Opportunity
           </h2>
@@ -146,7 +146,7 @@ export default function CafePage() {
         </section>
 
         {/* DESIGN INTENT */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Design Intent
           </h2>
@@ -159,7 +159,7 @@ export default function CafePage() {
         </section>
 
         {/* RESEARCH & DISCOVERY */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Research & Discovery
           </h2>
@@ -172,7 +172,7 @@ export default function CafePage() {
         </section>
 
         {/* INSIGHT */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Insight
           </h2>
@@ -185,7 +185,7 @@ export default function CafePage() {
         </section>
 
         {/* PRODUCT DIRECTION */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Product Direction
           </h2>
@@ -198,7 +198,7 @@ export default function CafePage() {
         </section>
 
         {/* CORE FEATURES */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Core Features
           </h2>
@@ -211,7 +211,7 @@ export default function CafePage() {
         </section>
 
         {/* SOLUTION – 5 images */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Solution
           </h2>
@@ -221,7 +221,7 @@ export default function CafePage() {
           <p className="mt-4 text-zinc-700 dark:text-zinc-300">
             The current design focuses on clarity first, using familiar calendar patterns and a simple visual hierarchy so users can easily track events, tasks, and schedules. Beyond basic planning, CAFÉ supports discovering calendars, saving schedules for later, filtering visibility, and sharing events without overwhelming the main calendar view. The goal is to keep everyday planning simple while making more advanced calendar behaviors feel natural and easy to use.
           </p>
-          <div className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-5">
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
             {[
               "S2Oq6f2Y8FZJraL6NUYkiCFFgCI.png",
               "rkUl5iemGOWWglwLHKELJ9TJZY.png",
@@ -244,7 +244,7 @@ export default function CafePage() {
         </section>
 
         {/* CURRENT STATE */}
-        <section className="mb-16">
+        <section className={sectionSpacing}>
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Current State
           </h2>
