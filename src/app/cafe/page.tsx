@@ -22,7 +22,7 @@ export default function CafePage() {
           </p>
         </header>
 
-        {/* Hero – 8 images */}
+        {/* Hero – 8 images (grantleslie.com order) */}
         <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-4">
           {[
             "cafecard.png",
@@ -46,77 +46,6 @@ export default function CafePage() {
             </figure>
           ))}
         </div>
-
-        {/* Discover Calendars */}
-        <section className="mb-16">
-          <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-            Discover Calendars
-          </h2>
-          <p className="text-zinc-700 dark:text-zinc-300">
-            Explore and subscribe to public or shared calendars for events near you.
-          </p>
-        </section>
-
-        {/* Add or Import Events */}
-        <section className="mb-16">
-          <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-            Add or Import Events
-          </h2>
-          <p className="text-zinc-700 dark:text-zinc-300">
-            Sync or import events from friends and family
-          </p>
-        </section>
-
-        {/* Personalize Your Calendar */}
-        <section className="mb-16">
-          <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-            Personalize Your Calendar
-          </h2>
-          <p className="mb-8 text-zinc-700 dark:text-zinc-300">
-            Personalize events with categories, icons, and colors that fit your schedule.
-          </p>
-        </section>
-
-        {/* Edit Events */}
-        <section className="mb-16">
-          <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-            Edit Events
-          </h2>
-          <p className="text-zinc-700 dark:text-zinc-300">
-            Quickly add and manage events
-          </p>
-        </section>
-
-        {/* Project info */}
-        <section className="mb-16 space-y-8">
-          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-            Project info
-          </h2>
-          <div>
-            <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              Scope
-            </h3>
-            <p className="mt-2 text-zinc-700 dark:text-zinc-300">
-              The goal of this project was to design a dead-simple calendar experience that prioritizes usability over feature overload. Rather than competing with enterprise calendar platforms, the focus was on creating an interface that makes viewing, sharing, and understanding schedules effortless especially for families, small groups, and public-facing use cases.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              Process
-            </h3>
-            <p className="mt-2 text-zinc-700 dark:text-zinc-300">
-              I reviewed existing calendar tools to understand where complexity and confusion occur, then focused on simplifying the experience through clear hierarchy and minimal interface elements. The design was refined through iterative layout and visual decisions to ensure the calendar could be understood and used without explanation.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              Solution
-            </h3>
-            <p className="mt-2 text-zinc-700 dark:text-zinc-300">
-              The final solution is a minimal, modern calendar interface that makes it easy to see what matters at a glance. Events are visually organized, color-coded for clarity, and designed to scale across different contexts from personal schedules to shared or public calendars.
-            </p>
-          </div>
-        </section>
 
         {/* PROBLEM */}
         <section className="mb-16">
@@ -154,19 +83,6 @@ export default function CafePage() {
           </p>
           <p className="mt-4 text-zinc-700 dark:text-zinc-300">
             CAFÉ explores how a clean, minimal UI can still support advanced actions like browsing public calendars, saving schedules for later, filtering visibility, and sharing events. The goal isn&apos;t to compete on simplicity alone, but to make powerful calendar behaviors feel obvious and approachable.
-          </p>
-        </section>
-
-        {/* RESEARCH & DISCOVERY */}
-        <section className="mb-16">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            Research & Discovery
-          </h2>
-          <p className="font-medium text-zinc-900 dark:text-zinc-100">
-            Understanding how people discover, reuse, and manage schedules
-          </p>
-          <p className="mt-4 text-zinc-700 dark:text-zinc-300">
-            I reviewed existing calendar tools and observed how users currently find events, share schedules, and manage multiple calendars at once. Research showed that people often rely on external links, messages, or screenshots to coordinate plans, rather than using the calendar itself as a shared space.
           </p>
         </section>
 
@@ -218,7 +134,7 @@ export default function CafePage() {
             A minimal calendar interface built for sharing, filtering, and reuse
           </p>
           <p className="mt-4 text-zinc-700 dark:text-zinc-300">
-            The current design focuses on clarity first, using familiar calendar patterns and a simple visual hierarchy so users can easily track events, tasks, and schedules. Beyond basic planning, CAFÉ supports discovering calendars, saving schedules for later, filtering visibility, and sharing events without overwhelming the main calendar view. The goal is to keep everyday planning simple while making more advanced calendar behaviors feel natural and easy to use.
+            The current design focuses on clarity first, using familiar calendar patterns and a simple visual hierarchy so users can easily track events, tasks, and schedules. Beyond basic planning, CAFÉ supports discovering calendars, saving schedules for later, filtering visibility, and sharing events without overwhelming the main calendar view.
           </p>
           <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
             {[
