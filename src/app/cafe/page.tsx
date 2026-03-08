@@ -1,16 +1,16 @@
 import Link from "next/link";
-import { CaseStudyLayout, sectionSpacing } from "@/components/CaseStudyLayout";
 
 export default function CafePage() {
   return (
-    <CaseStudyLayout>
+    <main className="pt-24 pb-20">
+      <div className="mx-auto max-w-6xl px-6">
         <Link
           href="/"
           className="mb-8 inline-block text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
         >
           ← Back
         </Link>
-        <header className={sectionSpacing}>
+        <header className="mb-12">
           <span className="text-sm font-medium text-zinc-500">
             Web & App Design · 2025
           </span>
@@ -23,7 +23,7 @@ export default function CafePage() {
         </header>
 
         {/* Hero – 8 images */}
-        <div className={`${sectionSpacing} grid grid-cols-2 gap-4 sm:grid-cols-4`}>
+        <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-4">
           {[
             "cafecard.png",
             "wr93jCkEPYXU0MVwvTcSuPIAMvA.png",
@@ -48,7 +48,7 @@ export default function CafePage() {
         </div>
 
         {/* Discover Calendars */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Discover Calendars
           </h2>
@@ -58,7 +58,7 @@ export default function CafePage() {
         </section>
 
         {/* Add or Import Events */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Add or Import Events
           </h2>
@@ -68,7 +68,7 @@ export default function CafePage() {
         </section>
 
         {/* Personalize Your Calendar */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Personalize Your Calendar
           </h2>
@@ -78,7 +78,7 @@ export default function CafePage() {
         </section>
 
         {/* Edit Events */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Edit Events
           </h2>
@@ -88,7 +88,7 @@ export default function CafePage() {
         </section>
 
         {/* Project info */}
-        <section className={`${sectionSpacing} space-y-8`}>
+        <section className="mb-16 space-y-8">
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Project info
           </h2>
@@ -119,7 +119,7 @@ export default function CafePage() {
         </section>
 
         {/* PROBLEM */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Problem
           </h2>
@@ -132,7 +132,7 @@ export default function CafePage() {
         </section>
 
         {/* OPPORTUNITY */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Opportunity
           </h2>
@@ -145,7 +145,7 @@ export default function CafePage() {
         </section>
 
         {/* DESIGN INTENT */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Design Intent
           </h2>
@@ -158,7 +158,7 @@ export default function CafePage() {
         </section>
 
         {/* RESEARCH & DISCOVERY */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Research & Discovery
           </h2>
@@ -171,7 +171,7 @@ export default function CafePage() {
         </section>
 
         {/* INSIGHT */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Insight
           </h2>
@@ -184,7 +184,7 @@ export default function CafePage() {
         </section>
 
         {/* PRODUCT DIRECTION */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Product Direction
           </h2>
@@ -197,7 +197,7 @@ export default function CafePage() {
         </section>
 
         {/* CORE FEATURES */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Core Features
           </h2>
@@ -210,7 +210,7 @@ export default function CafePage() {
         </section>
 
         {/* SOLUTION – 5 images */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Solution
           </h2>
@@ -243,7 +243,7 @@ export default function CafePage() {
         </section>
 
         {/* CURRENT STATE */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
             Current State
           </h2>
@@ -263,6 +263,7 @@ export default function CafePage() {
         >
           LinkedIn
         </a>
-    </CaseStudyLayout>
+      </div>
+    </main>
   );
 }

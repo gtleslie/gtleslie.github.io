@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { CaseStudyLayout, sectionSpacing } from "@/components/CaseStudyLayout";
 
 export default function MotorcyclePage() {
   return (
-    <CaseStudyLayout>
+    <main className="pt-24 pb-20">
+      <div className="mx-auto max-w-6xl px-6">
         <Link
           href="/"
           className="mb-8 inline-block text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
@@ -27,7 +27,7 @@ export default function MotorcyclePage() {
         </header>
 
         {/* Hero + 22 images in Framer DOM order */}
-        <figure className={`${sectionSpacing} overflow-hidden rounded-xl`}>
+        <figure className="mb-12 -mx-6 sm:-mx-8 lg:-mx-12 overflow-hidden">
           <img
             src="/motorcycle/IMG_7310 2.png"
             alt="Foam-core motorcycle hero"
@@ -37,7 +37,7 @@ export default function MotorcyclePage() {
             fetchPriority="high"
           />
         </figure>
-        <div className={`${sectionSpacing} grid grid-cols-2 gap-4 sm:grid-cols-3`}>
+        <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
           {[
             "DHAS0HGLNjDrkX2JqA6eFtWcGs.png",
             "2VCf4zJpvHNy9NTDpDZYn7BQ0A 2.png",
@@ -78,7 +78,7 @@ export default function MotorcyclePage() {
         </div>
 
         {/* The Challenge */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
             The Challenge :
           </h2>
@@ -90,7 +90,7 @@ export default function MotorcyclePage() {
         </section>
 
         {/* Ideation & Concept Development */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Ideation & Concept Development
           </h2>
@@ -104,7 +104,7 @@ export default function MotorcyclePage() {
         </section>
 
         {/* CAD & 3D Prototype */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             CAD & 3D Prototype
           </h2>
@@ -117,7 +117,7 @@ export default function MotorcyclePage() {
         </section>
 
         {/* Construction & Build process */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Construction & Build process
           </h2>
@@ -133,7 +133,7 @@ export default function MotorcyclePage() {
         </section>
 
         {/* Building With Paper */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Building With Paper to Explore Depth and Design
           </h2>
@@ -149,7 +149,7 @@ export default function MotorcyclePage() {
         </section>
 
         {/* Adding Realistic Parts */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Adding Realistic Parts and Interactive Features
           </h2>
@@ -166,7 +166,7 @@ export default function MotorcyclePage() {
         </section>
 
         {/* User Testing */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             User Testing
           </h2>
@@ -182,7 +182,7 @@ export default function MotorcyclePage() {
         </section>
 
         {/* Final Presentation */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Final Presentation and Comparison to Real Models
           </h2>
@@ -202,7 +202,7 @@ export default function MotorcyclePage() {
         </section>
 
         {/* Team Collaboration */}
-        <section className={sectionSpacing}>
+        <section className="mb-16">
           <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Team Collaboration and Finished Prototype
           </h2>
@@ -224,6 +224,7 @@ export default function MotorcyclePage() {
         >
           LinkedIn
         </a>
-    </CaseStudyLayout>
+      </div>
+    </main>
   );
 }
