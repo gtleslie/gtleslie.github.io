@@ -5,6 +5,8 @@ export interface Project {
   category: string;
   href: string;
   status?: "live" | "coming-soon";
+  /** Hero image path for card thumbnail (e.g. /cafe/cafecard.png) */
+  heroImage?: string;
 }
 
 export const projects: Project[] = [
@@ -14,6 +16,7 @@ export const projects: Project[] = [
     tagline: "Web, App Design",
     category: "Web, App Design",
     href: "/cafe",
+    heroImage: "/cafe/cafecard.png",
   },
   {
     slug: "petri",
@@ -21,6 +24,7 @@ export const projects: Project[] = [
     tagline: "Web, App Design",
     category: "Web, App Design",
     href: "/petri",
+    heroImage: "/petri/Petri1.png",
   },
   {
     slug: "meea",
@@ -28,6 +32,7 @@ export const projects: Project[] = [
     tagline: "Prototype Product, Interaction Design",
     category: "Prototype Product, Interaction Design",
     href: "/meea",
+    heroImage: "/meea/Meea-creative.png",
   },
   {
     slug: "motorcycle-hmi",
@@ -36,6 +41,7 @@ export const projects: Project[] = [
     category: "Product Design, Interaction Systems",
     href: "/comingsoon",
     status: "coming-soon",
+    heroImage: "/hmi/HMICard.png",
   },
   {
     slug: "motorcycle",
@@ -43,5 +49,6 @@ export const projects: Project[] = [
     tagline: "Rapid Prototyping, User Experience",
     category: "Rapid Prototyping, User Experience",
     href: "/motorcycle",
+    heroImage: "/motorcycle/IMG_7310 2.png",
   },
 ];
