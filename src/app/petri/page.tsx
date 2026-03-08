@@ -21,15 +21,27 @@ export default function PetriPage() {
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">
             UX Designer · UI Designer
           </p>
-          <div className="mt-6 grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-zinc-500 dark:text-zinc-400">
-            <span>Year : 2024</span>
-            <span>Industry : UX Design</span>
-            <span>Team Size : 5 Members</span>
-            <span>Project Duration : 12 weeks</span>
-          </div>
         </header>
 
-        {/* Project info – matches grantleslie.com order */}
+        {/* Hero – full-bleed (grantleslie.com order) */}
+        <figure className="relative left-1/2 right-1/2 mb-6 w-screen max-w-none -translate-x-1/2 overflow-hidden">
+          <img
+            src="/petri/Petri1.png"
+            alt="Petri music platform - Now Playing and Search screens"
+            className="w-full h-auto"
+            style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
+            loading="eager"
+            fetchPriority="high"
+          />
+        </figure>
+        <div className="mb-12 grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-zinc-500 dark:text-zinc-400">
+          <span>Year : 2024</span>
+          <span>Industry : UX Design</span>
+          <span>Team Size : 5 Members</span>
+          <span>Project Duration : 12 weeks</span>
+        </div>
+
+        {/* Project info */}
         <section className="mb-16 space-y-8">
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
             Project info
@@ -59,18 +71,6 @@ export default function PetriPage() {
             </p>
           </div>
         </section>
-
-        {/* Hero – 1 image (Framer order) */}
-        <figure className="mb-12 -mx-6 sm:-mx-8 lg:-mx-12 overflow-hidden">
-          <img
-            src="/petri/Petri1.png"
-            alt="Petri music platform - Now Playing and Search screens"
-            className="w-full h-auto"
-            style={{ imageRendering: '-webkit-optimize-contrast' } as React.CSSProperties}
-            loading="eager"
-            fetchPriority="high"
-          />
-        </figure>
 
         {/* DISCOVERY */}
         <section className="mb-16">

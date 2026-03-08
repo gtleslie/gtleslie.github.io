@@ -12,12 +12,6 @@ export default function MeeaPage() {
         </Link>
 
         <header className="mb-12">
-          <div className="mb-6 grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-zinc-500 dark:text-zinc-400">
-            <span>Year : 2025</span>
-            <span>Industry : UX Design</span>
-            <span>Team Size : 3 Members</span>
-            <span>Project Duration : 10 weeks</span>
-          </div>
           <span className="text-sm font-medium text-zinc-500">
             Product Prototype, Design · 2025
           </span>
@@ -29,8 +23,8 @@ export default function MeeaPage() {
           </p>
         </header>
 
-        {/* Hero – full-width lead + 15 grid (Framer order) */}
-        <figure className="mb-12 -mx-6 sm:-mx-8 lg:-mx-12 overflow-hidden">
+        {/* Hero – full-bleed (grantleslie.com order) */}
+        <figure className="relative left-1/2 right-1/2 mb-6 w-screen max-w-none -translate-x-1/2 overflow-hidden">
           <img
             src="/meea/Meea-creative.png"
             alt="MEEA digital menu - hero"
@@ -40,6 +34,12 @@ export default function MeeaPage() {
             fetchPriority="high"
           />
         </figure>
+        <div className="mb-12 grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-zinc-500 dark:text-zinc-400">
+          <span>Year : 2025</span>
+          <span>Industry : UX Design</span>
+          <span>Team Size : 3 Members</span>
+          <span>Project Duration : 10 weeks</span>
+        </div>
         <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
           {[
             "DFM6mFATaZjMUM9QZaahQfHh0G0.png",

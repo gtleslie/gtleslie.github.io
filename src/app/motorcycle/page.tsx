@@ -18,16 +18,10 @@ export default function MotorcyclePage() {
           <p className="mt-6 text-lg text-zinc-700 dark:text-zinc-300">
             In this two-week studio project, our team was challenged to design and construct a full-scale motorcycle inspired by the Art Nouveau movement using only lightweight materials such as foam, cardboard, and tape. I contributed across multiple stages from concept generation and physical prototyping to hands-on construction and user testing, ensuring the design not only reflected our theme but could also function and be demonstrated effectively.
           </p>
-          <div className="mt-6 grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-zinc-500 dark:text-zinc-400">
-            <span>Year : 2025</span>
-            <span>Industry : Industrial Design / UX Design</span>
-            <span>Team Size : 6 Members</span>
-            <span>Project Duration : 2 weeks</span>
-          </div>
         </header>
 
-        {/* Hero + 22 images in Framer DOM order */}
-        <figure className="mb-12 -mx-6 sm:-mx-8 lg:-mx-12 overflow-hidden">
+        {/* Hero – full-bleed (grantleslie.com order) */}
+        <figure className="relative left-1/2 right-1/2 mb-6 w-screen max-w-none -translate-x-1/2 overflow-hidden">
           <img
             src="/motorcycle/IMG_7310 2.png"
             alt="Foam-core motorcycle hero"
@@ -37,6 +31,12 @@ export default function MotorcyclePage() {
             fetchPriority="high"
           />
         </figure>
+        <div className="mb-12 grid grid-cols-2 gap-x-8 gap-y-2 text-sm text-zinc-500 dark:text-zinc-400">
+          <span>Year : 2025</span>
+          <span>Industry : Industrial Design / UX Design</span>
+          <span>Team Size : 6 Members</span>
+          <span>Project Duration : 2 weeks</span>
+        </div>
         <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
           {[
             "DHAS0HGLNjDrkX2JqA6eFtWcGs.png",
