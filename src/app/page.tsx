@@ -20,19 +20,21 @@ export default function Home() {
               UX Designer student at SCAD focused on thoughtful user experiences,
               with a growing interest in interface design.
             </p>
-            <Link
-              href="/resume"
+            <a
+              href="https://drive.google.com/file/d/1GILj0bUv2kgI-666F8Ky7BBz4KWe678N/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-6 inline-block text-sm font-medium text-zinc-900 underline-offset-4 hover:underline dark:text-zinc-100"
             >
               View Resume
-            </Link>
+            </a>
           </div>
         </section>
 
         {/* Projects */}
         <section>
           <h2 className="sr-only">Projects</h2>
-          <ul className="flex flex-col gap-4">
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {projects.map((project) => (
               <li key={project.slug}>
                 <ProjectCard project={project} />

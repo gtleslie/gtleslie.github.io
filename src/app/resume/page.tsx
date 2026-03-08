@@ -13,13 +13,16 @@ export default function ResumePage() {
 
         <h1 className="text-3xl font-bold tracking-tight">Resume</h1>
         <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-          Add your resume PDF or link here. You can either:
+          View my resume (opens in a new tab).
         </p>
-        <ul className="mt-2 list-disc space-y-1 pl-6 text-zinc-600 dark:text-zinc-400">
-          <li>Host a PDF in the public folder and link to it</li>
-          <li>Add an external link (e.g., Google Drive, Notion)</li>
-          <li>Embed a PDF viewer component</li>
-        </ul>
+        <a
+          href="https://drive.google.com/file/d/1GILj0bUv2kgI-666F8Ky7BBz4KWe678N/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-block text-sm font-medium text-zinc-900 underline-offset-4 hover:underline dark:text-zinc-100"
+        >
+          Open Resume (PDF)
+        </a>
       </div>
     </main>
   );
