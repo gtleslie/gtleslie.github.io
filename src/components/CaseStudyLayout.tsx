@@ -1,37 +1,20 @@
-import Link from "next/link";
-
 export function CaseStudyHero({
   src,
   alt,
-  title,
 }: {
   src: string;
   alt: string;
-  title: string;
+  title?: string;
 }) {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="w-full">
       <img
         src={src}
         alt={alt}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="h-auto w-full"
         loading="eager"
         fetchPriority="high"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 px-6 pb-16">
-        <div className="mx-auto max-w-5xl">
-          <Link
-            href="/"
-            className="mb-4 inline-block text-sm text-white/70 transition-colors hover:text-white"
-          >
-            ← Back
-          </Link>
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            {title}
-          </h1>
-        </div>
-      </div>
     </section>
   );
 }

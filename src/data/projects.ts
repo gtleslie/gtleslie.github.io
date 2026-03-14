@@ -39,8 +39,7 @@ export const projects: Project[] = [
     title: "Motorcycle HMI Redesign",
     tagline: "Product Design, Interaction Systems",
     category: "Product Design, Interaction Systems",
-    href: "/comingsoon",
-    status: "coming-soon",
+    href: "/hmi",
     heroImage: "/hmi/HMICard.png",
   },
   {

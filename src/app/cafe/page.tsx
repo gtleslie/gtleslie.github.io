@@ -1,42 +1,172 @@
 import {
-  CaseStudyHero,
-  NarrowSection,
   SectionLabel,
   SectionHeading,
   BodyText,
-  GalleryCluster,
-  FullWidthImages,
   PullQuote,
 } from "@/components/CaseStudyLayout";
+
+const features = [
+  {
+    title: "Discover Calendars",
+    description:
+      "Explore and subscribe to public or shared calendars for events near you.",
+    images: ["/cafe/wr93jCkEPYXU0MVwvTcSuPIAMvA.png"],
+  },
+  {
+    title: "Add or Import Events",
+    description: "Sync or import events from friends and family",
+    images: [
+      "/cafe/lTvdOL8KHIp5TKz9O4Yzobhs.png",
+      "/cafe/FB6acVEXrSYflNLRaBubJEadDE.png",
+    ],
+  },
+  {
+    title: "Personalize Your Calendar",
+    description:
+      "Personalize events with categories, icons, and colors that fit your schedule.",
+    images: [
+      "/cafe/pVMsZXMvkXcHM5onuankXNrCQns.png",
+      "/cafe/mVXkLASqNKOZyiAOGEKPpvk8.png",
+    ],
+  },
+  {
+    title: "Edit Events",
+    description: "Quickly add and manage events",
+    images: [
+      "/cafe/BqiVnlo0a1Ncu9UXFDRrkFS00.png",
+      "/cafe/9OxqXSEKTlhVIdVh1lOCuKOXQ.png",
+    ],
+  },
+];
+
+const container = "mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16";
+const narrow = "mx-auto max-w-[1000px] px-6 md:px-12 lg:px-16";
 
 export default function CafePage() {
   return (
     <main>
-      {/* 1. Full-viewport hero */}
-      <CaseStudyHero
-        src="/cafe/cafecard.png"
-        alt="CAFÉ - Calendar For Everything"
-        title="CAFÉ"
-      />
+      {/* Project header */}
+      <div className={container}>
+        <div className="flex flex-col gap-4 pt-[240px] sm:pt-[180px] lg:pt-[240px]">
+          <h1 className="max-w-[1080px] text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl lg:text-6xl">
+            Cafe - Calendar For Everything (WIP)
+          </h1>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
+            <span>Web &amp; App Design</span>
+            <span className="h-4 w-px bg-zinc-300 opacity-15 dark:bg-zinc-600" />
+            <span>2025</span>
+            <span className="h-4 w-px bg-zinc-300 opacity-15 dark:bg-zinc-600" />
+            <span>Lead Designer</span>
+          </div>
+        </div>
+      </div>
 
-      <div className="mt-24 space-y-16 pb-20 sm:space-y-20">
-        {/* 2. Gallery cluster — 7 app screen images */}
-        <GalleryCluster
-          images={[
-            "/cafe/wr93jCkEPYXU0MVwvTcSuPIAMvA.png",
-            "/cafe/lTvdOL8KHIp5TKz9O4Yzobhs.png",
-            "/cafe/FB6acVEXrSYflNLRaBubJEadDE.png",
-            "/cafe/pVMsZXMvkXcHM5onuankXNrCQns.png",
-            "/cafe/mVXkLASqNKOZyiAOGEKPpvk8.png",
-            "/cafe/BqiVnlo0a1Ncu9UXFDRrkFS00.png",
-            "/cafe/9OxqXSEKTlhVIdVh1lOCuKOXQ.png",
-          ]}
-          columns={4}
-          alt="CAFÉ app screen"
-        />
+      {/* Hero image */}
+      <div className={container}>
+        <div className="pt-16">
+          <div className="aspect-[4/3] overflow-hidden rounded-lg">
+            <img
+              src="/cafe/cafecard.png"
+              alt="CAFÉ hero"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
 
-        {/* 3. Problem */}
-        <NarrowSection>
+      {/* Below-hero label */}
+      <div className={container}>
+        <div className="flex items-center justify-center gap-2 py-[146px] sm:gap-[386px]">
+          <p className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-[32px]">
+            Personal Project
+          </p>
+          <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100 sm:text-[22px]">
+            UI/UX Design
+          </p>
+        </div>
+      </div>
+
+      {/* Feature showcase */}
+      <div className="space-y-32 sm:space-y-40">
+        {features.map((feat, i) => (
+          <section key={feat.title} className={container}>
+            <div
+              className={`flex flex-col items-center gap-10 sm:flex-row sm:gap-16 lg:gap-20 ${
+                i % 2 === 1 ? "sm:flex-row-reverse" : ""
+              }`}
+            >
+              <div className="w-full shrink-0 sm:w-[280px] lg:w-[320px]">
+                <h3 className="text-[28px] font-semibold leading-tight tracking-tight text-zinc-900 dark:text-zinc-100 lg:text-[34px]">
+                  {feat.title}
+                </h3>
+                <p className="mt-4 text-[17px] leading-relaxed text-zinc-500 dark:text-zinc-400">
+                  {feat.description}
+                </p>
+              </div>
+              <div className="flex flex-1 items-center gap-5">
+                {feat.images.map((src) => (
+                  <figure key={src} className="overflow-hidden rounded-3xl">
+                    <img
+                      src={src}
+                      alt={feat.title}
+                      className="h-auto w-full"
+                      style={
+                        {
+                          imageRendering: "-webkit-optimize-contrast",
+                        } as React.CSSProperties
+                      }
+                    />
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
+
+      {/* Text sections */}
+      <div className="flex flex-col items-center gap-[120px] pt-[120px] pb-20">
+        {/* Project info */}
+        <section className={narrow}>
+          <SectionLabel>Project Info</SectionLabel>
+          <div className="mt-8 space-y-10">
+            <div>
+              <SectionHeading>Scope</SectionHeading>
+              <BodyText>
+                The goal of this project was to design a dead-simple calendar
+                experience that prioritizes usability over feature overload.
+                Rather than competing with enterprise calendar platforms, the
+                focus was on creating an interface that makes viewing, sharing,
+                and understanding schedules effortless especially for families,
+                small groups, and public-facing use cases.
+              </BodyText>
+            </div>
+            <div>
+              <SectionHeading>Process</SectionHeading>
+              <BodyText>
+                I reviewed existing calendar tools to understand where complexity
+                and confusion occur, then focused on simplifying the experience
+                through clear hierarchy and minimal interface elements. The
+                design was refined through iterative layout and visual decisions
+                to ensure the calendar could be understood and used without
+                explanation.
+              </BodyText>
+            </div>
+            <div>
+              <SectionHeading>Solution</SectionHeading>
+              <BodyText>
+                The final solution is a minimal, modern calendar interface that
+                makes it easy to see what matters at a glance. Events are
+                visually organized, color-coded for clarity, and designed to
+                scale across different contexts from personal schedules to shared
+                or public calendars.
+              </BodyText>
+            </div>
+          </div>
+        </section>
+
+        {/* Problem */}
+        <section className={narrow}>
           <SectionLabel>Problem</SectionLabel>
           <SectionHeading>
             Calendars work well alone, but break down when plans involve other
@@ -50,10 +180,10 @@ export default function CafePage() {
             schedules often requires switching tools or manually recreating
             information, adding friction to something meant to feel simple.
           </BodyText>
-        </NarrowSection>
+        </section>
 
-        {/* 4. Opportunity */}
-        <NarrowSection>
+        {/* Opportunity */}
+        <section className={narrow}>
           <SectionLabel>Opportunity</SectionLabel>
           <SectionHeading>
             Calendars don&apos;t need fewer features, they need better structure
@@ -65,10 +195,10 @@ export default function CafePage() {
             support richer use cases without overwhelming the user or cluttering
             their primary schedule.
           </BodyText>
-        </NarrowSection>
+        </section>
 
-        {/* 5. Design Intent */}
-        <NarrowSection>
+        {/* Design Intent */}
+        <section className={narrow}>
           <SectionLabel>Design Intent</SectionLabel>
           <SectionHeading>
             A simple interface that supports more flexible calendar behaviors
@@ -80,15 +210,32 @@ export default function CafePage() {
             compete on simplicity alone, but to make powerful calendar behaviors
             feel obvious and approachable.
           </BodyText>
-        </NarrowSection>
+        </section>
 
-        {/* 6. Insight — pull quote */}
-        <PullQuote>
-          People want to explore and reference calendars before fully committing
-          to them
-        </PullQuote>
+        {/* Research & Discovery */}
+        <section className={narrow}>
+          <SectionLabel>Research &amp; Discovery</SectionLabel>
+          <SectionHeading>
+            Understanding how people discover, reuse, and manage schedules
+          </SectionHeading>
+          <BodyText>
+            I reviewed existing calendar tools and observed how users currently
+            find events, share schedules, and manage multiple calendars at once.
+            Research showed that people often rely on external links, messages,
+            or screenshots to coordinate plans, rather than using the calendar
+            itself as a shared space.
+          </BodyText>
+        </section>
 
-        <NarrowSection>
+        {/* Insight */}
+        <section className={narrow}>
+          <PullQuote>
+            People want to explore and reference calendars before fully
+            committing to them
+          </PullQuote>
+        </section>
+
+        <section className={narrow}>
           <SectionLabel>Insight</SectionLabel>
           <BodyText>
             People frequently want to browse calendars, temporarily view
@@ -97,10 +244,10 @@ export default function CafePage() {
             preview, filter, or hide calendars leads to clutter and hesitation
             around sharing.
           </BodyText>
-        </NarrowSection>
+        </section>
 
-        {/* 7. Product Direction */}
-        <NarrowSection>
+        {/* Product Direction */}
+        <section className={narrow}>
           <SectionLabel>Product Direction</SectionLabel>
           <SectionHeading>
             Treat calendars as discoverable, filterable collections not just
@@ -112,10 +259,10 @@ export default function CafePage() {
             explore events and schedules without permanently altering their
             primary calendar or losing clarity.
           </BodyText>
-        </NarrowSection>
+        </section>
 
-        {/* 8. Core Features */}
-        <NarrowSection>
+        {/* Core Features */}
+        <section className={narrow}>
           <SectionLabel>Core Features</SectionLabel>
           <SectionHeading>
             Supporting discovery, control, and collaboration without added
@@ -129,10 +276,10 @@ export default function CafePage() {
             calendars for different needs, and share selectively, all while
             keeping the interface readable and calm.
           </BodyText>
-        </NarrowSection>
+        </section>
 
-        {/* 9. Solution */}
-        <NarrowSection>
+        {/* Solution */}
+        <section className={narrow}>
           <SectionLabel>Solution</SectionLabel>
           <SectionHeading>
             A minimal calendar interface built for sharing, filtering, and reuse
@@ -143,13 +290,14 @@ export default function CafePage() {
             events, tasks, and schedules. Beyond basic planning, CAFÉ supports
             discovering calendars, saving schedules for later, filtering
             visibility, and sharing events without overwhelming the main calendar
-            view.
+            view. The goal is to keep everyday planning simple while making more
+            advanced calendar behaviors feel natural and easy to use.
           </BodyText>
-        </NarrowSection>
+        </section>
 
-        {/* 10. Full-width solution images */}
-        <FullWidthImages>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
+        {/* Solution images */}
+        <section className={container}>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5 md:gap-[40px]">
             {[
               "/cafe/S2Oq6f2Y8FZJraL6NUYkiCFFgCI.png",
               "/cafe/rkUl5iemGOWWglwLHKELJ9TJZY.png",
@@ -171,10 +319,10 @@ export default function CafePage() {
               </figure>
             ))}
           </div>
-        </FullWidthImages>
+        </section>
 
-        {/* 11. Current State */}
-        <NarrowSection>
+        {/* Current State */}
+        <section className={narrow}>
           <SectionLabel>Current State</SectionLabel>
           <SectionHeading>
             An evolving concept exploring direction and identity
@@ -186,7 +334,7 @@ export default function CafePage() {
             currently being workshopped to refine its positioning and clarify
             what makes it distinct within the calendar space.
           </BodyText>
-        </NarrowSection>
+        </section>
       </div>
     </main>
   );
