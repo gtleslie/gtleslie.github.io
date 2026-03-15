@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { motion } from "framer-motion";
 
 const fade = {
@@ -42,108 +43,180 @@ const navItems = [
 
 export default function HMIPage() {
   const [activeSection, setActiveSection] = useState<string | null>("context");
+  const [barFill, setBarFill] = useState({ top: 0, height: 20 });
+  const barTrackRef = useRef<HTMLDivElement>(null);
+  const linksRef = useRef<HTMLDivElement>(null);
+  const barIndicatorRef = useRef<HTMLDivElement>(null);
+  const ignoreScrollSpyUntilRef = useRef(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
-    const intersecting = new Set<string>();
-    const updateActive = () => {
-      const active = SECTION_IDS.find((id) => intersecting.has(id)) ?? null;
-      setActiveSection(active);
+    const triggerRatio = 0.3;
+    let rafId: number | null = null;
+
+    const getActive = (): string => {
+      const y = window.scrollY + window.innerHeight * triggerRatio;
+      for (let i = SECTION_IDS.length - 1; i >= 0; i--) {
+        const id = SECTION_IDS[i];
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const r = el.getBoundingClientRect();
+        const top = r.top + window.scrollY;
+        const bottom = r.bottom + window.scrollY;
+        if (top <= y && y < bottom) return id;
+      }
+      for (let i = SECTION_IDS.length - 1; i >= 0; i--) {
+        const id = SECTION_IDS[i];
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        if (top <= y) return id;
+      }
+      return SECTION_IDS[0];
     };
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) intersecting.add(entry.target.id);
-          else intersecting.delete(entry.target.id);
-        });
-        updateActive();
-      },
-      { rootMargin: "-12% 0px -55% 0px", threshold: 0 }
-    );
-    SECTION_IDS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+
+    const tick = () => {
+      if (Date.now() < ignoreScrollSpyUntilRef.current) {
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+      const next = getActive();
+      const track = barTrackRef.current;
+      const linksEl = linksRef.current;
+      const indicator = barIndicatorRef.current;
+      if (track && linksEl && indicator) {
+        const idx = SECTION_IDS.indexOf(next);
+        const link = linksEl.children[idx] as HTMLElement | undefined;
+        if (link) {
+          const trackRect = track.getBoundingClientRect();
+          const linkRect = link.getBoundingClientRect();
+          indicator.style.top = `${linkRect.top - trackRect.top}px`;
+          indicator.style.height = `${linkRect.height}px`;
+        }
+      }
+      flushSync(() => setActiveSection(next));
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, []);
+
+  const handleNavClick = (id: string) => {
+    setActiveSection(id);
+    ignoreScrollSpyUntilRef.current = Date.now() + 1200;
+  };
+
+  useLayoutEffect(() => {
+    const track = barTrackRef.current;
+    const linksEl = linksRef.current;
+    if (!track || !linksEl) return;
+    const measure = () => {
+      const idx = SECTION_IDS.indexOf(activeSection ?? "context");
+      const link = linksEl.children[idx] as HTMLElement | undefined;
+      if (!link) return;
+      const trackRect = track.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+      setBarFill({ top: linkRect.top - trackRect.top, height: linkRect.height });
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(track);
+    return () => ro.disconnect();
+  }, [activeSection]);
 
   return (
     <main className="relative bg-white text-slate-900">
       {/* Sticky section nav — right side, minimal */}
       <nav
         aria-label="Case study sections"
-        className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 lg:block xl:right-8"
+        className="fixed right-6 top-1/2 z-[100] hidden -translate-y-1/2 lg:block xl:right-8"
       >
         <div className="rounded-lg border border-slate-200/80 bg-white/90 px-4 py-3 shadow-sm backdrop-blur-md">
-          <div className="flex flex-col gap-2.5 border-l-2 border-slate-200 pl-3">
-            {navItems.map((item) => {
-              const id = item.href.slice(1);
-              const isActive = activeSection === id;
-              return (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className={`text-[11px] font-medium uppercase tracking-widest transition-colors hover:text-slate-800 ${
-                    isActive ? "font-semibold text-[#CC0000]" : "text-slate-500"
-                  }`}
-                >
-                  {item.label}
-                </a>
-              );
-            })}
+          <div className="flex items-stretch gap-3">
+            {/* Bar: full track + red fill for active section */}
+            <div ref={barTrackRef} className="relative w-px shrink-0 self-stretch bg-slate-200">
+              <div
+                ref={barIndicatorRef}
+                className="absolute left-0 top-0 w-px rounded-full bg-[#CC0000] transition-[top,height] duration-200 ease-out"
+                style={{ top: barFill.top, height: barFill.height }}
+                aria-hidden
+              />
+            </div>
+            <div ref={linksRef} className="flex min-w-0 flex-col gap-2.5">
+              {navItems.map((item) => {
+                const id = item.href.slice(1);
+                const isActive = activeSection === id;
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => handleNavClick(id)}
+                    className={`min-h-[1.25rem] text-[11px] font-medium uppercase tracking-widest transition-colors hover:font-semibold hover:text-[#CC0000] ${
+                      isActive ? "font-semibold text-[#CC0000]" : "text-slate-500"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </div>
       </nav>
 
-      {/* ── HERO + INTRO side by side (dark) ── */}
-      <div className="bg-[#111111] text-white">
-        <section className={`${W} pt-28 pb-16`}>
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
-            <div className="flex-1">
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">Honda HMI Redesign</p>
-                <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">HondaConnect</h1>
-                <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-400">
-                  Redesigning the 4-inch round display of the Honda Rebel 500 into a community-driven, socially connected riding experience.
-                </p>
-              </motion.div>
-              <div className="mt-10 flex flex-wrap gap-x-12 gap-y-4 border-t border-neutral-800 pt-8 text-xs text-neutral-500">
-                <div><span className="font-semibold text-white">Role</span><br />UX/UI Design</div>
-                <div><span className="font-semibold text-white">Team</span><br />Team Bravo — 8</div>
-                <div><span className="font-semibold text-white">Duration</span><br />10 Weeks</div>
-                <div><span className="font-semibold text-white">Scope</span><br />HMI + Companion App</div>
+      {/* Context = hero + challenge (landing counts as context) */}
+      <div id="context">
+        {/* ── HERO ── */}
+        <div className="bg-[#111111] text-white">
+          <section className={`${W} min-h-[70vh] flex flex-col justify-center pt-28 pb-16 sm:pt-36 sm:pb-20`}>
+            <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
+              <div className="flex-1">
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">Honda HMI Redesign</p>
+                  <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">HondaConnect</h1>
+                  <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-400">
+                    Redesigning the 4-inch round display of the Honda Rebel 500 into a community-driven, socially connected riding experience.
+                  </p>
+                </motion.div>
+                <div className="mt-10 flex flex-wrap gap-x-12 gap-y-4 border-t border-neutral-800 pt-8 text-xs text-neutral-500">
+                  <div><span className="font-semibold text-white">Role</span><br />UX/UI Design</div>
+                  <div><span className="font-semibold text-white">Team</span><br />Team Bravo — 8</div>
+                  <div><span className="font-semibold text-white">Duration</span><br />10 Weeks</div>
+                  <div><span className="font-semibold text-white">Scope</span><br />HMI + Companion App</div>
+                </div>
+              </div>
+              <div className="w-full overflow-hidden rounded-2xl lg:w-[55%]">
+                <img src="/hmi/HMISystemRedesignHero.png" alt="HondaConnect HMI System Redesign" className="h-auto w-full" loading="eager" fetchPriority="high" />
               </div>
             </div>
-            <div className="w-full overflow-hidden rounded-2xl lg:w-[55%]">
-              <img src="/hmi/HMISystemRedesignHero.png" alt="HondaConnect HMI System Redesign" className="h-auto w-full" loading="eager" fetchPriority="high" />
+          </section>
+        </div>
+
+        {/* 01 — The Challenge */}
+        <section className={`${W} py-20 bg-white text-slate-900`}>
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">01 — Context</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">The Challenge</h2>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-500">
+              We redesigned the HMI for the Honda Rebel 500 to be more community and new rider oriented through both new and improved features. Our mission: connecting riders in a stronger community. Our target audience: new rider and college age, female riders.
+            </p>
+          </R>
+          <R className="mt-12">
+            <div className="mx-auto max-w-[720px]">
+              <Img src="/hmi/CurrentHondaLCDScreen.png" alt="Current Honda Rebel 500 LCD cluster" />
+              <p className="mt-3 text-center text-xs text-slate-400">
+                Current production Honda Rebel 500 LCD cluster — starting point for the redesign.
+              </p>
             </div>
-          </div>
+          </R>
         </section>
       </div>
-
-      {/* ══════════════════════════════════════════
-          ACT 1 — CONTEXT + VISION
-      ══════════════════════════════════════════ */}
-      <section id="context" className={`${W} py-20`}>
-        <R>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">01 — Context</p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">The Challenge</h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-500">
-            We redesigned the HMI for the Honda Rebel 500 to be more community and new rider oriented through both new and improved features. Our mission: connecting riders in a stronger community. Our target audience: new rider and college age, female riders.
-          </p>
-        </R>
-        <R className="mt-12">
-          <div className="mx-auto max-w-[720px]">
-            <Img src="/hmi/CurrentHondaLCDScreen.png" alt="Current Honda Rebel 500 LCD cluster" />
-            <p className="mt-3 text-center text-xs text-slate-400">
-              Current production Honda Rebel 500 LCD cluster — starting point for the redesign.
-            </p>
-          </div>
-        </R>
-      </section>
 
       {/* Vision — Honda Red band */}
       <section id="vision" className="bg-[#CC0000] py-24 text-white">
@@ -156,6 +229,9 @@ export default function HMIPage() {
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/70">
               Seamless app + HMI connection that supports the ride journey: before, during, and after. Trip planning, ride sharing, and real time social features flow between your phone and the motorcycle display.
             </p>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/80">
+              We wanted to include the blue sky features we came up with: Pack Mode, Request Assistance, Community Heatmap, and Bike Bump. Each lives on the HMI, the app, or both — and together they turn the cluster into a social compass for the ride.
+            </p>
           </R>
           <R className="mt-14">
             <div className="grid gap-px sm:grid-cols-3">
@@ -167,6 +243,25 @@ export default function HMIPage() {
                 <div key={phase.label} className="bg-white/10 p-6 backdrop-blur-sm first:rounded-l-xl last:rounded-r-xl">
                   <p className="text-2xl font-bold tracking-tight">{phase.label}</p>
                   <p className="mt-2 text-sm leading-relaxed text-white/60">{phase.desc}</p>
+                </div>
+              ))}
+            </div>
+          </R>
+          <R className="mt-14">
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                { icon: "/hmi/PackModeIcon.svg", t: "Pack Mode", p: "HMI", d: "Social compass and nav syncing across a group." },
+                { icon: "/hmi/HeatMapIcon.svg", t: "Community Heatmap", p: "APP", d: "Live map of nearby bikers, events, and hotspots." },
+                { icon: "/hmi/RequestAssitenceIcon.svg", t: "Request Assistance", p: "HMI & APP", d: "Built in safety for quick help on the road." },
+                { icon: "/hmi/BikeBumpIcon.svg", t: "Bike Bump", p: "APP → HMI", d: "Tap to send a friend request via NFC." },
+              ].map((f) => (
+                <div key={f.t} className="flex gap-4 rounded-xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm">
+                  <img src={f.icon} alt="" className="h-7 w-7 shrink-0 brightness-0 invert" />
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-white/60">{f.p}</p>
+                    <h4 className="text-base font-semibold text-white">{f.t}</h4>
+                    <p className="mt-1 text-sm leading-relaxed text-white/70">{f.d}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -329,35 +424,6 @@ export default function HMIPage() {
         </div>
       </section>
 
-      {/* Four Pillars */}
-      <section className={`${W} py-20`}>
-        <R>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Four Pillars</h2>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">
-            Our blue sky features: concepts we wanted to integrate into the HMI, the app, or both. Each pillar is labeled by where it lives — HMI, App, HMI &amp; App, or App → HMI.
-          </p>
-        </R>
-        <R className="mt-10">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              { icon: "/hmi/PackModeIcon.svg", t: "Pack Mode", p: "HMI", d: "Social compass and nav syncing across a group." },
-              { icon: "/hmi/HeatMapIcon.svg", t: "Community Heatmap", p: "APP", d: "Live map of nearby bikers, events, and hotspots." },
-              { icon: "/hmi/RequestAssitenceIcon.svg", t: "Request Assistance", p: "HMI & APP", d: "Built in safety for quick help on the road." },
-              { icon: "/hmi/BikeBumpIcon.svg", t: "Bike Bump", p: "APP → HMI", d: "Tap to send a friend request via NFC." },
-            ].map((f) => (
-              <div key={f.t} className="flex gap-4 rounded-xl border border-slate-200 p-6">
-                <img src={f.icon} alt="" className="h-7 w-7 shrink-0" />
-                <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">{f.p}</p>
-                  <h4 className="text-base font-semibold">{f.t}</h4>
-                  <p className="mt-1 text-xs leading-relaxed text-slate-500">{f.d}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </R>
-      </section>
-
       {/* Storyboards — compact 2x2 */}
       <section className={`${W} pb-20`}>
         <R>
@@ -414,7 +480,7 @@ export default function HMIPage() {
         </R>
       </section>
 
-      {/* Mid-Fi — HMI first, then app, plus focused iterations */}
+      {/* Mid-Fi — HMIs first (all sub-HMIs), then separate App section below */}
       <section id="mid-fidelity" className="bg-[#111111] py-20 text-white">
         <div className={W}>
           <R>
@@ -425,10 +491,12 @@ export default function HMIPage() {
             </p>
           </R>
 
-          {/* HMI mid-fi core screens */}
+          {/* HMIs — all cluster sub-sections live under this label */}
           <R className="mt-14">
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">HMI Dashboard</p>
-            <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-7">
+            <p className="mb-8 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">HMIs</p>
+          </R>
+          <R className="mt-2">
+            <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-6">
               {[
                 "/hmi/HMImidfi1.png",
                 "/hmi/HMImidfi2.png",
@@ -436,7 +504,6 @@ export default function HMIPage() {
                 "/hmi/HMImidfi4.png",
                 "/hmi/HMImidfi5.png",
                 "/hmi/HMImidfi6.png",
-                "/hmi/HMImidfi7.png",
               ].map((s) => (
                 <figure key={s} className="overflow-hidden rounded-xl">
                   <img
@@ -470,7 +537,7 @@ export default function HMIPage() {
 
           {/* HMI iteration clusters */}
           <R className="mt-14">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Map Layout Iterations</p>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Map layout</p>
             <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-5">
               {["/hmi/2ndBatch/HMImapmid1.png","/hmi/2ndBatch/HMImapmid2.png","/hmi/2ndBatch/HMImapmid3.png","/hmi/2ndBatch/HMImapmid4.png","/hmi/2ndBatch/HMImapmid5.png"].map((s) => (
                 <figure key={s} className="overflow-hidden rounded-xl">
@@ -481,7 +548,7 @@ export default function HMIPage() {
           </R>
 
           <R className="mt-10">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Carousel Cards</p>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Carousel</p>
             <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-5">
               {["/hmi/2ndBatch/HMImidcel1.png","/hmi/2ndBatch/HMImidcel2.png","/hmi/2ndBatch/HMImidcel3.png","/hmi/2ndBatch/HMImidcel4.png","/hmi/2ndBatch/HMImidcel5.png"].map((s) => (
                 <figure key={s} className="overflow-hidden rounded-xl">
@@ -492,7 +559,7 @@ export default function HMIPage() {
           </R>
 
           <R className="mt-10">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Notification States</p>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Notifications</p>
             <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-5">
               {["/hmi/2ndBatch/HMImidnoti1.png","/hmi/2ndBatch/HMImidnoti2.png","/hmi/2ndBatch/HMImidnoti3.png","/hmi/2ndBatch/HMImidnoti4.png","/hmi/2ndBatch/HMImidnoti5.png"].map((s) => (
                 <figure key={s} className="overflow-hidden rounded-xl">
@@ -503,7 +570,7 @@ export default function HMIPage() {
           </R>
 
           <R className="mt-10">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Request Assistance Variants</p>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Request Assistance</p>
             <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-5">
               {["/hmi/2ndBatch/HMImidrequest0.png","/hmi/2ndBatch/HMIMidrequest1.png","/hmi/2ndBatch/HMIMidrequest2.png","/hmi/2ndBatch/HMImidrequest3.png","/hmi/2ndBatch/HMImidrequest4.png"].map((s) => (
                 <figure key={s} className="overflow-hidden rounded-xl">
@@ -514,7 +581,7 @@ export default function HMIPage() {
           </R>
 
           <R className="mt-10">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Boot-Up Animation</p>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Boot-up</p>
             <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-6">
               {["/hmi/2ndBatch/HMImidani1.png","/hmi/2ndBatch/HMImidani2.png","/hmi/2ndBatch/HMImidani3.png","/hmi/2ndBatch/HMImidani4.png","/hmi/2ndBatch/HMIMidani5.png","/hmi/2ndBatch/HMImidani6.png"].map((s) => (
                 <figure key={s} className="overflow-hidden rounded-xl">
@@ -525,7 +592,7 @@ export default function HMIPage() {
           </R>
 
           <R className="mt-10">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Color System Explorations</p>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Color</p>
             <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-5">
               {["/hmi/2ndBatch/HMImidcolor1.png","/hmi/2ndBatch/HMImidcolor2.png","/hmi/2ndBatch/HMImidcolor3.png","/hmi/2ndBatch/HMImidcolor4.png","/hmi/2ndBatch/HMImidcolor5.png","/hmi/2ndBatch/HMImidcolor6.png","/hmi/2ndBatch/HMImidcolor7.png","/hmi/2ndBatch/HMImidcolor8.png","/hmi/2ndBatch/HMIMIDcolor9.png"].map((s) => (
                 <figure key={s} className="overflow-hidden rounded-xl">
@@ -537,14 +604,14 @@ export default function HMIPage() {
         </div>
       </section>
 
-      {/* Connect App mid-fi — separate section so HMI vs App are clearly different */}
-      <section className="bg-white py-20 text-slate-900">
+      {/* App — separate from HMIs, same mid-fidelity stage */}
+      <section className="border-t border-slate-200 bg-white py-20 text-slate-900">
         <div className={W}>
           <R>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">04 — The App</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">HondaConnect App — Mid Fidelity</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">04 — App</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">HondaConnect App</h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">
-              Mid fidelity screens for the companion app that pairs with the HMI. Riders plan routes, discover events, and stay connected before and after the ride.
+              Mid fidelity for the companion app. Same iteration stage as the HMIs above; riders plan routes, discover events, and stay connected before and after the ride.
             </p>
           </R>
           <R className="mt-10">
