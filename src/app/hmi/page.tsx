@@ -3,907 +3,563 @@
 import { motion } from "framer-motion";
 
 const fade = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-function Reveal({ children, className }: { children: React.ReactNode; className?: string }) {
+function R({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <motion.div
-      variants={fade}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      className={className}
-    >
+    <motion.div variants={fade} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} className={className}>
       {children}
     </motion.div>
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
+function Img({ src, alt }: { src: string; alt: string }) {
   return (
-    <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
-      {children}
-    </p>
-  );
-}
-
-function Headline({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="mt-4 text-5xl font-bold leading-[1.05] tracking-tighter text-slate-900 dark:text-white sm:text-7xl lg:text-8xl">
-      {children}
-    </h2>
-  );
-}
-
-function Narrative({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="mt-8 max-w-3xl text-xl leading-relaxed text-slate-500 dark:text-slate-400">
-      {children}
-    </p>
-  );
-}
-
-function FullImage({ src, alt, rounded = true }: { src: string; alt: string; rounded?: boolean }) {
-  return (
-    <figure className={`overflow-hidden ${rounded ? "rounded-2xl" : ""}`}>
-      <img
-        src={src}
-        alt={alt}
-        className="h-auto w-full"
-        loading="lazy"
-        style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
-      />
+    <figure className="overflow-hidden rounded-xl">
+      <img src={src} alt={alt} className="h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
     </figure>
   );
 }
 
+const W = "mx-auto max-w-[1200px] px-6 md:px-12";
+
 export default function HMIPage() {
   return (
-    <main className="bg-white dark:bg-slate-950">
+    <main className="bg-white text-slate-900">
 
-      {/* ═══════════════════════════════════════════════════
-          HERO — Clean image
-      ═══════════════════════════════════════════════════ */}
-      <section className="w-full">
-        <img
-          src="/hmi/HMISystemRedesignHero.png"
-          alt="HondaConnect HMI System Redesign"
-          className="h-auto w-full"
-          loading="eager"
-          fetchPriority="high"
-        />
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          PROJECT HEADER + META
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-20">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-          >
-            <p className="text-sm font-medium uppercase tracking-[0.25em] text-slate-400">
-              Honda HMI Redesign
-            </p>
-            <h1 className="mt-4 text-6xl font-bold leading-[0.95] tracking-tighter text-slate-900 dark:text-white sm:text-8xl lg:text-9xl">
-              Honda
-              <br />
-              Connect
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-500 dark:text-slate-400">
-              Redesigning the 4-inch round display of the Honda Rebel 500 into a
-              community-driven, socially connected riding experience.
-            </p>
-          </motion.div>
-          <Reveal>
-            <div className="mt-16 flex flex-wrap gap-x-16 gap-y-6 border-b border-slate-200 pb-12 text-sm text-slate-500 dark:border-slate-800 dark:text-slate-400">
-              <div><span className="font-medium text-slate-900 dark:text-white">Role</span><br />UX/UI Design</div>
-              <div><span className="font-medium text-slate-900 dark:text-white">Team</span><br />Team Bravo — 8 Members</div>
-              <div><span className="font-medium text-slate-900 dark:text-white">Course</span><br />SDES 495 + UXDG 315</div>
-              <div><span className="font-medium text-slate-900 dark:text-white">Duration</span><br />10 Weeks</div>
-              <div><span className="font-medium text-slate-900 dark:text-white">Scope</span><br />HMI + Companion App</div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          01 — THE CONTEXT
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>01 — Introduction</SectionLabel>
-            <Headline>The Context</Headline>
-            <Narrative>
-              We redesigned the HMI for the Honda Rebel 500 to be more community
-              and new-rider oriented through both new and improved features. Our
-              mission: connecting riders in a stronger community. Our target
-              audience: new rider + college-age, female riders.
-            </Narrative>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          THE VISION
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>The Vision</SectionLabel>
-            <Headline>
-              A Social Compass
-              <br />
-              for Motorcycles
-            </Headline>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Dual Systems */}
-      <section className="pb-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Dual Systems</SectionLabel>
-            <h3 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-              App + HMI Continuity
-            </h3>
-            <Narrative>
-              Seamless app + HMI connection that supports the ride journey:
-              before, during, and after. Trip planning, ride sharing, and
-              real-time social features flow between your phone and the
-              motorcycle display.
-            </Narrative>
-          </Reveal>
-          <Reveal className="mt-16">
-            <FullImage src="/hmi/HMICard.png" alt="HMI + App dual system overview" />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          02 — DISCOVERY
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>02 — Discovery</SectionLabel>
-            <Headline>Research</Headline>
-            <div className="mt-12 flex flex-wrap gap-16">
-              <div>
-                <p className="text-6xl font-bold tracking-tighter text-slate-900 dark:text-white">5</p>
-                <p className="mt-2 text-lg text-slate-500">Participants</p>
-              </div>
-              <div>
-                <p className="text-6xl font-bold tracking-tighter text-slate-900 dark:text-white">130+</p>
-                <p className="mt-2 text-lg text-slate-500">Data Points</p>
+      {/* ── HERO + INTRO side by side (dark) ── */}
+      <div className="bg-[#111111] text-white">
+        <section className={`${W} pt-28 pb-16`}>
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
+            <div className="flex-1">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">Honda HMI Redesign</p>
+                <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">HondaConnect</h1>
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-400">
+                  Redesigning the 4-inch round display of the Honda Rebel 500 into a community-driven, socially connected riding experience.
+                </p>
+              </motion.div>
+              <div className="mt-10 flex flex-wrap gap-x-12 gap-y-4 border-t border-neutral-800 pt-8 text-xs text-neutral-500">
+                <div><span className="font-semibold text-white">Role</span><br />UX/UI Design</div>
+                <div><span className="font-semibold text-white">Team</span><br />Team Bravo — 8</div>
+                <div><span className="font-semibold text-white">Duration</span><br />10 Weeks</div>
+                <div><span className="font-semibold text-white">Scope</span><br />HMI + Companion App</div>
               </div>
             </div>
-          </Reveal>
-          <Reveal className="mt-20">
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                { title: "Physical Controls → Digital Navigation", desc: "The interface must match the physical input handlebar layout." },
-                { title: "Glanceable Information", desc: "Critical data must remain large, central, and easy to read while riding." },
-                { title: "Simple Navigation", desc: "Riders prefer turn-by-turn arrows and minimal menu depth." },
-                { title: "Notification Hierarchy", desc: "Alerts and messages should appear in a dedicated status zone." },
-              ].map((item) => (
-                <div key={item.title} className="rounded-2xl border border-slate-200 p-6 dark:border-slate-800">
-                  <h4 className="text-lg font-semibold text-slate-900 dark:text-white">{item.title}</h4>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-500">{item.desc}</p>
-                </div>
-              ))}
+            <div className="w-full overflow-hidden rounded-2xl lg:w-[55%]">
+              <img src="/hmi/HMISystemRedesignHero.png" alt="HondaConnect HMI System Redesign" className="h-auto w-full" loading="eager" fetchPriority="high" />
             </div>
-          </Reveal>
-        </div>
+          </div>
+        </section>
+      </div>
+
+      {/* ══════════════════════════════════════════
+          ACT 1 — CONTEXT + VISION
+      ══════════════════════════════════════════ */}
+      <section className={`${W} py-20`}>
+        <R>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">01 — Context</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">The Challenge</h2>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-500">
+            We redesigned the HMI for the Honda Rebel 500 to be more community and new-rider oriented through both new and improved features. Our mission: connecting riders in a stronger community. Our target audience: new rider + college-age, female riders.
+          </p>
+        </R>
+        <R className="mt-12">
+          <Img src="/hmi/CurrentRebel.png" alt="Current Honda Rebel 500" />
+        </R>
       </section>
 
-      {/* Dealership Visits */}
-      <section className="pb-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Dealership Visits</SectionLabel>
-            <div className="mt-8 grid gap-12 sm:grid-cols-2">
-              <div>
-                <h4 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-                  Savannah HD Class Trip
-                </h4>
-                <Narrative>
-                  Showed that riders prioritize simple, glanceable displays with
-                  essential information. This reinforced the need for minimal
-                  distraction in motorcycle HMI design.
-                </Narrative>
-              </div>
-              <div>
-                <h4 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-                  Honda Team Trip
-                </h4>
-                <Narrative>
-                  Got a feel for the ergonomics of the bike and how it affects
-                  placement and content of the HMI system specifically on the
-                  Rebel 500 and 1100.
-                </Narrative>
-              </div>
-            </div>
-          </Reveal>
-          <Reveal className="mt-16">
-            <FullImage src="/hmi/HarleyFieldtrip.png" alt="Dealership field trip" />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* User Space */}
-      <section className="pb-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>User Space</SectionLabel>
-            <Headline>The Disconnect</Headline>
-            <Narrative>
-              New riders face isolation, lack of confidence, and fear — while
-              existing biker communities rely on scattered forums, word-of-mouth,
-              and informal groups. There&apos;s a gap between wanting to connect and
-              having the tools to do so.
-            </Narrative>
-          </Reveal>
-          <Reveal className="mt-16">
-            <FullImage src="/hmi/Currentuserspace.png" alt="User space analysis — new rider vs existing community" />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Real Riders — Quotes */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Real Riders</SectionLabel>
-            <Headline>Insight</Headline>
-          </Reveal>
-          <Reveal className="mt-20">
-            <div className="grid gap-8 sm:grid-cols-3">
-              {[
-                "I think it would be kind of cool to just pop up. They'd just go out for a ride and suddenly you appear. I'd be ecstatic to see my buddy just come out of nowhere.",
-                "It can be something as simple as riding on the highway and another biker passes, and suddenly you kind of group together. If you happen to take the same exit and stop at the same gas station, you're friends forever.",
-                "I've been on rides for 70 plus people, and now I know most of them by name. That's kind of how I made friends there.",
-              ].map((quote) => (
-                <blockquote
-                  key={quote.slice(0, 20)}
-                  className="rounded-2xl border border-slate-200 p-8 text-lg italic leading-relaxed text-slate-600 dark:border-slate-800 dark:text-slate-400"
-                >
-                  &ldquo;{quote}&rdquo;
-                </blockquote>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* The Opportunity */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>The Opportunity</SectionLabel>
-            <Headline>
-              No universal, real-time platform
-              connects riders for spontaneous
-              meetups and safety support
-            </Headline>
-            <Narrative>
-              To transform riding from an isolated experience to a connected
-              community.
-            </Narrative>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* How Might We */}
-      <section className="pb-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>How Might We</SectionLabel>
-            <blockquote className="mt-8 max-w-4xl text-3xl font-medium leading-snug tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
-              &ldquo;How might we redesign the Honda Rebel 500 HMI and mobile
-              ecosystem to transform the riding experience from a solitary
-              mechanical task into an intuitive, community-driven journey that
-              empowers college-age female riders to feel safe, confident, and
-              socially connected?&rdquo;
-            </blockquote>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          TRANSITION — Discovery → Design
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <p className="text-xl text-slate-500 dark:text-slate-400">
-              What does our research and discovery mean visually?
-            </p>
-            <h2 className="mt-6 text-5xl font-bold tracking-tighter text-slate-900 dark:text-white sm:text-7xl lg:text-8xl">
-              Discovery → Design
+      {/* Vision — Honda Red band */}
+      <section className="bg-[#CC0000] py-24 text-white">
+        <div className={W}>
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">The Vision</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-5xl">
+              A Social Compass<br />for Motorcycles
             </h2>
-          </Reveal>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/70">
+              Seamless app + HMI connection that supports the ride journey: before, during, and after. Trip planning, ride sharing, and real-time social features flow between your phone and the motorcycle display.
+            </p>
+          </R>
+          <R className="mt-14">
+            <div className="grid gap-px sm:grid-cols-3">
+              {[
+                { label: "Before", desc: "Plan routes, find riders, set destinations from the companion app." },
+                { label: "During", desc: "Real-time navigation, pack mode, and glanceable alerts on the HMI." },
+                { label: "After", desc: "Share ride recaps, connect with new riders, and track stats." },
+              ].map((phase) => (
+                <div key={phase.label} className="bg-white/10 p-6 backdrop-blur-sm first:rounded-l-xl last:rounded-r-xl">
+                  <p className="text-2xl font-bold tracking-tight">{phase.label}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-white/60">{phase.desc}</p>
+                </div>
+              ))}
+            </div>
+          </R>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════
-          03 — USER PERSONA
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>03 — Design</SectionLabel>
-            <Headline>User Persona</Headline>
-          </Reveal>
-          <Reveal className="mt-20">
-            <div className="grid items-start gap-16 lg:grid-cols-2">
+      {/* ══════════════════════════════════════════
+          ACT 2 — RESEARCH
+      ══════════════════════════════════════════ */}
+      <section className="bg-slate-50 py-20">
+        <div className={W}>
+          <R>
+            <div className="flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <blockquote className="text-2xl font-medium italic leading-snug tracking-tight text-slate-700 dark:text-slate-300 sm:text-3xl">
-                  &ldquo;I bought this bike for freedom, but riding alone feels
-                  lonely, and sometimes unsafe.&rdquo;
-                </blockquote>
-                <div className="mt-12 space-y-6 text-lg text-slate-500 dark:text-slate-400">
-                  <div>
-                    <p className="font-semibold text-slate-900 dark:text-white">Pain Points</p>
-                    <p>Little Representation · Isolation Fear · The Disconnect</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-slate-900 dark:text-white">Goals</p>
-                    <p>Confidence · Connection · Content</p>
-                  </div>
-                  <div className="space-y-1 text-base">
-                    <p><span className="font-medium text-slate-900 dark:text-white">Name:</span> Jenna Smith</p>
-                    <p><span className="font-medium text-slate-900 dark:text-white">Age:</span> 23 Years old</p>
-                    <p><span className="font-medium text-slate-900 dark:text-white">Occupation:</span> Barista</p>
-                    <p><span className="font-medium text-slate-900 dark:text-white">Riding Experience:</span> 5 months</p>
-                  </div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">02 — Discovery</p>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Research</h2>
+              </div>
+              <div className="flex gap-10">
+                <div className="text-right">
+                  <p className="text-5xl font-bold tracking-tight">5</p>
+                  <p className="mt-1 text-xs uppercase tracking-widest text-slate-400">Participants</p>
+                </div>
+                <div className="h-14 w-px bg-slate-300" />
+                <div className="text-right">
+                  <p className="text-5xl font-bold tracking-tight">130<span className="text-[#CC0000]">+</span></p>
+                  <p className="mt-1 text-xs uppercase tracking-widest text-slate-400">Data Points</p>
                 </div>
               </div>
-              <FullImage src="/hmi/Userpersonajenna.png" alt="User persona — Jenna Smith" />
             </div>
-          </Reveal>
+          </R>
+
+          <R className="mt-14">
+            <div className="grid gap-px bg-slate-200 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { n: "01", t: "Physical → Digital", d: "Interface must match handlebar input layout." },
+                { n: "02", t: "Glanceable Info", d: "Critical data stays large, central, readable." },
+                { n: "03", t: "Simple Navigation", d: "Turn-by-turn arrows, minimal menu depth." },
+                { n: "04", t: "Notification Hierarchy", d: "Alerts in a dedicated status zone." },
+              ].map((c) => (
+                <div key={c.t} className="bg-slate-50 p-6">
+                  <p className="text-3xl font-bold tracking-tight text-slate-200">{c.n}</p>
+                  <h4 className="mt-3 text-sm font-semibold tracking-tight">{c.t}</h4>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-500">{c.d}</p>
+                </div>
+              ))}
+            </div>
+          </R>
+
+          <R className="mt-14">
+            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Field Research</p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="group relative overflow-hidden rounded-xl">
+                <Img src="/hmi/HarleyFieldtrip.png" alt="Savannah HD field trip" />
+                <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/30 to-transparent p-6">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-white/50">Field Trip 01</p>
+                  <h4 className="mt-1 text-lg font-bold text-white">Savannah HD</h4>
+                  <p className="mt-1 text-xs leading-relaxed text-white/70">Riders prioritize simple, glanceable displays. Reinforced minimal distraction in HMI design.</p>
+                </div>
+              </div>
+              <div className="group relative overflow-hidden rounded-xl">
+                <Img src="/hmi/CurrentRebel.png" alt="Honda team trip" />
+                <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/30 to-transparent p-6">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-white/50">Field Trip 02</p>
+                  <h4 className="mt-1 text-lg font-bold text-white">Honda Team Trip</h4>
+                  <p className="mt-1 text-xs leading-relaxed text-white/70">Hands-on ergonomic feel of the Rebel 500 and 1100, informing HMI placement and content.</p>
+                </div>
+              </div>
+            </div>
+          </R>
+
+          <R className="mt-14">
+            <h3 className="text-2xl font-bold tracking-tight">The Disconnect</h3>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">
+              New riders face isolation, lack of confidence, and fear — while existing biker communities rely on scattered forums, word-of-mouth, and informal groups.
+            </p>
+          </R>
+          <R className="mt-10">
+            <Img src="/hmi/Currentuserspace.png" alt="User space analysis" />
+          </R>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════
-          KEY FEATURES
-      ═══════════════════════════════════════════════════ */}
-      <section className="pb-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Key Features</SectionLabel>
-            <Headline>Four Pillars</Headline>
-          </Reveal>
-          <Reveal className="mt-20">
-            <div className="grid gap-8 sm:grid-cols-2">
+      {/* Rider Quotes */}
+      <section className="bg-[#111111] py-20 text-white">
+        <div className={W}>
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">What Riders Said</p>
+            <div className="mt-10 space-y-10">
               {[
-                { icon: "/hmi/PackModeIcon.svg", title: "Pack Mode", platform: "HMI", desc: "A social feature that transforms your dashboard: social compass and nav syncing." },
-                { icon: "/hmi/HeatMapIcon.svg", title: "Community Heatmap", platform: "APP", desc: "A live map showing nearby bikers, events, hotspots, routes, and gathering hubs." },
-                { icon: "/hmi/RequestAssitenceIcon.svg", title: "Request Assistance", platform: "HMI & APP", desc: "A built-in safety feature designed to provide quick help for riders." },
-                { icon: "/hmi/BikeBumpIcon.svg", title: "Bike Bump", platform: "APP → HMI", desc: "Nearby riders tap a bike's HMI to instantly send a friend request and connect." },
-              ].map((feat) => (
-                <div key={feat.title} className="rounded-2xl border border-slate-200 p-8 dark:border-slate-800">
-                  <div className="flex items-center gap-4">
-                    <img src={feat.icon} alt="" className="h-8 w-8" />
+                { q: "I think it would be kind of cool to just pop up. They'd just go out for a ride and suddenly you appear.", who: "Rider Interview #2" },
+                { q: "It can be something as simple as riding on the highway and another biker passes, and suddenly you kind of group together.", who: "Rider Interview #4" },
+                { q: "I've been on rides for 70 plus people, and now I know most of them by name.", who: "Rider Interview #5" },
+              ].map((item, i) => (
+                <R key={i}>
+                  <div className="flex gap-6">
+                    <span className="mt-1 text-3xl font-bold leading-none text-[#CC0000]">&ldquo;</span>
                     <div>
-                      <h4 className="text-xl font-semibold text-slate-900 dark:text-white">{feat.title}</h4>
-                      <p className="text-xs font-medium uppercase tracking-wider text-slate-400">{feat.platform}</p>
+                      <p className="text-lg font-medium leading-relaxed text-neutral-200">{item.q}</p>
+                      <p className="mt-3 text-xs uppercase tracking-widest text-neutral-600">— {item.who}</p>
                     </div>
                   </div>
-                  <p className="mt-4 text-base leading-relaxed text-slate-500">{feat.desc}</p>
-                </div>
+                </R>
               ))}
             </div>
-          </Reveal>
+          </R>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════
-          STORYBOARDS
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Storyboards</SectionLabel>
-            <Headline>Mapping the Experience</Headline>
-            <Narrative>
-              Four user scenarios that ground each feature in a real riding moment — from feeling unsafe at night to spontaneously meeting fellow riders.
-            </Narrative>
-          </Reveal>
-          <div className="mt-20 space-y-24">
-            {[
-              { title: "Feeling Unsafe", desc: "The rider is riding at night and feels unsafe. Allowing the rider to share their location with a preselected contact, giving the rider peace of mind.", src: "/hmi/FeelingUnsafeStoryboard.png" },
-              { title: "Going About Life", desc: "A user riding alone receives an invite from a rider nearby to join them on a cruise and join their pack.", src: "/hmi/GoingAboutLifeStoryboard.png" },
-              { title: "Planning a Ride", desc: "How a rider would plan a ride with their friend group through the app — creating a route, time, and inviting fellow riders.", src: "/hmi/PlanningARideStoryboard.png" },
-              { title: "Bike Bump", desc: "Making friends with a fellow rider by tapping their phone to the HMI to send a friend request.", src: "/hmi/BikeBumpStoryboard.png" },
-            ].map((board) => (
-              <Reveal key={board.title}>
-                <div className="grid items-center gap-12 lg:grid-cols-[1fr_2fr]">
-                  <div>
-                    <h4 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
-                      {board.title}
-                    </h4>
-                    <p className="mt-4 text-lg leading-relaxed text-slate-500 dark:text-slate-400">
-                      {board.desc}
-                    </p>
-                  </div>
-                  <FullImage src={board.src} alt={`${board.title} storyboard`} />
+      {/* Opportunity — Red accent */}
+      <section className="bg-[#CC0000] py-20 text-white">
+        <div className={W}>
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">The Opportunity</p>
+            <h2 className="mt-3 max-w-3xl text-2xl font-bold tracking-tight sm:text-3xl">
+              No universal, real-time platform connects riders for spontaneous meetups and safety support.
+            </h2>
+          </R>
+        </div>
+      </section>
+
+      {/* HMW */}
+      <section className={`${W} py-20`}>
+        <R>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">How Might We</p>
+          <blockquote className="mt-4 max-w-3xl text-xl font-medium leading-snug tracking-tight sm:text-2xl">
+            &ldquo;How might we redesign the Honda Rebel 500 HMI and mobile ecosystem to transform the riding experience from a solitary mechanical task into an intuitive, community-driven journey?&rdquo;
+          </blockquote>
+        </R>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          ACT 3 — DESIGN
+      ══════════════════════════════════════════ */}
+      <section className="bg-slate-50 py-20">
+        <div className={W}>
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">03 — Design</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">User Persona</h2>
+          </R>
+          <R className="mt-12">
+            <div className="grid items-start gap-12 lg:grid-cols-2">
+              <div>
+                <blockquote className="text-xl font-medium italic leading-snug text-slate-700 sm:text-2xl">
+                  &ldquo;I bought this bike for freedom, but riding alone feels lonely, and sometimes unsafe.&rdquo;
+                </blockquote>
+                <div className="mt-8 space-y-4 text-sm text-slate-500">
+                  <p><span className="font-semibold text-slate-800">Pain Points</span> — Little Representation · Isolation Fear · The Disconnect</p>
+                  <p><span className="font-semibold text-slate-800">Goals</span> — Confidence · Connection · Content</p>
+                  <p><span className="font-medium text-slate-700">Jenna Smith</span> · 23 · Barista · 5 months riding</p>
                 </div>
-              </Reveal>
-            ))}
-          </div>
+              </div>
+              <Img src="/hmi/Userpersonajenna.png" alt="User persona — Jenna Smith" />
+            </div>
+          </R>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════
-          INFORMATION ARCHITECTURE
-      ═══════════════════════════════════════════════════ */}
-      <section className="pb-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>IA Overview</SectionLabel>
-            <Headline>System Flows</Headline>
-            <Narrative>
-              Detailed interaction flows for each core feature — ensuring minimal cognitive load while riding.
-            </Narrative>
-          </Reveal>
-          <div className="mt-20 space-y-16">
-            <Reveal>
-              <h4 className="mb-6 text-xl font-semibold text-slate-900 dark:text-white">
-                Request Assistance Flow
-              </h4>
-              <FullImage src="/hmi/RequestAssistenceFlowLines.png" alt="Request Assistance IA flow" />
-            </Reveal>
-            <Reveal>
-              <h4 className="mb-6 text-xl font-semibold text-slate-900 dark:text-white">
-                Going About Life Flow
-              </h4>
-              <FullImage src="/hmi/GoingAboutLifeIA.png" alt="Going About Life IA flow" />
-            </Reveal>
-            <Reveal>
-              <h4 className="mb-6 text-xl font-semibold text-slate-900 dark:text-white">
-                Bike Bump Flow
-              </h4>
-              <FullImage src="/hmi/BikeBumpIA.png" alt="Bike Bump IA flow" />
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          APP MID-FI
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>App Mid-Fi</SectionLabel>
-            <Headline>Companion App</Headline>
-            <Narrative>
-              The mobile companion brings the HondaConnect ecosystem to your phone — feed, heatmap, pack management, ride planning, request assistance, and profile.
-            </Narrative>
-          </Reveal>
-          <Reveal className="mt-20">
-            <FullImage src="/hmi/App Midfi Feed.png" alt="App mid-fi — Feed and social features" />
-          </Reveal>
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <Reveal>
-              <FullImage src="/hmi/AppMidfiHeat.png" alt="App mid-fi — Heatmap" />
-            </Reveal>
-            <Reveal>
-              <FullImage src="/hmi/AppMidfiPlanningAride1.png" alt="App mid-fi — Planning a ride" />
-            </Reveal>
-            <Reveal>
-              <FullImage src="/hmi/MidfiPlanningaride2.png" alt="App mid-fi — Ride details" />
-            </Reveal>
-            <Reveal>
-              <FullImage src="/hmi/MidfiPlanningaride3.png" alt="App mid-fi — Invite riders" />
-            </Reveal>
-            <Reveal>
-              <FullImage src="/hmi/Midfiprofile.png" alt="App mid-fi — Profile" />
-            </Reveal>
-            <Reveal>
-              <FullImage src="/hmi/MidfiappProfile2.png" alt="App mid-fi — Profile detail" />
-            </Reveal>
-          </div>
-          <div className="mt-16 grid gap-8 sm:grid-cols-2">
-            <Reveal>
-              <FullImage src="/hmi/Appcards1.png" alt="App mid-fi — Cards 1" />
-            </Reveal>
-            <Reveal>
-              <FullImage src="/hmi/Appcards2.png" alt="App mid-fi — Cards 2" />
-            </Reveal>
-          </div>
-          <Reveal className="mt-16">
-            <FullImage src="/hmi/AssistenceAbout.png" alt="App mid-fi — Request Assistance" />
-          </Reveal>
-          <Reveal className="mt-16">
-            <FullImage src="/hmi/MobileAAppAbout.png" alt="App mid-fi — About page" />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          HMI MID-FI
-      ═══════════════════════════════════════════════════ */}
-      <section className="pb-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>HMI Mid-Fi</SectionLabel>
-            <Headline>Dashboard Screens</Headline>
-            <Narrative>
-              Mid-fidelity explorations of the round HMI display — home, navigation, pack mode, vehicle status, and social features.
-            </Narrative>
-          </Reveal>
-          <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Four Pillars */}
+      <section className={`${W} py-20`}>
+        <R>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Four Pillars</h2>
+        </R>
+        <R className="mt-10">
+          <div className="grid gap-4 sm:grid-cols-2">
             {[
-              { src: "/hmi/HMIMid1.png", alt: "HMI Mid-fi — Home" },
-              { src: "/hmi/HMImid2.png", alt: "HMI Mid-fi — Info overlay" },
-              { src: "/hmi/HMIMID3.png", alt: "HMI Mid-fi — Navigation" },
-              { src: "/hmi/HMImid4.png", alt: "HMI Mid-fi — Pack Mode" },
-              { src: "/hmi/HMImid5.png", alt: "HMI Mid-fi — Vehicle Status" },
-              { src: "/hmi/HMIMID6.png", alt: "HMI Mid-fi — Media" },
-              { src: "/hmi/HMImid7.png", alt: "HMI Mid-fi — Social" },
-            ].map((img) => (
-              <Reveal key={img.src}>
-                <FullImage src={img.src} alt={img.alt} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          MID-FI REFINEMENTS
-      ═══════════════════════════════════════════════════ */}
-      <section className="pb-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Mid-Fi Refinements</SectionLabel>
-            <Headline>Iteration</Headline>
-            <Narrative>
-              Refining screen layouts, tachometer placement, information hierarchy, and pack mode interactions through multiple rounds of iteration.
-            </Narrative>
-          </Reveal>
-          <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              "/hmi/HMImidrefinements1.png",
-              "/hmi/HMImidrefinements2.png",
-              "/hmi/HMIMidrefinements3.png",
-              "/hmi/HMImidrefinements4.png",
-              "/hmi/HMIMIDrefinements5.png",
-            ].map((src) => (
-              <Reveal key={src}>
-                <FullImage src={src} alt="HMI mid-fi refinement" />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          ZONING
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Zoning</SectionLabel>
-            <Headline>Screen Architecture</Headline>
-            <Narrative>
-              After multiple iterations during the mid-fi phase, we finalized
-              our zoning structure. Two distinct layouts — a driving layout for the homepage
-              with protected telltales, and a user layout for every other page with flexible content windows.
-            </Narrative>
-          </Reveal>
-          <div className="mt-20 grid gap-12 lg:grid-cols-2">
-            <Reveal>
-              <h4 className="mb-4 text-lg font-semibold text-slate-900 dark:text-white">Driving Layout</h4>
-              <FullImage src="/hmi/DrivingLayoutZoneing.png" alt="Driving layout zoning" />
-            </Reveal>
-            <Reveal>
-              <h4 className="mb-4 text-lg font-semibold text-slate-900 dark:text-white">Other Pages Layout</h4>
-              <FullImage src="/hmi/OtherPagesZoning.png" alt="Other pages zoning" />
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          HIGH-FI — Universal Info + Notifications
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>High Fidelity</SectionLabel>
-            <Headline>The Solution</Headline>
-            <Narrative>
-              With the zoning foundation established, we moved into high-fidelity designs.
-              A universal trip bar remains available across all screens — riders scroll through
-              key ride info using a single control input.
-            </Narrative>
-          </Reveal>
-          <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { src: "/hmi/HMIHighfi1H.png", alt: "High-fi — Home" },
-              { src: "/hmi/HMIHighfi2H.png", alt: "High-fi — Trip Info" },
-              { src: "/hmi/HMIHighfi3H.png", alt: "High-fi — Navigation" },
-              { src: "/hmi/HMIHighfi4H.png", alt: "High-fi — Media" },
-              { src: "/hmi/HMIHighfi5H.png", alt: "High-fi — Fuel & Range" },
-              { src: "/hmi/HMIHIghfi6H.png", alt: "High-fi — Compass" },
-            ].map((img) => (
-              <Reveal key={img.src}>
-                <FullImage src={img.src} alt={img.alt} />
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal className="mt-24">
-            <SectionLabel>Universal Info</SectionLabel>
-            <Narrative>
-              In the current Harley interface, trip information is only accessible on a dedicated page. Our design
-              introduces a universal trip bar that remains available across all screens. Riders can scroll through
-              key ride information using a single control input, allowing trip data to stay visible while on home,
-              navigation, diagnostics, and other pages.
-            </Narrative>
-          </Reveal>
-
-          <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { src: "/hmi/HmiHighfiTrip1.png", alt: "High-fi — Trip screen 1" },
-              { src: "/hmi/HMIHighFiTrip2.png", alt: "High-fi — Trip screen 2" },
-              { src: "/hmi/HMIHighfitrip3.png", alt: "High-fi — Trip screen 3" },
-              { src: "/hmi/HMIHighfitrip4.png", alt: "High-fi — Trip screen 4" },
-              { src: "/hmi/HMIHighfitrip5.png", alt: "High-fi — Trip screen 5" },
-              { src: "/hmi/HMIHighfitrip6Hero.png", alt: "High-fi — Trip hero" },
-            ].map((img) => (
-              <Reveal key={img.src}>
-                <FullImage src={img.src} alt={img.alt} />
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal className="mt-24">
-            <SectionLabel>Notifications</SectionLabel>
-            <Narrative>
-              The notification area also acts as a container for incoming events while riding.
-              Incoming events appear in orange for visual distinction. Calls, alerts, and ride
-              updates appear here without forcing the rider to leave their current screen —
-              keeping the interface focused on the road.
-            </Narrative>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          BEFORE VS AFTER
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Evolution</SectionLabel>
-            <Headline>Before &amp; After</Headline>
-            <Narrative>
-              A direct comparison of where the Honda Rebel 500 HMI started versus
-              where our redesign took it — from a basic mechanical gauge to a
-              socially connected, community-driven dashboard.
-            </Narrative>
-          </Reveal>
-          <div className="mt-20 space-y-24">
-            {[
-              { before: "/hmi/HMIBefore1.png", after: "/hmi/HmiAfter1.png" },
-              { before: "/hmi/HMIBefore2.png", after: "/hmi/HMIAfter2.png" },
-              { before: "/hmi/HMIBefore3.png", after: "/hmi/HMIAfter3.png" },
-              { before: "/hmi/HMIBefore4.png", after: "/hmi/HMI After4.png" },
-            ].map((pair, i) => (
-              <Reveal key={i}>
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div>
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-slate-400">Before</p>
-                    <FullImage src={pair.before} alt={`Before — screen ${i + 1}`} />
-                  </div>
-                  <div>
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-slate-400">After</p>
-                    <FullImage src={pair.after} alt={`After — screen ${i + 1}`} />
-                  </div>
+              { icon: "/hmi/PackModeIcon.svg", t: "Pack Mode", p: "HMI", d: "Social compass and nav syncing across a group." },
+              { icon: "/hmi/HeatMapIcon.svg", t: "Community Heatmap", p: "APP", d: "Live map of nearby bikers, events, and hotspots." },
+              { icon: "/hmi/RequestAssitenceIcon.svg", t: "Request Assistance", p: "HMI & APP", d: "Built-in safety for quick help on the road." },
+              { icon: "/hmi/BikeBumpIcon.svg", t: "Bike Bump", p: "APP → HMI", d: "Tap to send a friend request via NFC." },
+            ].map((f) => (
+              <div key={f.t} className="flex gap-4 rounded-xl border border-slate-200 p-6">
+                <img src={f.icon} alt="" className="h-7 w-7 shrink-0" />
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">{f.p}</p>
+                  <h4 className="text-base font-semibold">{f.t}</h4>
+                  <p className="mt-1 text-xs leading-relaxed text-slate-500">{f.d}</p>
                 </div>
-              </Reveal>
+              </div>
+            ))}
+          </div>
+        </R>
+      </section>
+
+      {/* Storyboards — compact 2x2 */}
+      <section className={`${W} pb-20`}>
+        <R>
+          <h3 className="text-2xl font-bold tracking-tight">User Scenarios</h3>
+        </R>
+        <R className="mt-10">
+          <div className="grid gap-6 sm:grid-cols-2">
+            {[
+              { t: "Feeling Unsafe", src: "/hmi/FeelingUnsafeStoryboard.png" },
+              { t: "Going About Life", src: "/hmi/GoingAboutLifeStoryboard.png" },
+              { t: "Planning a Ride", src: "/hmi/PlanningARideStoryboard.png" },
+              { t: "Bike Bump", src: "/hmi/BikeBumpStoryboard.png" },
+            ].map((s) => (
+              <div key={s.t}>
+                <Img src={s.src} alt={s.t} />
+                <p className="mt-3 text-sm font-semibold">{s.t}</p>
+              </div>
+            ))}
+          </div>
+        </R>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          ACT 4 — BUILD (IA + Mid-Fi)
+      ══════════════════════════════════════════ */}
+      <section className="bg-slate-50 py-20">
+        <div className={W}>
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">04 — Build</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">System Flows</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">Detailed interaction flows for each core feature — ensuring minimal cognitive load while riding.</p>
+          </R>
+          <div className="mt-12 space-y-10">
+            {[
+              { t: "Request Assistance", src: "/hmi/RequestAssistenceFlowLines.png" },
+              { t: "Going About Life", src: "/hmi/GoingAboutLifeIA.png" },
+              { t: "Bike Bump", src: "/hmi/BikeBumpIA.png" },
+            ].map((f) => (
+              <R key={f.t}>
+                <p className="mb-3 text-sm font-semibold">{f.t}</p>
+                <Img src={f.src} alt={`${f.t} flow`} />
+              </R>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════
-          FEATURE DEEP-DIVE — PACK MODE
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Feature Deep-Dive</SectionLabel>
-            <Headline>Pack Mode</Headline>
-            <Narrative>
-              Pack Mode transforms the HMI into a social compass — showing nearby
-              riders, syncing navigation across a group, and allowing spontaneous
-              or planned ride coordination. When activated, the dashboard shifts to
-              display pack member positions, shared waypoints, and group status.
-            </Narrative>
-          </Reveal>
-          <Reveal className="mt-20">
-            <FullImage src="/hmi/HMI PackmodeDetailedLinedFlow2.png" alt="Pack Mode detailed interaction flow" />
-          </Reveal>
-          <Reveal className="mt-16">
-            <FullImage src="/hmi/HeroshotMap.png" alt="Pack Mode — map view with nearby riders" />
-          </Reveal>
-          <Reveal className="mt-16">
-            <FullImage src="/hmi/Heroshotmapnodpad.png" alt="Pack Mode — map view clean" />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          FEATURE DEEP-DIVE — REQUEST ASSISTANCE
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Feature Deep-Dive</SectionLabel>
-            <Headline>Request Assistance</Headline>
-            <Narrative>
-              A built-in safety feature designed to provide quick help for riders.
-              Whether it&apos;s a breakdown, feeling unsafe, or an emergency — the
-              system enables riders to share their location with a preselected
-              contact or call for help through voice commands without taking their
-              hands off the handlebars.
-            </Narrative>
-          </Reveal>
-          <Reveal className="mt-20">
-            <FullImage src="/hmi/RequestAssistenceFlowLines.png" alt="Request Assistance detailed flow" />
-          </Reveal>
-          <Reveal className="mt-16">
-            <FullImage src="/hmi/HMIReciveingInfoiteDetailedLinesFlow.png" alt="Receiving information detailed flow" />
-          </Reveal>
-          <div className="mt-16 grid gap-8 sm:grid-cols-3">
-            <Reveal>
-              <FullImage src="/hmi/HeroShotRequest1.png" alt="Request Assistance — screen 1" />
-            </Reveal>
-            <Reveal>
-              <FullImage src="/hmi/Heroshotrequest2.png" alt="Request Assistance — screen 2" />
-            </Reveal>
-            <Reveal>
-              <FullImage src="/hmi/Heroshotrequest3.png" alt="Request Assistance — screen 3" />
-            </Reveal>
+      {/* Mid-Fi — App + HMI combined */}
+      <section className={`${W} py-20`}>
+        <R>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Mid-Fidelity</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">App companion and round HMI display explorations — feed, heatmap, pack mode, navigation, and social features.</p>
+        </R>
+        <R className="mt-10">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">Companion App</p>
+          <div className="grid gap-3 grid-cols-3 lg:grid-cols-6">
+            {["/hmi/App Midfi Feed.png","/hmi/AppMidfiHeat.png","/hmi/AppMidfiPlanningAride1.png","/hmi/MidfiPlanningaride2.png","/hmi/Midfiprofile.png","/hmi/MidfiappProfile2.png"].map((s) => (
+              <Img key={s} src={s} alt="App mid-fi" />
+            ))}
           </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          FEATURE DEEP-DIVE — COMMUNITY HEATMAP
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Feature Deep-Dive</SectionLabel>
-            <Headline>Community Heatmap</Headline>
-            <Narrative>
-              A live map showing nearby bikers, events, hotspots, popular routes,
-              and gathering hubs. The heatmap helps riders discover their local
-              riding community and find places where other riders are active —
-              turning the app into a social discovery tool.
-            </Narrative>
-          </Reveal>
-          <Reveal className="mt-20">
-            <FullImage src="/hmi/Heatmapcardslinesdepiction.png" alt="Community Heatmap — card and flow depiction" />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          FEATURE DEEP-DIVE — BIKE BUMP
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Feature Deep-Dive</SectionLabel>
-            <Headline>Bike Bump</Headline>
-            <Narrative>
-              Nearby riders can tap their phone to the motorcycle&apos;s HMI to
-              instantly send a friend request and connect. Bike Bump bridges the
-              gap between physical encounters and digital community — making it
-              effortless to turn a chance meeting at a gas station into a lasting
-              riding connection.
-            </Narrative>
-          </Reveal>
-          <Reveal className="mt-20">
-            <FullImage src="/hmi/HeroshotBikebump.png" alt="Bike Bump — hero interaction" />
-          </Reveal>
-          <Reveal className="mt-16">
-            <FullImage src="/hmi/BikeBumpInteraction.png" alt="Bike Bump — interaction flow" />
-          </Reveal>
-          <div className="mt-16 grid gap-8 sm:grid-cols-2">
-            <Reveal>
-              <FullImage src="/hmi/BikeBumpCard001.png" alt="Bike Bump — card view 1" />
-            </Reveal>
-            <Reveal>
-              <FullImage src="/hmi/BikeBumpCard002.png" alt="Bike Bump — card view 2" />
-            </Reveal>
+        </R>
+        <R className="mt-14">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">HMI Dashboard</p>
+          <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-7">
+            {["/hmi/HMIMid1.png","/hmi/HMImid2.png","/hmi/HMIMID3.png","/hmi/HMImid4.png","/hmi/HMImid5.png","/hmi/HMIMID6.png","/hmi/HMImid7.png"].map((s) => (
+              <Img key={s} src={s} alt="HMI mid-fi" />
+            ))}
           </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          HMI + SCREEN OVERVIEW
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>System Overview</SectionLabel>
-            <Headline>HMI + App Ecosystem</Headline>
-            <Narrative>
-              The complete HondaConnect ecosystem — a seamless connection between
-              the motorcycle&apos;s round HMI display and the companion mobile app,
-              supporting the entire ride journey: before, during, and after.
-            </Narrative>
-          </Reveal>
-          <Reveal className="mt-20">
-            <FullImage src="/hmi/HMI plus Screen.png" alt="HMI plus companion app — full ecosystem view" />
-          </Reveal>
-          <Reveal className="mt-16">
-            <FullImage src="/hmi/BikewithLgo.png" alt="Honda Rebel with HondaConnect branding" />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          DESIGN TO DEVELOPMENT HANDOFF
-      ═══════════════════════════════════════════════════ */}
-      <section className="pb-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Development Handoff</SectionLabel>
-            <Headline>Design → Dev</Headline>
-          </Reveal>
-          <Reveal className="mt-16">
-            <FullImage src="/hmi/Design to Development.png" alt="Design to development handoff" />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          LIVE PROTOTYPE
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-64">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-16">
-          <Reveal>
-            <SectionLabel>Live Prototype</SectionLabel>
-            <Headline>Brought to Life</Headline>
-            <Narrative>
-              To validate the design in a real-world context, our team built a
-              working prototype using Arduino hardware and Adobe Flash to drive
-              the round HMI display. A developer on the team took it on an
-              actual motorcycle ride through Savannah, recording the full
-              experience with a GoPro. The prototype simulated live navigation,
-              real-time speed data, turn-by-turn directions, and animated
-              transitions — all running on the physical display while riding a
-              real route. Seeing the interface respond to actual road conditions,
-              turns, and speed changes confirmed that our design decisions held
-              up beyond the screen.
-            </Narrative>
-          </Reveal>
-          <div className="mt-20 grid gap-8 sm:grid-cols-3">
-            <Reveal>
-              <FullImage src="/hmi/IMG_9360.jpeg" alt="Prototype running live navigation with simulated road footage" />
-            </Reveal>
-            <Reveal>
-              <FullImage src="/hmi/IMG_9392.jpeg" alt="Close-up of the physical HMI display showing real-time navigation" />
-            </Reveal>
-            <Reveal>
-              <FullImage src="/hmi/IMG_9373.jpeg" alt="Live prototype setup with round HMI display and GoPro road view" />
-            </Reveal>
+        </R>
+        <R className="mt-14">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">Refinements</p>
+          <div className="grid gap-3 grid-cols-3 sm:grid-cols-5">
+            {["/hmi/HMImidrefinements1.png","/hmi/HMImidrefinements2.png","/hmi/HMIMidrefinements3.png","/hmi/HMImidrefinements4.png","/hmi/HMIMIDrefinements5.png"].map((s) => (
+              <Img key={s} src={s} alt="HMI refinement" />
+            ))}
           </div>
+        </R>
+      </section>
+
+      {/* Zoning */}
+      <section className={`${W} pb-20`}>
+        <R>
+          <h3 className="text-2xl font-bold tracking-tight">Screen Architecture</h3>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-500">Two layouts — driving (protected telltales) and user (flexible content windows).</p>
+        </R>
+        <R className="mx-auto mt-8 grid max-w-[800px] gap-6 sm:grid-cols-2">
+          <div>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">Driving</p>
+            <Img src="/hmi/DrivingLayoutZoneing.png" alt="Driving layout" />
+          </div>
+          <div>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">Other Pages</p>
+            <Img src="/hmi/OtherPagesZoning.png" alt="Other pages layout" />
+          </div>
+        </R>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          ACT 5 — HIGH-FI SOLUTION
+      ══════════════════════════════════════════ */}
+      <section className="bg-[#111111] py-20 text-white">
+        <div className={W}>
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">05 — Solution</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">High Fidelity</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-400">Universal trip bar across all screens. Riders scroll key ride info using a single control input.</p>
+          </R>
+          <R className="mt-14">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Dashboard</p>
+            <div className="flex flex-col items-start gap-4 sm:flex-row">
+              <div className="w-full shrink-0 sm:w-[38%]">
+                <Img src="/hmi/HMIHighfi1H.png" alt="High-fi hero — dashboard" />
+              </div>
+              <div className="grid flex-1 gap-3 grid-cols-3 sm:grid-cols-3 lg:grid-cols-3">
+                {["/hmi/HMIHighfi2H.png","/hmi/HMIHighfi3H.png","/hmi/HMIHighfi4H.png","/hmi/HMIHighfi5H.png","/hmi/HMIHIghfi6H.png"].map((s) => (
+                  <Img key={s} src={s} alt="High-fi screen" />
+                ))}
+              </div>
+            </div>
+          </R>
+          <R className="mt-14">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Notifications &amp; Trip</p>
+            <div className="flex flex-col items-start gap-4 sm:flex-row">
+              <div className="w-full shrink-0 sm:w-[38%]">
+                <Img src="/hmi/HMIHighfitrip6Hero.png" alt="High-fi hero — notifications" />
+              </div>
+              <div className="grid flex-1 gap-3 grid-cols-3 sm:grid-cols-3 lg:grid-cols-3">
+                {["/hmi/HmiHighfiTrip1.png","/hmi/HMIHighFiTrip2.png","/hmi/HMIHighfitrip3.png","/hmi/HMIHighfitrip4.png","/hmi/HMIHighfitrip5.png"].map((s) => (
+                  <Img key={s} src={s} alt="High-fi trip screen" />
+                ))}
+              </div>
+            </div>
+          </R>
+        </div>
+      </section>
+
+      {/* Before & After */}
+      <section className={`${W} py-20`}>
+        <R>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Before &amp; After</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">From a basic mechanical gauge to a socially connected, community-driven dashboard.</p>
+        </R>
+        <div className="mx-auto mt-8 max-w-[900px] space-y-6">
+          {[
+            { b: "/hmi/HMIBefore1.png", a: "/hmi/HmiAfter1.png" },
+            { b: "/hmi/HMIBefore2.png", a: "/hmi/HMIAfter2.png" },
+            { b: "/hmi/HMIBefore3.png", a: "/hmi/HMIAfter3.png" },
+            { b: "/hmi/HMIBefore4.png", a: "/hmi/HMI After4.png" },
+          ].map((p, i) => (
+            <R key={i}>
+              <div className="grid gap-3 grid-cols-2">
+                <div>
+                  <p className="mb-1 text-[10px] font-semibold uppercase tracking-widest text-slate-400">Before</p>
+                  <Img src={p.b} alt={`Before ${i + 1}`} />
+                </div>
+                <div>
+                  <p className="mb-1 text-[10px] font-semibold uppercase tracking-widest text-[#CC0000]">After</p>
+                  <Img src={p.a} alt={`After ${i + 1}`} />
+                </div>
+              </div>
+            </R>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          ACT 6 — FEATURE DEEP-DIVES (consolidated)
+      ══════════════════════════════════════════ */}
+      <section className="bg-[#CC0000] py-16 text-white">
+        <div className={W}>
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">06 — Features</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Deep Dives</h2>
+          </R>
+        </div>
+      </section>
+
+      {/* Pack Mode */}
+      <section className={`${W} py-20`}>
+        <R>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#CC0000]">Pack Mode</p>
+          <h3 className="mt-2 text-2xl font-bold tracking-tight">Social Compass</h3>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">Shows nearby riders, syncs navigation across a group, and enables spontaneous or planned ride coordination.</p>
+        </R>
+        <R className="mt-10">
+          <Img src="/hmi/HMI PackmodeDetailedLinedFlow2.png" alt="Pack Mode flow" />
+        </R>
+        <R className="mt-8">
+          <Img src="/hmi/HeroshotMap.png" alt="Pack Mode map with d-pad" />
+        </R>
+      </section>
+
+      {/* Request Assistance */}
+      <section className={`${W} py-20`}>
+        <R>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#CC0000]">Request Assistance</p>
+          <h3 className="mt-2 text-2xl font-bold tracking-tight">Safety First</h3>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">Share location with a preselected contact or call for help through voice commands — hands stay on the handlebars.</p>
+        </R>
+        <R className="mt-10">
+          <Img src="/hmi/RequestAssistenceFlowLines.png" alt="Request Assistance flow" />
+        </R>
+      </section>
+      <section className="bg-[#CC0000] py-16">
+        <div className={W}>
+          <R>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {["/hmi/HeroShotRequest1.png","/hmi/Heroshotrequest2.png","/hmi/Heroshotrequest3.png"].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-xl">
+                  <img src={s} alt="Request Assistance" className="h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+                </figure>
+              ))}
+            </div>
+          </R>
+        </div>
+      </section>
+
+      {/* Heatmap + Bike Bump side by side */}
+      <section className={`${W} py-20`}>
+        <div className="grid gap-16 lg:grid-cols-2">
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#CC0000]">Community Heatmap</p>
+            <h3 className="mt-2 text-2xl font-bold tracking-tight">Discover Riders</h3>
+            <p className="mt-3 text-sm leading-relaxed text-slate-500">Live map of nearby bikers, events, hotspots, and popular routes.</p>
+            <div className="mt-6">
+              <Img src="/hmi/Heatmapcardslinesdepiction.png" alt="Community Heatmap" />
+            </div>
+          </R>
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#CC0000]">Bike Bump</p>
+            <h3 className="mt-2 text-2xl font-bold tracking-tight">Instant Connect</h3>
+            <p className="mt-3 text-sm leading-relaxed text-slate-500">Tap phone to HMI to send a friend request. Turn a gas station encounter into a lasting connection.</p>
+            <div className="mt-6">
+              <Img src="/hmi/HeroshotBikebump.png" alt="Bike Bump" />
+            </div>
+          </R>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          ACT 7 — ECOSYSTEM + PROTOTYPE
+      ══════════════════════════════════════════ */}
+      <section className="bg-[#111111] py-20 text-white">
+        <div className={W}>
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">07 — Ecosystem</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">HMI + App</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-400">The complete HondaConnect ecosystem — supporting the entire ride journey: before, during, and after.</p>
+          </R>
+          <R className="mt-12">
+            <Img src="/hmi/HMI plus Screen.png" alt="HMI + App ecosystem" />
+          </R>
+          <R className="mt-10">
+            <Img src="/hmi/BikewithLgo.png" alt="Honda Rebel with branding" />
+          </R>
+        </div>
+      </section>
+
+      {/* Design to Dev + Live Prototype */}
+      <section className={`${W} py-20`}>
+        <R>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Development Handoff</p>
+          <h3 className="mt-2 text-2xl font-bold tracking-tight">Design → Dev</h3>
+        </R>
+        <R className="mt-10">
+          <Img src="/hmi/Design to Development.png" alt="Design to dev handoff" />
+        </R>
+      </section>
+
+      <section className="bg-slate-50 py-20">
+        <div className={W}>
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#CC0000]">Live Prototype</p>
+            <h3 className="mt-2 text-2xl font-bold tracking-tight">Brought to Life</h3>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">
+              Our team built a working prototype using Arduino and Adobe Flash to drive the round HMI display. A developer took it on an actual motorcycle ride through Savannah with a GoPro — simulating live navigation, speed data, turn-by-turn directions, and animated transitions on the physical display in real road conditions.
+            </p>
+          </R>
+          <R className="mt-10 grid gap-4 sm:grid-cols-3">
+            <Img src="/hmi/IMG_9360.jpeg" alt="Prototype road view" />
+            <Img src="/hmi/IMG_9392.jpeg" alt="Prototype navigation" />
+            <Img src="/hmi/IMG_9373.jpeg" alt="Prototype setup" />
+          </R>
         </div>
       </section>
 
