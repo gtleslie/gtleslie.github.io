@@ -67,7 +67,12 @@ export default function HMIPage() {
           </p>
         </R>
         <R className="mt-12">
-          <Img src="/hmi/CurrentRebel.png" alt="Current Honda Rebel 500" />
+          <div className="mx-auto max-w-[720px]">
+            <Img src="/hmi/CurrentHondaLCDScreen.png" alt="Current Honda Rebel 500 LCD cluster" />
+            <p className="mt-3 text-center text-xs text-slate-400">
+              Current production Honda Rebel 500 LCD cluster — starting point for the redesign.
+            </p>
+          </div>
         </R>
       </section>
 
