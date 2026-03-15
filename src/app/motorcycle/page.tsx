@@ -16,7 +16,7 @@ export default function MotorcyclePage() {
       <CaseStudyHero
         src="/motorcycle/IMG_7310 2.png"
         alt="Foam-core motorcycle - Art Nouveau inspired build"
-        title="Foam-Core Motorcycle"
+        title="Foam Core Motorcycle"
       />
 
       <div className="mt-24 space-y-16 pb-20 sm:space-y-20">
@@ -33,7 +33,7 @@ export default function MotorcyclePage() {
         {/* 3. The Challenge — pull quote */}
         <PullQuote>
           How might we express the organic curves and elegance of Art Nouveau
-          through the design of a motorcycle using only lightweight, low-cost
+          through the design of a motorcycle using only lightweight, low cost
           materials, ensuring it remains functional and visually coherent?
         </PullQuote>
 
@@ -43,7 +43,7 @@ export default function MotorcyclePage() {
             and construct a full-scale motorcycle inspired by the Art Nouveau
             movement using only lightweight materials such as foam, cardboard,
             and tape. I contributed across multiple stages from concept
-            generation and physical prototyping to hands-on construction and user
+            generation and physical prototyping to hands on construction and user
             testing, ensuring the design not only reflected our theme but could
             also function and be demonstrated effectively.
           </BodyText>
@@ -58,7 +58,7 @@ export default function MotorcyclePage() {
             explore early design directions and aesthetic references. By feeding
             prompts related to &quot;Art Nouveau curves, motorcycles, foam core,
             flowing structure,&quot; we quickly created moodboards and visual
-            mock-ups that helped the team align on the desired look and feel.
+            mock ups that helped the team align on the desired look and feel.
           </BodyText>
         </NarrowSection>
 

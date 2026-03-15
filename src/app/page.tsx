@@ -6,7 +6,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ProfilePhoto } from "@/components/ProfilePhoto";
 import { projects } from "@/data/projects";
 
-const W = "mx-auto max-w-[1200px] px-6 md:px-12";
+const W = "mx-auto max-w-[1000px] px-6 md:px-10";
 
 export default function Home() {
   return (
@@ -60,7 +60,7 @@ export default function Home() {
         <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
           Projects
         </h2>
-        <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <ul className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
           {projects.map((project) => (
             <li key={project.slug}>
               <ProjectCard project={project} />

@@ -67,7 +67,7 @@ export default function PetriPage() {
               Solution
             </h3>
             <p className="mt-2 text-zinc-700 dark:text-zinc-300">
-              Petri is a music streaming and community platform designed to highlight local artists and foster meaningful connections between musicians and listeners. The platform combines genre-based discovery, community discussion, and artist support tools into a single experience.
+              Petri is a music streaming and community platform designed to highlight local artists and foster meaningful connections between musicians and listeners. The platform combines genre based discovery, community discussion, and artist support tools into a single experience.
             </p>
           </div>
         </section>
@@ -157,7 +157,7 @@ export default function PetriPage() {
             Designing systems that support both creators and listeners
           </p>
           <p className="mt-2 text-zinc-700 dark:text-zinc-300">
-            This project reinforced the importance of research synthesis and designing community-focused systems that create value for both artists and audiences.
+            This project reinforced the importance of research synthesis and designing community focused systems that create value for both artists and audiences.
           </p>
         </section>
 
@@ -173,7 +173,7 @@ export default function PetriPage() {
             Music discovery is social, but existing platforms don&apos;t support connection
           </p>
           <p className="mt-2 text-zinc-700 dark:text-zinc-300">
-            Research revealed that users rely heavily on social and word-of-mouth discovery, while small artists struggle to gain meaningful visibility and engagement on major platforms. Streaming alone does not create community or lasting connection.
+            Research revealed that users rely heavily on social and word of mouth discovery, while small artists struggle to gain meaningful visibility and engagement on major platforms. Streaming alone does not create community or lasting connection.
           </p>
         </section>
 
@@ -192,8 +192,8 @@ export default function PetriPage() {
             overall structure of the platform.
           </p>
           <p className="mt-4 text-zinc-700 dark:text-zinc-300">
-            A community-first music experience built around discovery and
-            interaction — Petri combines music streaming, genre-based discovery,
+            A community first music experience built around discovery and
+            interaction — Petri combines music streaming, genre based discovery,
             and community discussion into a single experience designed to
             strengthen connections between listeners and local artists.
           </p>
@@ -245,7 +245,7 @@ export default function PetriPage() {
             <p className="mt-2 text-zinc-700 dark:text-zinc-300">
               What listeners and artists told us — Survey results and
               interviews revealed that users rely heavily on social media and
-              word-of-mouth for discovery, while artists struggle to gain
+              word of mouth for discovery, while artists struggle to gain
               visibility and sustained engagement on existing platforms.
             </p>
           </div>
@@ -256,9 +256,9 @@ export default function PetriPage() {
             <p className="mt-2 text-zinc-700 dark:text-zinc-300">
               Translating research into early concepts — Using insights around
               social discovery, community, and artist visibility, we explored
-              multiple layout and feature concepts through low-fidelity
+              multiple layout and feature concepts through low fidelity
               sketches. These helped us rapidly test structure, hierarchy, and
-              interaction patterns before committing to high-fidelity design.
+              interaction patterns before committing to high fidelity design.
             </p>
           </div>
           <div>
@@ -266,9 +266,9 @@ export default function PetriPage() {
               Structure & Flow
             </h3>
             <p className="mt-2 text-zinc-700 dark:text-zinc-300">
-              Defining core features through mid-fidelity wireframes — Building
+              Defining core features through mid fidelity wireframes — Building
               on the visual direction and research insights, we developed
-              mid-fidelity wireframes to define core features, navigation flow,
+              mid fidelity wireframes to define core features, navigation flow,
               and information hierarchy. This phase focused on validating
               structure and interaction patterns before applying final visual
               styling.

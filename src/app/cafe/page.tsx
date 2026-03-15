@@ -133,12 +133,12 @@ export default function CafePage() {
             <div>
               <SectionHeading>Scope</SectionHeading>
               <BodyText>
-                The goal of this project was to design a dead-simple calendar
+                The goal of this project was to design a dead simple calendar
                 experience that prioritizes usability over feature overload.
                 Rather than competing with enterprise calendar platforms, the
                 focus was on creating an interface that makes viewing, sharing,
                 and understanding schedules effortless especially for families,
-                small groups, and public-facing use cases.
+                small groups, and public facing use cases.
               </BodyText>
             </div>
             <div>
@@ -157,7 +157,7 @@ export default function CafePage() {
               <BodyText>
                 The final solution is a minimal, modern calendar interface that
                 makes it easy to see what matters at a glance. Events are
-                visually organized, color-coded for clarity, and designed to
+                visually organized, color coded for clarity, and designed to
                 scale across different contexts from personal schedules to shared
                 or public calendars.
               </BodyText>

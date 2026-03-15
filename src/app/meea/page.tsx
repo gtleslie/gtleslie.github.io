@@ -143,8 +143,8 @@ export default function MeeaPage() {
             while maintaining familiar patterns of interaction&quot;?
           </BodyText>
           <BodyText>
-            Our early concepts focused on mobile-based solutions, including
-            QR-code payments and phone-driven bill splitting. These ideas aimed
+            Our early concepts focused on mobile based solutions, including
+            QR code payments and phone-driven bill splitting. These ideas aimed
             to reduce friction around payment and make group dining more
             seamless.
           </BodyText>
@@ -165,7 +165,7 @@ export default function MeeaPage() {
             While digital tools were often introduced to make dining more
             convenient, many guests described moments where these interactions
             pulled attention away from the table. Rather than supporting
-            conversation, phone-based interactions frequently disrupted it.
+            conversation, phone based interactions frequently disrupted it.
           </BodyText>
           <p className="mt-6 text-lg font-medium text-zinc-900 dark:text-zinc-100">
             Guests consistently expressed that phones often:
@@ -268,7 +268,7 @@ export default function MeeaPage() {
                 </h4>
                 <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
                   <li>Charismatic with high expectations</li>
-                  <li>Business-focused, detail-oriented, efficiency is key</li>
+                  <li>Business focused, detail oriented, efficiency is key</li>
                   <li>
                     Strong respect for the art of the restaurant
                   </li>
@@ -370,12 +370,12 @@ export default function MeeaPage() {
           </div>
         </NarrowSection>
 
-        {/* 15. Low-fidelity Exploration */}
+        {/* 15. Low fidelity Exploration */}
         <NarrowSection>
-          <SectionLabel>Low-fidelity Exploration</SectionLabel>
+          <SectionLabel>Low fidelity Exploration</SectionLabel>
           <BodyText>
             Exploring structure and flow through early wireframes — These
-            low-fidelity wireframes were used to explore layout, hierarchy, and
+            low fidelity wireframes were used to explore layout, hierarchy, and
             core interaction flows.
           </BodyText>
         </NarrowSection>

@@ -22,11 +22,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
           />
         </div>
       )}
-      <div className="p-4">
-        <h3 className="text-base font-semibold text-zinc-900 transition-colors group-hover:text-zinc-600 dark:text-zinc-100 dark:group-hover:text-zinc-300">
+      <div className="p-5">
+        <h3 className="text-lg font-semibold text-zinc-900 transition-colors group-hover:text-zinc-600 dark:text-zinc-100 dark:group-hover:text-zinc-300">
           {project.title}
         </h3>
-        <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
           {project.tagline}
         </p>
         {isComingSoon && (

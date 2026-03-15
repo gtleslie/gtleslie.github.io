@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const fade = {
@@ -23,11 +24,79 @@ function Img({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-const W = "mx-auto max-w-[1200px] px-6 md:px-12";
+const W = "mx-auto max-w-[1000px] px-6 md:px-10";
+
+const SECTION_IDS = ["context", "vision", "research", "design", "mid-fidelity", "high-fidelity", "pivotal-decisions", "features", "prototype"];
+
+const navItems = [
+  { href: "#context", label: "Context" },
+  { href: "#vision", label: "Vision" },
+  { href: "#research", label: "Research" },
+  { href: "#design", label: "Design" },
+  { href: "#mid-fidelity", label: "Mid Fi" },
+  { href: "#high-fidelity", label: "Hi Fi" },
+  { href: "#pivotal-decisions", label: "Key choices" },
+  { href: "#features", label: "Features" },
+  { href: "#prototype", label: "Prototype" },
+];
 
 export default function HMIPage() {
+  const [activeSection, setActiveSection] = useState<string | null>("context");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const intersecting = new Set<string>();
+    const updateActive = () => {
+      const active = SECTION_IDS.find((id) => intersecting.has(id)) ?? null;
+      setActiveSection(active);
+    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) intersecting.add(entry.target.id);
+          else intersecting.delete(entry.target.id);
+        });
+        updateActive();
+      },
+      { rootMargin: "-12% 0px -55% 0px", threshold: 0 }
+    );
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <main className="bg-white text-slate-900">
+    <main className="relative bg-white text-slate-900">
+      {/* Sticky section nav — right side, minimal */}
+      <nav
+        aria-label="Case study sections"
+        className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 lg:block xl:right-8"
+      >
+        <div className="rounded-lg border border-slate-200/80 bg-white/90 px-4 py-3 shadow-sm backdrop-blur-md">
+          <div className="flex flex-col gap-2.5 border-l-2 border-slate-200 pl-3">
+            {navItems.map((item) => {
+              const id = item.href.slice(1);
+              const isActive = activeSection === id;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`text-[11px] font-medium uppercase tracking-widest transition-colors hover:text-slate-800 ${
+                    isActive ? "font-semibold text-[#CC0000]" : "text-slate-500"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </nav>
 
       {/* ── HERO + INTRO side by side (dark) ── */}
       <div className="bg-[#111111] text-white">
@@ -58,12 +127,12 @@ export default function HMIPage() {
       {/* ══════════════════════════════════════════
           ACT 1 — CONTEXT + VISION
       ══════════════════════════════════════════ */}
-      <section className={`${W} py-20`}>
+      <section id="context" className={`${W} py-20`}>
         <R>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">01 — Context</p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">The Challenge</h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-500">
-            We redesigned the HMI for the Honda Rebel 500 to be more community and new-rider oriented through both new and improved features. Our mission: connecting riders in a stronger community. Our target audience: new rider + college-age, female riders.
+            We redesigned the HMI for the Honda Rebel 500 to be more community and new rider oriented through both new and improved features. Our mission: connecting riders in a stronger community. Our target audience: new rider and college age, female riders.
           </p>
         </R>
         <R className="mt-12">
@@ -77,7 +146,7 @@ export default function HMIPage() {
       </section>
 
       {/* Vision — Honda Red band */}
-      <section className="bg-[#CC0000] py-24 text-white">
+      <section id="vision" className="bg-[#CC0000] py-24 text-white">
         <div className={W}>
           <R>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">The Vision</p>
@@ -85,14 +154,14 @@ export default function HMIPage() {
               A Social Compass<br />for Motorcycles
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/70">
-              Seamless app + HMI connection that supports the ride journey: before, during, and after. Trip planning, ride sharing, and real-time social features flow between your phone and the motorcycle display.
+              Seamless app + HMI connection that supports the ride journey: before, during, and after. Trip planning, ride sharing, and real time social features flow between your phone and the motorcycle display.
             </p>
           </R>
           <R className="mt-14">
             <div className="grid gap-px sm:grid-cols-3">
               {[
                 { label: "Before", desc: "Plan routes, find riders, set destinations from the companion app." },
-                { label: "During", desc: "Real-time navigation, pack mode, and glanceable alerts on the HMI." },
+                { label: "During", desc: "Real time navigation, pack mode, and glanceable alerts on the HMI." },
                 { label: "After", desc: "Share ride recaps, connect with new riders, and track stats." },
               ].map((phase) => (
                 <div key={phase.label} className="bg-white/10 p-6 backdrop-blur-sm first:rounded-l-xl last:rounded-r-xl">
@@ -108,7 +177,7 @@ export default function HMIPage() {
       {/* ══════════════════════════════════════════
           ACT 2 — RESEARCH
       ══════════════════════════════════════════ */}
-      <section className="bg-slate-50 py-20">
+      <section id="research" className="bg-slate-50 py-20">
         <div className={W}>
           <R>
             <div className="flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between">
@@ -135,7 +204,7 @@ export default function HMIPage() {
               {[
                 { n: "01", t: "Physical → Digital", d: "Interface must match handlebar input layout." },
                 { n: "02", t: "Glanceable Info", d: "Critical data stays large, central, readable." },
-                { n: "03", t: "Simple Navigation", d: "Turn-by-turn arrows, minimal menu depth." },
+                { n: "03", t: "Simple Navigation", d: "Turn by turn arrows, minimal menu depth." },
                 { n: "04", t: "Notification Hierarchy", d: "Alerts in a dedicated status zone." },
               ].map((c) => (
                 <div key={c.t} className="bg-slate-50 p-6">
@@ -163,7 +232,7 @@ export default function HMIPage() {
                 <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/80 via-black/30 to-transparent p-6">
                   <p className="text-xs font-semibold uppercase tracking-widest text-white/50">Field Trip 02</p>
                   <h4 className="mt-1 text-lg font-bold text-white">Honda Team Trip</h4>
-                  <p className="mt-1 text-xs leading-relaxed text-white/70">Hands-on ergonomic feel of the Rebel 500 and 1100, informing HMI placement and content.</p>
+                  <p className="mt-1 text-xs leading-relaxed text-white/70">Hands on ergonomic feel of the Rebel 500 and 1100, informing HMI placement and content.</p>
                 </div>
               </div>
             </div>
@@ -172,7 +241,7 @@ export default function HMIPage() {
           <R className="mt-14">
             <h3 className="text-2xl font-bold tracking-tight">The Disconnect</h3>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">
-              New riders face isolation, lack of confidence, and fear — while existing biker communities rely on scattered forums, word-of-mouth, and informal groups.
+              New riders face isolation, lack of confidence, and fear — while existing biker communities rely on scattered forums, word of mouth, and informal groups.
             </p>
           </R>
           <R className="mt-10">
@@ -213,7 +282,7 @@ export default function HMIPage() {
           <R>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">The Opportunity</p>
             <h2 className="mt-3 max-w-3xl text-2xl font-bold tracking-tight sm:text-3xl">
-              No universal, real-time platform connects riders for spontaneous meetups and safety support.
+              No universal, real time platform connects riders for spontaneous meetups and safety support.
             </h2>
           </R>
         </div>
@@ -232,15 +301,15 @@ export default function HMIPage() {
       {/* ══════════════════════════════════════════
           ACT 3 — DESIGN
       ══════════════════════════════════════════ */}
-      <section className="bg-slate-50 py-20">
+      <section id="design" className="bg-slate-50 py-20">
         <div className={W}>
           <R>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">03 — Design</p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">User Persona</h2>
           </R>
           <R className="mt-12">
-            <div className="grid items-start gap-12 lg:grid-cols-2">
-              <div>
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-16">
+              <div className="min-w-0 flex-1">
                 <blockquote className="text-xl font-medium italic leading-snug text-slate-700 sm:text-2xl">
                   &ldquo;I bought this bike for freedom, but riding alone feels lonely, and sometimes unsafe.&rdquo;
                 </blockquote>
@@ -250,7 +319,11 @@ export default function HMIPage() {
                   <p><span className="font-medium text-slate-700">Jenna Smith</span> · 23 · Barista · 5 months riding</p>
                 </div>
               </div>
-              <Img src="/hmi/Userpersonajenna.png" alt="User persona — Jenna Smith" />
+              <div className="w-full max-w-[320px] shrink-0 lg:max-w-[280px]">
+                <figure className="overflow-hidden rounded-xl">
+                  <img src="/hmi/Userpersonajenna.png" alt="User persona — Jenna Smith" className="h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+                </figure>
+              </div>
             </div>
           </R>
         </div>
@@ -260,13 +333,16 @@ export default function HMIPage() {
       <section className={`${W} py-20`}>
         <R>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Four Pillars</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">
+            Our blue sky features: concepts we wanted to integrate into the HMI, the app, or both. Each pillar is labeled by where it lives — HMI, App, HMI &amp; App, or App → HMI.
+          </p>
         </R>
         <R className="mt-10">
           <div className="grid gap-4 sm:grid-cols-2">
             {[
               { icon: "/hmi/PackModeIcon.svg", t: "Pack Mode", p: "HMI", d: "Social compass and nav syncing across a group." },
               { icon: "/hmi/HeatMapIcon.svg", t: "Community Heatmap", p: "APP", d: "Live map of nearby bikers, events, and hotspots." },
-              { icon: "/hmi/RequestAssitenceIcon.svg", t: "Request Assistance", p: "HMI & APP", d: "Built-in safety for quick help on the road." },
+              { icon: "/hmi/RequestAssitenceIcon.svg", t: "Request Assistance", p: "HMI & APP", d: "Built in safety for quick help on the road." },
               { icon: "/hmi/BikeBumpIcon.svg", t: "Bike Bump", p: "APP → HMI", d: "Tap to send a friend request via NFC." },
             ].map((f) => (
               <div key={f.t} className="flex gap-4 rounded-xl border border-slate-200 p-6">
@@ -308,75 +384,51 @@ export default function HMIPage() {
       <section className={`${W} pb-20`}>
         <R>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">03 — Early Exploration</p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Sketches &amp; Lo-Fi</h2>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Sketches &amp; Lo Fi</h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-500">
-            Before moving into mid-fidelity, we sketched dozens of cluster layouts and flows on paper. These lo-fi frames helped us explore states quickly and decide
+            Before moving into mid fidelity, we sketched dozens of cluster layouts and flows on paper. These lo-fi frames helped us explore states quickly and decide
             which ideas were worth refining.
           </p>
         </R>
         <R className="mt-10">
-          <div className="grid gap-4 md:grid-cols-3">
-            <div className="space-y-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">Sketches</p>
-              <div className="space-y-3">
-                {[
-                  "/hmi/2ndBatch/Sketches1.png",
-                  "/hmi/2ndBatch/Sketches2.png",
-                  "/hmi/2ndBatch/sketches3.png",
-                ].map((s) => (
-                  <figure key={s} className="overflow-hidden rounded-xl">
-                    <img
-                      src={s}
-                      alt="Sketch"
-                      className="block h-auto w-full"
-                      loading="lazy"
-                      style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
-                    />
-                  </figure>
-                ))}
-              </div>
-            </div>
-            <div className="md:col-span-2">
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">Lo-Fi Frames</p>
-              <div className="mt-3 grid gap-2 grid-cols-3">
-                {[
-                  "/hmi/2ndBatch/HMILofi1.png",
-                  "/hmi/2ndBatch/Hmilofi2.png",
-                  "/hmi/2ndBatch/hmilofi3.png",
-                  "/hmi/2ndBatch/hmilofi4.png",
-                  "/hmi/2ndBatch/hmilofi5.png",
-                ].map((s) => (
-                  <figure key={s} className="overflow-hidden rounded-lg">
-                    <img
-                      src={s}
-                      alt="Lo-fi wireframe"
-                      className="block h-auto w-full"
-                      loading="lazy"
-                      style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
-                    />
-                  </figure>
-                ))}
-              </div>
-            </div>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">Sketches</p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {["/hmi/2ndBatch/Sketches1.png", "/hmi/2ndBatch/Sketches2.png", "/hmi/2ndBatch/sketches3.png"].map((s) => (
+              <figure key={s} className="overflow-hidden rounded-xl">
+                <img src={s} alt="Sketch" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+              </figure>
+            ))}
+          </div>
+        </R>
+        <R className="mt-10">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">Lo Fi HMI Frames</p>
+          <div className="grid gap-3 grid-cols-3 sm:grid-cols-5">
+            {["/hmi/2ndBatch/HMILofi1.png", "/hmi/2ndBatch/Hmilofi2.png", "/hmi/2ndBatch/hmilofi3.png", "/hmi/2ndBatch/hmilofi4.png", "/hmi/2ndBatch/hmilofi5.png"].map((s) => (
+              <figure key={s} className="overflow-hidden rounded-lg">
+                <div className="aspect-[4/3] w-full">
+                  <img src={s} alt="Lo-fi wireframe" className="block h-full w-full object-contain" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+                </div>
+              </figure>
+            ))}
           </div>
         </R>
       </section>
 
       {/* Mid-Fi — HMI first, then app, plus focused iterations */}
-      <section className="bg-[#111111] py-20 text-white">
+      <section id="mid-fidelity" className="bg-[#111111] py-20 text-white">
         <div className={W}>
           <R>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">04 — Iterate</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Mid-Fidelity</h2>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Mid Fidelity</h2>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-neutral-400">
-              This stage was defined by constant iteration. We moved rapidly between sketches, wireframes, and mid-fidelity screens — pressure-testing our four blue sky features: <span className="font-semibold text-white">Pack Mode</span>, <span className="font-semibold text-white">Request Assistance</span>, <span className="font-semibold text-white">Bike Bump</span>, and the <span className="font-semibold text-white">Community Heatmap</span>. Each concept went through multiple rounds of critique, user feedback, and refinement before earning its place in the final system.
+              This stage was defined by constant iteration. We moved rapidly between sketches, wireframes, and mid fidelity screens — pressure testing our four blue sky features: <span className="font-semibold text-white">Pack Mode</span>, <span className="font-semibold text-white">Request Assistance</span>, <span className="font-semibold text-white">Bike Bump</span>, and the <span className="font-semibold text-white">Community Heatmap</span>. Each concept went through multiple rounds of critique, user feedback, and refinement before earning its place in the final system.
             </p>
           </R>
 
           {/* HMI mid-fi core screens */}
           <R className="mt-14">
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">HMI Dashboard</p>
-            <div className="grid gap-3 grid-cols-3 sm:grid-cols-5">
+            <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-7">
               {[
                 "/hmi/HMImidfi1.png",
                 "/hmi/HMImidfi2.png",
@@ -387,15 +439,13 @@ export default function HMIPage() {
                 "/hmi/HMImidfi7.png",
               ].map((s) => (
                 <figure key={s} className="overflow-hidden rounded-xl">
-                  <div className="aspect-[4/3] w-full">
-                    <img
-                      src={s}
-                      alt="HMI mid-fi"
-                      className="block h-full w-full object-contain"
-                      loading="lazy"
-                      style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
-                    />
-                  </div>
+                  <img
+                    src={s}
+                    alt="HMI mid-fi"
+                    className="block h-auto w-full"
+                    loading="lazy"
+                    style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
+                  />
                 </figure>
               ))}
             </div>
@@ -403,35 +453,27 @@ export default function HMIPage() {
 
           <R className="mt-14">
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Refinements</p>
-            <div className="grid gap-3 grid-cols-3 sm:grid-cols-5">
+            <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-5">
               {["/hmi/HMImidrefinements1.png","/hmi/HMImidrefinements2.png","/hmi/HMIMidrefinements3.png","/hmi/HMImidrefinements4.png","/hmi/HMIMIDrefinements5.png"].map((s) => (
                 <figure key={s} className="overflow-hidden rounded-xl">
-                  <div className="aspect-[4/3] w-full">
-                    <img
-                      src={s}
-                      alt="HMI refinement"
-                      className="block h-full w-full object-contain"
-                      loading="lazy"
-                      style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
-                    />
-                  </div>
+                  <img
+                    src={s}
+                    alt="HMI refinement"
+                    className="block h-auto w-full"
+                    loading="lazy"
+                    style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
+                  />
                 </figure>
               ))}
             </div>
           </R>
 
-          {/* HMI iteration clusters — map, carousel, notifications, request assistance */}
+          {/* HMI iteration clusters */}
           <R className="mt-14">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Map Layout Iterations</p>
-            <div className="grid gap-2 grid-cols-3 md:grid-cols-5">
-              {[
-                "/hmi/2ndBatch/HMImapmid1.png",
-                "/hmi/2ndBatch/HMImapmid2.png",
-                "/hmi/2ndBatch/HMImapmid3.png",
-                "/hmi/2ndBatch/HMImapmid4.png",
-                "/hmi/2ndBatch/HMImapmid5.png",
-              ].map((s) => (
-                <figure key={s} className="overflow-hidden rounded-lg">
+            <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-5">
+              {["/hmi/2ndBatch/HMImapmid1.png","/hmi/2ndBatch/HMImapmid2.png","/hmi/2ndBatch/HMImapmid3.png","/hmi/2ndBatch/HMImapmid4.png","/hmi/2ndBatch/HMImapmid5.png"].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-xl">
                   <img src={s} alt="HMI map iteration" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
                 </figure>
               ))}
@@ -440,15 +482,9 @@ export default function HMIPage() {
 
           <R className="mt-10">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Carousel Cards</p>
-            <div className="grid gap-2 grid-cols-3 md:grid-cols-5">
-              {[
-                "/hmi/2ndBatch/HMImidcel1.png",
-                "/hmi/2ndBatch/HMImidcel2.png",
-                "/hmi/2ndBatch/HMImidcel3.png",
-                "/hmi/2ndBatch/HMImidcel4.png",
-                "/hmi/2ndBatch/HMImidcel5.png",
-              ].map((s) => (
-                <figure key={s} className="overflow-hidden rounded-lg">
+            <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-5">
+              {["/hmi/2ndBatch/HMImidcel1.png","/hmi/2ndBatch/HMImidcel2.png","/hmi/2ndBatch/HMImidcel3.png","/hmi/2ndBatch/HMImidcel4.png","/hmi/2ndBatch/HMImidcel5.png"].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-xl">
                   <img src={s} alt="HMI carousel iteration" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
                 </figure>
               ))}
@@ -457,15 +493,9 @@ export default function HMIPage() {
 
           <R className="mt-10">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Notification States</p>
-            <div className="grid gap-2 grid-cols-3 md:grid-cols-5">
-              {[
-                "/hmi/2ndBatch/HMImidnoti1.png",
-                "/hmi/2ndBatch/HMImidnoti2.png",
-                "/hmi/2ndBatch/HMImidnoti3.png",
-                "/hmi/2ndBatch/HMImidnoti4.png",
-                "/hmi/2ndBatch/HMImidnoti5.png",
-              ].map((s) => (
-                <figure key={s} className="overflow-hidden rounded-lg">
+            <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-5">
+              {["/hmi/2ndBatch/HMImidnoti1.png","/hmi/2ndBatch/HMImidnoti2.png","/hmi/2ndBatch/HMImidnoti3.png","/hmi/2ndBatch/HMImidnoti4.png","/hmi/2ndBatch/HMImidnoti5.png"].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-xl">
                   <img src={s} alt="HMI notification iteration" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
                 </figure>
               ))}
@@ -474,66 +504,51 @@ export default function HMIPage() {
 
           <R className="mt-10">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Request Assistance Variants</p>
-            <div className="grid gap-2 grid-cols-3 md:grid-cols-5">
-              {[
-                "/hmi/2ndBatch/HMImidrequest0.png",
-                "/hmi/2ndBatch/HMIMidrequest1.png",
-                "/hmi/2ndBatch/HMIMidrequest2.png",
-                "/hmi/2ndBatch/HMImidrequest3.png",
-                "/hmi/2ndBatch/HMImidrequest4.png",
-              ].map((s) => (
-                <figure key={s} className="overflow-hidden rounded-lg">
+            <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-5">
+              {["/hmi/2ndBatch/HMImidrequest0.png","/hmi/2ndBatch/HMIMidrequest1.png","/hmi/2ndBatch/HMIMidrequest2.png","/hmi/2ndBatch/HMImidrequest3.png","/hmi/2ndBatch/HMImidrequest4.png"].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-xl">
                   <img src={s} alt="Request Assistance iteration" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
                 </figure>
               ))}
             </div>
           </R>
 
-          {/* Animation boot-up explorations */}
           <R className="mt-10">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Boot-Up Animation</p>
-            <div className="grid gap-2 grid-cols-3 md:grid-cols-6">
-              {[
-                "/hmi/2ndBatch/HMImidani1.png",
-                "/hmi/2ndBatch/HMImidani2.png",
-                "/hmi/2ndBatch/HMImidani3.png",
-                "/hmi/2ndBatch/HMImidani4.png",
-                "/hmi/2ndBatch/HMIMidani5.png",
-                "/hmi/2ndBatch/HMImidani6.png",
-              ].map((s) => (
-                <figure key={s} className="overflow-hidden rounded-lg">
+            <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-6">
+              {["/hmi/2ndBatch/HMImidani1.png","/hmi/2ndBatch/HMImidani2.png","/hmi/2ndBatch/HMImidani3.png","/hmi/2ndBatch/HMImidani4.png","/hmi/2ndBatch/HMIMidani5.png","/hmi/2ndBatch/HMImidani6.png"].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-xl">
                   <img src={s} alt="Boot-up animation frame" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
                 </figure>
               ))}
             </div>
           </R>
 
-          {/* Color system explorations */}
           <R className="mt-10">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Color System Explorations</p>
-            <div className="grid gap-2 grid-cols-3 md:grid-cols-6">
-              {[
-                "/hmi/2ndBatch/HMImidcolor1.png",
-                "/hmi/2ndBatch/HMImidcolor2.png",
-                "/hmi/2ndBatch/HMImidcolor3.png",
-                "/hmi/2ndBatch/HMImidcolor4.png",
-                "/hmi/2ndBatch/HMImidcolor5.png",
-                "/hmi/2ndBatch/HMImidcolor6.png",
-                "/hmi/2ndBatch/HMImidcolor7.png",
-                "/hmi/2ndBatch/HMImidcolor8.png",
-                "/hmi/2ndBatch/HMIMIDcolor9.png",
-              ].map((s) => (
-                <figure key={s} className="overflow-hidden rounded-lg">
+            <div className="grid gap-4 grid-cols-3 sm:grid-cols-4 lg:grid-cols-5">
+              {["/hmi/2ndBatch/HMImidcolor1.png","/hmi/2ndBatch/HMImidcolor2.png","/hmi/2ndBatch/HMImidcolor3.png","/hmi/2ndBatch/HMImidcolor4.png","/hmi/2ndBatch/HMImidcolor5.png","/hmi/2ndBatch/HMImidcolor6.png","/hmi/2ndBatch/HMImidcolor7.png","/hmi/2ndBatch/HMImidcolor8.png","/hmi/2ndBatch/HMIMIDcolor9.png"].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-xl">
                   <img src={s} alt="Color exploration" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
                 </figure>
               ))}
             </div>
           </R>
+        </div>
+      </section>
 
-          {/* Companion app mid-fi, after HMI iterations */}
-          <R className="mt-16">
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Companion App</p>
-            <div className="grid gap-2 grid-cols-3 lg:grid-cols-6">
+      {/* Connect App mid-fi — separate section so HMI vs App are clearly different */}
+      <section className="bg-white py-20 text-slate-900">
+        <div className={W}>
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">04 — The App</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">HondaConnect App — Mid Fidelity</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">
+              Mid fidelity screens for the companion app that pairs with the HMI. Riders plan routes, discover events, and stay connected before and after the ride.
+            </p>
+          </R>
+          <R className="mt-10">
+            <div className="grid gap-3 grid-cols-3 lg:grid-cols-6">
               {[
                 "/hmi/App Midfi Feed.png",
                 "/hmi/AppMidfiHeat.png",
@@ -578,12 +593,12 @@ export default function HMIPage() {
       </section>
 
       {/* Zoning */}
-      <section className={`${W} pb-20`}>
+      <section className={`${W} pt-16 pb-10`}>
         <R>
           <h3 className="text-2xl font-bold tracking-tight">Zoning</h3>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-500">Two layouts — driving (protected telltales) and user (flexible content windows).</p>
         </R>
-        <R className="mx-auto mt-8 grid max-w-[800px] gap-6 sm:grid-cols-2">
+        <R className="mx-auto mt-10 grid max-w-[800px] gap-6 sm:grid-cols-2">
           <div>
             <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">Driving</p>
             <Img src="/hmi/DrivingLayoutZoneing.png" alt="Driving layout" />
@@ -598,7 +613,7 @@ export default function HMIPage() {
       {/* ══════════════════════════════════════════
           ACT 5 — HIGH-FI SOLUTION
       ══════════════════════════════════════════ */}
-      <section className="bg-[#111111] py-20 text-white">
+      <section id="high-fidelity" className="bg-[#111111] py-20 text-white">
         <div className={W}>
           <R>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">05 — Solution</p>
@@ -634,75 +649,77 @@ export default function HMIPage() {
         </div>
       </section>
 
-      {/* Before & After — 3 groups: 1→1, 2→2, (3+4)→(3+4) */}
-      <section className={`${W} py-20`}>
+      {/* Key choices — 3 groups, Before/After labels restored */}
+      <section id="pivotal-decisions" className={`${W} pt-28 pb-20`}>
         <R>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Before &amp; After</h2>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">From a basic mechanical gauge to a socially connected, community-driven dashboard.</p>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Pivotal decisions</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">We made key design choices along the way. Here are a few that shaped the final system.</p>
         </R>
-        <div className="mt-12 space-y-16">
-          {/* Group 1: Before 1 → After 1 */}
+        <div className="mt-16 space-y-24">
+          {/* Group 1 — TV remote to D-pad */}
           <R>
-            <div className="flex flex-col items-center gap-8 sm:flex-row sm:justify-center sm:gap-12">
-              <div className="w-full max-w-[320px] sm:max-w-[360px]">
+            <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:items-center sm:gap-12">
+              <div className="w-full max-w-[300px] sm:max-w-[320px]">
                 <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-400">Before</p>
-                <Img src="/hmi/HMIBefore1.png" alt="Before 1" />
+                <Img src="/hmi/HMIBefore1.png" alt="Before D-pad change" />
               </div>
-              <div className="flex shrink-0 items-center justify-center text-slate-300" aria-hidden>
-                <svg width="32" height="24" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-10">
-                  <path d="M2 12h26m0 0l-6-6m6 6l-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              <div className="flex shrink-0 items-center text-slate-400" aria-hidden>
+                <span className="text-lg">→</span>
               </div>
-              <div className="w-full max-w-[320px] sm:max-w-[360px]">
+              <div className="w-full max-w-[300px] sm:max-w-[320px]">
                 <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#CC0000]">After</p>
-                <Img src="/hmi/HmiAfter1.png" alt="After 1" />
+                <Img src="/hmi/HmiAfter1.png" alt="After D-pad change" />
               </div>
             </div>
+            <p className="mt-10 w-full max-w-2xl border-l-2 border-slate-200 pl-2.5 pr-4 text-sm leading-relaxed text-slate-500">We got rid of the TV remote paradigm and moved to a D-pad style for navigation.</p>
           </R>
 
-          {/* Group 2: Before 2 → After 2 */}
+          {/* Group 2 — Tick mark grid to dynamic grid */}
           <R>
-            <div className="flex flex-col items-center gap-8 sm:flex-row sm:justify-center sm:gap-12">
-              <div className="w-full max-w-[320px] sm:max-w-[360px]">
+            <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:items-center sm:gap-12">
+              <div className="w-full max-w-[300px] sm:max-w-[320px]">
                 <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-400">Before</p>
-                <Img src="/hmi/HMIBefore2.png" alt="Before 2" />
+                <Img src="/hmi/HMIBefore2.png" alt="Before grid change" />
               </div>
-              <div className="flex shrink-0 items-center justify-center text-slate-300" aria-hidden>
-                <svg width="32" height="24" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-10">
-                  <path d="M2 12h26m0 0l-6-6m6 6l-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              <div className="flex shrink-0 items-center text-slate-400" aria-hidden>
+                <span className="text-lg">→</span>
               </div>
-              <div className="w-full max-w-[320px] sm:max-w-[360px]">
+              <div className="w-full max-w-[300px] sm:max-w-[320px]">
                 <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#CC0000]">After</p>
-                <Img src="/hmi/HMIAfter2.png" alt="After 2" />
+                <Img src="/hmi/HMIAfter2.png" alt="After grid change" />
               </div>
             </div>
+            <p className="mt-10 w-full max-w-2xl border-l-2 border-slate-200 pl-2.5 pr-4 text-sm leading-relaxed text-slate-500">We moved from a tick mark grid to a more dynamic grid. It moved better, simulated speed better, and felt more unique and interesting.</p>
           </R>
 
-          {/* Group 3: Before 3+4 (side by side) → After 3+4 (side by side), no arrow — same size */}
+          {/* Group 3 — Media page to Pack Mode, media in trip window */}
           <R>
-            <div className="flex flex-col items-center gap-8 sm:flex-row sm:justify-center sm:items-start sm:gap-12">
-              <div className="grid w-full max-w-[640px] grid-cols-2 gap-4 sm:max-w-[700px]">
-                <div className="min-w-0">
+            <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:items-start sm:gap-10">
+              <div className="grid w-full max-w-[680px] grid-cols-2 gap-5 sm:max-w-[720px]">
+                <div>
                   <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-400">Before</p>
-                  <Img src="/hmi/HMIBefore3.png" alt="Before 3" />
+                  <img src="/hmi/HMIBefore3.png" alt="Before media and pack change" className="w-full rounded-lg" loading="lazy" />
                 </div>
-                <div className="min-w-0">
+                <div>
                   <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-400">Before</p>
-                  <Img src="/hmi/HMIBefore4.png" alt="Before 4" />
+                  <img src="/hmi/HMIBefore4.png" alt="Before media and pack change" className="w-full rounded-lg" loading="lazy" />
                 </div>
               </div>
-              <div className="grid w-full max-w-[640px] grid-cols-2 gap-4 sm:max-w-[700px]">
-                <div className="min-w-0">
+              <div className="flex shrink-0 items-center text-slate-400 sm:items-start sm:pt-7" aria-hidden>
+                <span className="text-lg">→</span>
+              </div>
+              <div className="grid w-full max-w-[680px] grid-cols-2 gap-5 sm:max-w-[720px]">
+                <div>
                   <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#CC0000]">After</p>
-                  <Img src="/hmi/HMIAfter3.png" alt="After 3" />
+                  <img src="/hmi/HMIAfter3.png" alt="After media and pack change" className="w-full rounded-lg" loading="lazy" />
                 </div>
-                <div className="min-w-0">
+                <div>
                   <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#CC0000]">After</p>
-                  <Img src="/hmi/HMI After4.png" alt="After 4" />
+                  <img src="/hmi/HMIAfter4.png" alt="After media and pack change" className="w-full rounded-lg" loading="lazy" />
                 </div>
               </div>
             </div>
+            <p className="mt-10 w-full max-w-2xl border-l-2 border-slate-200 pl-2.5 pr-4 text-sm leading-relaxed text-slate-500">We got rid of the media page and added Pack Mode instead. Media now lives in the universal trip window so it can be accessed on any screen.</p>
           </R>
         </div>
       </section>
@@ -710,7 +727,7 @@ export default function HMIPage() {
       {/* ══════════════════════════════════════════
           ACT 6 — FEATURE DEEP-DIVES (consolidated)
       ══════════════════════════════════════════ */}
-      <section className="bg-[#CC0000] py-16 text-white">
+      <section id="features" className="bg-[#CC0000] py-16 text-white">
         <div className={W}>
           <R>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">06 — Features</p>
@@ -795,9 +812,10 @@ export default function HMIPage() {
             </p>
           </R>
 
-          {/* Voice command flow */}
+          {/* Voice Commands — side by side with description */}
           <R className="mt-12">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">Voice Commands</p>
+            <p className="mb-1 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">Voice Commands</p>
+            <p className="mb-4 text-sm leading-relaxed text-slate-600">We explored voice-driven interactions for hands free control while riding.</p>
             <div className="grid gap-3 grid-cols-3 md:grid-cols-5">
               {[
                 "/hmi/2ndBatch/HMImidvoice1.png",
@@ -819,13 +837,15 @@ export default function HMIPage() {
             </div>
           </R>
 
-          {/* First-person map view */}
+          {/* First-Person Map View — side by side with description */}
           <R className="mt-12">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">First-Person Map View</p>
+            <p className="mb-1 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">First Person Map View</p>
+            <p className="mb-4 text-sm leading-relaxed text-slate-600">We explored a first person map perspective for in ride context.</p>
             <div className="grid gap-3 grid-cols-2 md:grid-cols-3">
               {[
-                "/hmi/2ndBatch/HMImidmapfp1.png",
-                "/hmi/2ndBatch/HMImidmapfp2.png",
+                "/hmi/HMImapmidfp1.png",
+                "/hmi/hmimapmidfp2.png",
+                "/hmi/hmimapmidfp3.png",
               ].map((s) => (
                 <figure key={s} className="overflow-hidden rounded-xl">
                   <img
@@ -840,25 +860,20 @@ export default function HMIPage() {
             </div>
           </R>
 
-          {/* TV remote / docked view */}
+          {/* TV Dock & Remote — one explanation like FP and Color */}
           <R className="mt-12">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">TV Dock &amp; Remote</p>
-            <div className="grid gap-3 grid-cols-3 md:grid-cols-3">
-              {[
-                "/hmi/2ndBatch/HMIMidTV1.png",
-                "/hmi/2ndBatch/HMIMidTV2.png",
-                "/hmi/2ndBatch/HMImidtv3.png",
-              ].map((s) => (
-                <figure key={s} className="overflow-hidden rounded-xl">
-                  <img
-                    src={s}
-                    alt="TV remote exploration"
-                    className="block h-auto w-full"
-                    loading="lazy"
-                    style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
-                  />
-                </figure>
-              ))}
+            <p className="mb-1 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">TV Dock &amp; Remote</p>
+            <p className="mb-4 text-sm leading-relaxed text-slate-600">We explored a TV remote / docked system interface; we later dropped TV mode and the media page, moved media into the trip window, and replaced the media page with pack mode so the experience stays ride focused.</p>
+            <div className="grid gap-3 grid-cols-1 sm:grid-cols-3">
+              <figure className="overflow-hidden rounded-xl">
+                <img src="/hmi/2ndBatch/HMIMidTV1.png" alt="TV mode exploration" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+              </figure>
+              <figure className="overflow-hidden rounded-xl">
+                <img src="/hmi/2ndBatch/HMIMidTV2.png" alt="TV exploration 2" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+              </figure>
+              <figure className="overflow-hidden rounded-xl">
+                <img src="/hmi/2ndBatch/HMImidtv3.png" alt="Media page replaced with pack mode" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+              </figure>
             </div>
           </R>
         </div>
@@ -894,13 +909,13 @@ export default function HMIPage() {
         </R>
       </section>
 
-      <section className="bg-slate-50 py-20">
+      <section id="prototype" className="bg-slate-50 py-20">
         <div className={W}>
           <R>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#CC0000]">Live Prototype</p>
             <h3 className="mt-2 text-2xl font-bold tracking-tight">Brought to Life</h3>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">
-              Our team built a working prototype using Arduino and Adobe Flash to drive the round HMI display. A developer took it on an actual motorcycle ride through Savannah with a GoPro — simulating live navigation, speed data, turn-by-turn directions, and animated transitions on the physical display in real road conditions.
+              A developer built the prototype: they used a screen recording of an actual ride and mapped our HMI designs onto it so the ride and all the features we designed could be shown in context. We did not build the prototype ourselves; the demo brought our work to life.
             </p>
           </R>
           <R className="mt-10 grid gap-4 sm:grid-cols-3">
