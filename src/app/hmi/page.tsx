@@ -304,7 +304,65 @@ export default function HMIPage() {
         </R>
       </section>
 
-      {/* Mid-Fi — all in one section */}
+      {/* Sketches & Lo-Fi (chronologically before mid-fi) */}
+      <section className={`${W} pb-20`}>
+        <R>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">03 — Early Exploration</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Sketches &amp; Lo-Fi</h2>
+          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-500">
+            Before moving into mid-fidelity, we sketched dozens of cluster layouts and flows on paper. These lo-fi frames helped us explore states quickly and decide
+            which ideas were worth refining.
+          </p>
+        </R>
+        <R className="mt-10">
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="space-y-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">Sketches</p>
+              <div className="space-y-3">
+                {[
+                  "/hmi/2ndBatch/Sketches1.png",
+                  "/hmi/2ndBatch/Sketches2.png",
+                  "/hmi/2ndBatch/sketches3.png",
+                ].map((s) => (
+                  <figure key={s} className="overflow-hidden rounded-xl">
+                    <img
+                      src={s}
+                      alt="Sketch"
+                      className="block h-auto w-full"
+                      loading="lazy"
+                      style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
+                    />
+                  </figure>
+                ))}
+              </div>
+            </div>
+            <div className="md:col-span-2">
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">Lo-Fi Frames</p>
+              <div className="mt-3 grid gap-2 grid-cols-3">
+                {[
+                  "/hmi/2ndBatch/HMILofi1.png",
+                  "/hmi/2ndBatch/Hmilofi2.png",
+                  "/hmi/2ndBatch/hmilofi3.png",
+                  "/hmi/2ndBatch/hmilofi4.png",
+                  "/hmi/2ndBatch/hmilofi5.png",
+                ].map((s) => (
+                  <figure key={s} className="overflow-hidden rounded-lg">
+                    <img
+                      src={s}
+                      alt="Lo-fi wireframe"
+                      className="block h-auto w-full"
+                      loading="lazy"
+                      style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
+                    />
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </div>
+        </R>
+      </section>
+
+      {/* Mid-Fi — HMI first, then app, plus focused iterations */}
       <section className="bg-[#111111] py-20 text-white">
         <div className={W}>
           <R>
@@ -315,23 +373,29 @@ export default function HMIPage() {
             </p>
           </R>
 
-          <R className="mt-14">
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Companion App</p>
-            <div className="grid gap-2 grid-cols-3 lg:grid-cols-6">
-              {["/hmi/App Midfi Feed.png","/hmi/AppMidfiHeat.png","/hmi/AppMidfiPlanningAride1.png","/hmi/MidfiPlanningaride2.png","/hmi/Midfiprofile.png","/hmi/MidfiappProfile2.png"].map((s) => (
-                <figure key={s} className="overflow-hidden rounded-lg">
-                  <img src={s} alt="App mid-fi" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
-                </figure>
-              ))}
-            </div>
-          </R>
-
+          {/* HMI mid-fi core screens */}
           <R className="mt-14">
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">HMI Dashboard</p>
             <div className="grid gap-3 grid-cols-3 sm:grid-cols-5">
-              {["/hmi/HMIMid1.png","/hmi/HMImid2.png","/hmi/HMIMID3.png","/hmi/HMImid4.png","/hmi/HMImid5.png","/hmi/HMIMID6.png","/hmi/HMImid7.png"].map((s) => (
+              {[
+                "/hmi/HMImidfi1.png",
+                "/hmi/HMImidfi2.png",
+                "/hmi/HMImidfi3.png",
+                "/hmi/HMImidfi4.png",
+                "/hmi/HMImidfi5.png",
+                "/hmi/HMImidfi6.png",
+                "/hmi/HMImidfi7.png",
+              ].map((s) => (
                 <figure key={s} className="overflow-hidden rounded-xl">
-                  <img src={s} alt="HMI mid-fi" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+                  <div className="aspect-[4/3] w-full">
+                    <img
+                      src={s}
+                      alt="HMI mid-fi"
+                      className="block h-full w-full object-contain"
+                      loading="lazy"
+                      style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
+                    />
+                  </div>
                 </figure>
               ))}
             </div>
@@ -342,11 +406,149 @@ export default function HMIPage() {
             <div className="grid gap-3 grid-cols-3 sm:grid-cols-5">
               {["/hmi/HMImidrefinements1.png","/hmi/HMImidrefinements2.png","/hmi/HMIMidrefinements3.png","/hmi/HMImidrefinements4.png","/hmi/HMIMIDrefinements5.png"].map((s) => (
                 <figure key={s} className="overflow-hidden rounded-xl">
-                  <img src={s} alt="HMI refinement" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+                  <div className="aspect-[4/3] w-full">
+                    <img
+                      src={s}
+                      alt="HMI refinement"
+                      className="block h-full w-full object-contain"
+                      loading="lazy"
+                      style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
+                    />
+                  </div>
                 </figure>
               ))}
             </div>
           </R>
+
+          {/* HMI iteration clusters — map, carousel, notifications, request assistance */}
+          <R className="mt-14">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Map Layout Iterations</p>
+            <div className="grid gap-2 grid-cols-3 md:grid-cols-5">
+              {[
+                "/hmi/2ndBatch/HMImapmid1.png",
+                "/hmi/2ndBatch/HMImapmid2.png",
+                "/hmi/2ndBatch/HMImapmid3.png",
+                "/hmi/2ndBatch/HMImapmid4.png",
+                "/hmi/2ndBatch/HMImapmid5.png",
+              ].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-lg">
+                  <img src={s} alt="HMI map iteration" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+                </figure>
+              ))}
+            </div>
+          </R>
+
+          <R className="mt-10">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Carousel Cards</p>
+            <div className="grid gap-2 grid-cols-3 md:grid-cols-5">
+              {[
+                "/hmi/2ndBatch/HMImidcel1.png",
+                "/hmi/2ndBatch/HMImidcel2.png",
+                "/hmi/2ndBatch/HMImidcel3.png",
+                "/hmi/2ndBatch/HMImidcel4.png",
+                "/hmi/2ndBatch/HMImidcel5.png",
+              ].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-lg">
+                  <img src={s} alt="HMI carousel iteration" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+                </figure>
+              ))}
+            </div>
+          </R>
+
+          <R className="mt-10">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Notification States</p>
+            <div className="grid gap-2 grid-cols-3 md:grid-cols-5">
+              {[
+                "/hmi/2ndBatch/HMImidnoti1.png",
+                "/hmi/2ndBatch/HMImidnoti2.png",
+                "/hmi/2ndBatch/HMImidnoti3.png",
+                "/hmi/2ndBatch/HMImidnoti4.png",
+                "/hmi/2ndBatch/HMImidnoti5.png",
+              ].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-lg">
+                  <img src={s} alt="HMI notification iteration" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+                </figure>
+              ))}
+            </div>
+          </R>
+
+          <R className="mt-10">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Request Assistance Variants</p>
+            <div className="grid gap-2 grid-cols-3 md:grid-cols-5">
+              {[
+                "/hmi/2ndBatch/HMImidrequest0.png",
+                "/hmi/2ndBatch/HMIMidrequest1.png",
+                "/hmi/2ndBatch/HMIMidrequest2.png",
+                "/hmi/2ndBatch/HMImidrequest3.png",
+                "/hmi/2ndBatch/HMImidrequest4.png",
+              ].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-lg">
+                  <img src={s} alt="Request Assistance iteration" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+                </figure>
+              ))}
+            </div>
+          </R>
+
+          {/* Animation boot-up explorations */}
+          <R className="mt-10">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Boot-Up Animation</p>
+            <div className="grid gap-2 grid-cols-3 md:grid-cols-6">
+              {[
+                "/hmi/2ndBatch/HMImidani1.png",
+                "/hmi/2ndBatch/HMImidani2.png",
+                "/hmi/2ndBatch/HMImidani3.png",
+                "/hmi/2ndBatch/HMImidani4.png",
+                "/hmi/2ndBatch/HMIMidani5.png",
+                "/hmi/2ndBatch/HMImidani6.png",
+              ].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-lg">
+                  <img src={s} alt="Boot-up animation frame" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+                </figure>
+              ))}
+            </div>
+          </R>
+
+          {/* Color system explorations */}
+          <R className="mt-10">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Color System Explorations</p>
+            <div className="grid gap-2 grid-cols-3 md:grid-cols-6">
+              {[
+                "/hmi/2ndBatch/HMImidcolor1.png",
+                "/hmi/2ndBatch/HMImidcolor2.png",
+                "/hmi/2ndBatch/HMImidcolor3.png",
+                "/hmi/2ndBatch/HMImidcolor4.png",
+                "/hmi/2ndBatch/HMImidcolor5.png",
+                "/hmi/2ndBatch/HMImidcolor6.png",
+                "/hmi/2ndBatch/HMImidcolor7.png",
+                "/hmi/2ndBatch/HMImidcolor8.png",
+                "/hmi/2ndBatch/HMIMIDcolor9.png",
+              ].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-lg">
+                  <img src={s} alt="Color exploration" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+                </figure>
+              ))}
+            </div>
+          </R>
+
+          {/* Companion app mid-fi, after HMI iterations */}
+          <R className="mt-16">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-500">Companion App</p>
+            <div className="grid gap-2 grid-cols-3 lg:grid-cols-6">
+              {[
+                "/hmi/App Midfi Feed.png",
+                "/hmi/AppMidfiHeat.png",
+                "/hmi/AppMidfiPlanningAride1.png",
+                "/hmi/MidfiPlanningaride2.png",
+                "/hmi/Midfiprofile.png",
+                "/hmi/MidfiappProfile2.png",
+              ].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-lg">
+                  <img src={s} alt="App mid-fi" className="block h-auto w-full" loading="lazy" style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties} />
+                </figure>
+              ))}
+            </div>
+          </R>
+
         </div>
       </section>
 
@@ -580,12 +782,95 @@ export default function HMIPage() {
       </section>
 
       {/* ══════════════════════════════════════════
-          ACT 7 — ECOSYSTEM + PROTOTYPE
+          ACT 7 — EXPLORATIONS THAT DIDN'T SHIP
+      ══════════════════════════════════════════ */}
+      <section className="bg-slate-50 py-20">
+        <div className={W}>
+          <R>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">07 — Explorations</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Concepts That Didn&apos;t Ship (Yet)</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-500">
+              Alongside the final system, we explored several directions that pushed how far the Rebel&apos;s cluster could go. These concepts didn&apos;t make the
+              first release due to time and scope, but they helped define the edges of what HondaConnect could become.
+            </p>
+          </R>
+
+          {/* Voice command flow */}
+          <R className="mt-12">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">Voice Commands</p>
+            <div className="grid gap-3 grid-cols-3 md:grid-cols-5">
+              {[
+                "/hmi/2ndBatch/HMImidvoice1.png",
+                "/hmi/2ndBatch/HMIMidvoice2.png",
+                "/hmi/2ndBatch/HMIMidvoice3.png",
+                "/hmi/2ndBatch/HMIMidvoice4.png",
+                "/hmi/2ndBatch/HMImidvoice5.png",
+              ].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-xl">
+                  <img
+                    src={s}
+                    alt="Voice command exploration"
+                    className="block h-auto w-full"
+                    loading="lazy"
+                    style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
+                  />
+                </figure>
+              ))}
+            </div>
+          </R>
+
+          {/* First-person map view */}
+          <R className="mt-12">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">First-Person Map View</p>
+            <div className="grid gap-3 grid-cols-2 md:grid-cols-3">
+              {[
+                "/hmi/2ndBatch/HMImidmapfp1.png",
+                "/hmi/2ndBatch/HMImidmapfp2.png",
+              ].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-xl">
+                  <img
+                    src={s}
+                    alt="First-person map exploration"
+                    className="block h-auto w-full"
+                    loading="lazy"
+                    style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
+                  />
+                </figure>
+              ))}
+            </div>
+          </R>
+
+          {/* TV remote / docked view */}
+          <R className="mt-12">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">TV Dock &amp; Remote</p>
+            <div className="grid gap-3 grid-cols-3 md:grid-cols-3">
+              {[
+                "/hmi/2ndBatch/HMIMidTV1.png",
+                "/hmi/2ndBatch/HMIMidTV2.png",
+                "/hmi/2ndBatch/HMImidtv3.png",
+              ].map((s) => (
+                <figure key={s} className="overflow-hidden rounded-xl">
+                  <img
+                    src={s}
+                    alt="TV remote exploration"
+                    className="block h-auto w-full"
+                    loading="lazy"
+                    style={{ imageRendering: "-webkit-optimize-contrast" } as React.CSSProperties}
+                  />
+                </figure>
+              ))}
+            </div>
+          </R>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          ACT 8 — ECOSYSTEM + PROTOTYPE
       ══════════════════════════════════════════ */}
       <section className="bg-[#111111] py-20 text-white">
         <div className={W}>
           <R>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">07 — Ecosystem</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">08 — Ecosystem</p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">HMI + App</h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-neutral-400">The complete HondaConnect ecosystem — supporting the entire ride journey: before, during, and after.</p>
           </R>
